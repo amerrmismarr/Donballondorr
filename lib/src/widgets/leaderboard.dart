@@ -26,6 +26,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
   FireStoreService db = FireStoreService();
 
   List usersProfilesList = [];
+  String amer;
 
   @override
   void initState() {
