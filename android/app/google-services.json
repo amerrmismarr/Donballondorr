@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "205289639403",
+    "firebase_url": "https://donballondor-90bff.firebaseio.com",
+    "project_id": "donballondor-90bff",
+    "storage_bucket": "donballondor-90bff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205289639403:android:7a36fbc8c3a0df05c0ddae",
+        "android_client_info": {
+          "package_name": "com.don.ballondor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205289639403-315l67m2ot68fe6ppm8hh9pv0u5ocefk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.don.ballondor",
+            "certificate_hash": "faa51eca05d1a89d336a55da2a3bc421c526f258"
+          }
+        },
+        {
+          "client_id": "205289639403-lt44dqrbk0c1vlvs61i499al0je8ig7i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAvF54StMP6WJ6xb7X8u0SJ-FHQNYl6Mg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "205289639403-lt44dqrbk0c1vlvs61i499al0je8ig7i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
