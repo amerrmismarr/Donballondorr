@@ -32,7 +32,7 @@ abstract class TextStyles {
 
   static TextStyle get body {
     return GoogleFonts.roboto(
-        textStyle: TextStyle(color: AppColors.notshinygold, fontSize: 16.0));
+        textStyle: TextStyle(color: AppColors.notshinygold, fontSize: 12.0));
   }
 
   static TextStyle get suggestion {

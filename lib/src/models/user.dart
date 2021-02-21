@@ -4,7 +4,7 @@ class AppUser {
   FirebaseFirestore _db = FirebaseFirestore.instance;
   final String userId;
   final String email;
-  final int score;
+  int score = 0;
 
   AppUser({
     this.email, this.userId, this.score
@@ -15,7 +15,7 @@ class AppUser {
     return {
       'userId' : userId,
       'email' : email,
-      'score' : score,
+      'score' : 0,
     };
   }
 

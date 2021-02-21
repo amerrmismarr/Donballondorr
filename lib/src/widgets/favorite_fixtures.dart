@@ -49,6 +49,8 @@ class _FavoriteFixturesState extends State<FavoriteFixtures> {
       fixture= map['api']['fixtures'];
       fixtures.add(fixture[0]);
       _streamController.add(fixtures);
+      
+      
       //return fixture;
       //print(fixture[0]);
       //fixtures.add(fixture[0]);
@@ -88,6 +90,8 @@ class _FavoriteFixturesState extends State<FavoriteFixtures> {
      
      
     }
+
+    
 
     
     

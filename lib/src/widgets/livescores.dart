@@ -7,6 +7,7 @@ import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
 import 'package:Donballondor/src/widgets/livescores_list.dart';
 import 'package:Donballondor/src/widgets/loading.dart';
+import 'package:Donballondor/src/widgets/profile.dart';
 import 'package:Donballondor/src/widgets/table_calendar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,10 +32,12 @@ class _LiveScoresState extends State<LiveScores> {
   @override
   void initState() {
     ApiService apiService = Provider.of<ApiService>(context, listen: false);
+    
     controller = CalendarController();
     var outputFormat = DateFormat("yyyy-MM-dd");
     formattedDate = outputFormat.format(DateTime.now());
     apiService.getFixtures(formattedDate, context);
+    print(formattedDate);
     super.initState();
   }
 
@@ -56,6 +59,7 @@ class _LiveScoresState extends State<LiveScores> {
     } else {
       return Scaffold(
         appBar: AppBar(
+          
           title: Center(
               child: Text(
             'Livescores',
@@ -90,13 +94,12 @@ class _LiveScoresState extends State<LiveScores> {
                     stream: apiService.fixtures,
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        return Container(
-                            child: RefreshIndicator(
+                        return RefreshIndicator(
                                 color: AppColors.notshinygold,
                                 backgroundColor: AppColors.darkblue,
                                 onRefresh: _getData,
-                                child: LiveScoreList(elements: snapshot.data)));
-                      } else {
+                                child: LiveScoreList(elements: snapshot.data));
+                       }else {
                         return Container(
                             height: MediaQuery.of(context).size.height * 0.5,
                             child: Center(child: Loading()));
@@ -116,6 +119,7 @@ class _LiveScoresState extends State<LiveScores> {
   Widget tableCalendar(){
 
     return TableCalendar(
+      //initialSelectedDay: DateTime.utc(2021),
             calendarController: controller,
             initialCalendarFormat: CalendarFormat.week,
             calendarStyle: CalendarStyle(

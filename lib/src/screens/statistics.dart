@@ -242,6 +242,8 @@ class _StatisticsState extends State<Statistics> {
                     ),
                     Events(
                       fixtureId: fixtureId,
+                      homeTeamName: homeTeamName,
+                      awayTeamName: awayTeamName,
                     ),
                     Head2Head(
                       homeTeamId: homeTeamId,

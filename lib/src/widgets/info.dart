@@ -15,10 +15,10 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:provider/provider.dart';
-import 'package:Donballondor/src/widgets/lineups.dart' as first;
-import 'package:Donballondor/src/widgets/head2head.dart' as second;
-import 'package:Donballondor/src/widgets/events.dart' as third;
-import 'package:Donballondor/src/widgets/profile.dart' as fourth;
+import 'package:Donballondor/src/widgets/lineups.dart' as second;
+import 'package:Donballondor/src/widgets/head2head.dart' as third;
+import 'package:Donballondor/src/widgets/events.dart' as first;
+import 'package:Donballondor/src/widgets/match_info.dart' as fourth;
 
 import 'button.dart';
 
@@ -87,6 +87,7 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
          awayTeamLogo = fixture[0]['awayTeam']['logo'];
          statusShort = fixture[0]['statusShort'];
 
+
         
       
       _streamController.add(fixture);
@@ -125,29 +126,59 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
 
                   body: pageBody(context),
                   appBar: AppBar(
+                    automaticallyImplyLeading: false,
                     title: Column(children: [
-                      SizedBox(height: 5,),
+                      SizedBox(height: 1,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(snapshot.data[0]['homeTeam']['team_name'], style: TextStyles.body,),
+                           Row(
+                             children: [
+                               Container(
+                                              height: 30.0,
+                                              width: 30.0,
+                                              padding: EdgeInsets.all(5),
+                                              margin: EdgeInsets.only(
+                                                  left: 5, right: 5),
+                                              child: Image.network(homeTeamLogo)
+                                              ),
+                              Text(snapshot.data[0]['homeTeam']['team_name'], style: TextStyles.body,),
+                             ],
+                           ),
+                          
                           Row(
                             children: [
-                              Text(snapshot.data[0]['goalsHomeTeam'].toString(), style: TextStyles.body,),
+                               
+                              Text(snapshot.data[0]['goalsHomeTeam'].toString() 
+                              == 'null' ? ' ' : snapshot.data[0]['goalsHomeTeam'].toString() , style: TextStyles.body,),
                               SizedBox(width: 10)
                             ],
                           ),
 
                         ],
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(height: 5,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(snapshot.data[0]['awayTeam']['team_name'], style: TextStyles.body,),
                           Row(
                             children: [
-                              Text(snapshot.data[0]['goalsAwayTeam'].toString(), style: TextStyles.body,),
+                              Container(
+                                              height: 30.0,
+                                              width: 30.0,
+                                              padding: EdgeInsets.all(5),
+                                              margin: EdgeInsets.only(
+                                                  left: 5, right: 5),
+                                              child: Image.network(awayTeamLogo)
+                                              ),
+                            Text(snapshot.data[0]['awayTeam']['team_name'], style: TextStyles.body,),
+                            ],
+                          ),
+                          
+                          Row(
+                            children: [
+                              Text(snapshot.data[0]['goalsAwayTeam'].toString() == 'null' ? ' ' :
+                                snapshot.data[0]['goalsAwayTeam'].toString(), style: TextStyles.body,),
                               SizedBox(width: 10)
                             ],
                           ),
@@ -161,11 +192,11 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
                         labelColor: Color.fromRGBO(222, 177, 92, 1),
                         controller: controller,
                         tabs: <Widget>[
-                          new Tab(icon: new Image.asset("assets/vsicon.png", width: 30.0, height: 30.0,), ),
                           
+                          new Tab(icon: new Image.asset("assets/whistle.png", width: 30.0, height: 30.0,), ),
                           new Tab(icon: new Image.asset("assets/lineups.png", width: 30.0, height: 30.0,),),
-                          new Tab(icon: new Image.asset("assets/vsicon.png", width: 30.0, height: 30.0,), ),
-                          new Tab(icon: new Image.asset("assets/whistle.png", width: 30.0, height: 30.0,),),
+                          new Tab(icon: new Image.asset("assets/vsicon.png", width: 30.0, height: 30.0,),),
+                          new Tab(icon: Icon(Icons.info) ),
                         ]),
                   ),
                 ) : Container(child: Center(child: Text('please log in'),));
@@ -212,18 +243,25 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
               ),
             Expanded(
                     child: TabBarView(controller: controller, children: <Widget>[
-                      new second.Head2Head(
-                        homeTeamId: homeTeamId,
-                        awayTeamId: awayTeamId,
-                      ),
-                      new first.Lineups(
+                      new first.Events(
+                        fixtureId: widget.fixtureId,
+                        homeTeamName: homeTeamName,
+                        awayTeamName: awayTeamName,
+                        homeTeamLogo: homeTeamLogo,
+                        awayTeamLogo: awayTeamLogo
+                        ),
+                      new second.Lineups(
                           fixtureId: widget.fixtureId,
                           homeTeamName: homeTeamName,
                           awayTeamName: awayTeamName,
                           homeTeamLogo: homeTeamLogo,
                           awayTeamLogo: awayTeamLogo),
-                      new third.Events(fixtureId: widget.fixtureId),
-                      new fourth.Profile()
+                      
+                      new third.Head2Head(
+                        homeTeamId: homeTeamId,
+                        awayTeamId: awayTeamId,
+                      ),
+                      new fourth.MatchInfo(),
                     ]),
                   ),
           ],

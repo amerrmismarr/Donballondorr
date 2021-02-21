@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:Donballondor/src/app.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,9 +21,20 @@ void showNotification(v, flp, channelId) async {
 
 }
 
+class MyHttpOverrides extends HttpOverrides{
+  @override
+  HttpClient createHttpClient(SecurityContext context){
+    return super.createHttpClient(context)
+    ..badCertificateCallback = (X509Certificate cert,
+    String host, int port) => true;
+  }
+}
+
+
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  HttpOverrides.global = new MyHttpOverrides();
   await Workmanager.initialize(callbackDispatcher, isInDebugMode: true);
   //await Workmanager.registerPeriodicTask('S', simplePeriodicTask,
   //existingWorkPolicy: ExistingWorkPolicy.replace,

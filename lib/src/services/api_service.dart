@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -32,10 +33,18 @@ dispose() {
 List<dynamic> data;
 Future getFixtures(String date, BuildContext context) async {
 
+
    
     
 
     _fixtures.sink.add(null);
+
+    
+   /*HttpClient client = new HttpClient();
+   client.badCertificateCallback = ((
+     X509Certificate cert, String host,
+     int port
+   ) => true);*/
     
 
     var response = await http.get(Uri.encodeFull('https://api-football-v1.p.rapidapi.com/v2/fixtures/date/' + date), headers: {

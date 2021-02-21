@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
 import 'package:Donballondor/src/widgets/loading.dart';
 import 'package:flutter/material.dart';
@@ -9,17 +10,32 @@ import 'package:http/http.dart' as http;
 // ignore: must_be_immutable
 class Events extends StatefulWidget {
   String fixtureId;
+  String homeTeamName;
+  String awayTeamName;
+  String homeTeamLogo;
+  String awayTeamLogo;
 
-  Events({this.fixtureId});
+  Events(
+      {this.fixtureId,
+      this.homeTeamName,
+      this.awayTeamName,
+      this.homeTeamLogo,
+      this.awayTeamLogo});
 
   @override
-  _EventsState createState() => _EventsState(fixtureId);
+  _EventsState createState() => _EventsState(
+      fixtureId, homeTeamName, awayTeamName, homeTeamLogo, awayTeamLogo);
 }
 
 class _EventsState extends State<Events> {
   String fixtureId;
+  String homeTeamName;
+  String awayTeamName;
+  String homeTeamLogo;
+  String awayTeamLogo;
 
-  _EventsState(this.fixtureId);
+  _EventsState(this.fixtureId, this.homeTeamName, this.awayTeamName,
+      this.homeTeamLogo, this.awayTeamLogo);
 
   var loading = false;
   StreamController _streamController = StreamController();
@@ -77,58 +93,133 @@ class _EventsState extends State<Events> {
     return StreamBuilder(
         stream: _stream,
         builder: (context, snapshot) {
-          if (snapshot.hasData &&  snapshot.data.length != 0) {
+          if (snapshot.hasData && snapshot.data.length != 0) {
             print(snapshot.data);
-            return Column(
-              children: <Widget>[
-                Container(
-                  color: Color.fromRGBO(41, 48, 67, 1),
-                  padding: EdgeInsets.all(10.0),
-                  height: 50.0,
-                  child: Center(
-                      child: Text(
-                    'EVENTS',
-                    style: TextStyle(
-                        color: Color.fromRGBO(224, 176, 92, 1),
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold),
-                  )),
+
+            return Scaffold(
+              appBar: AppBar(
+                automaticallyImplyLeading: false,
+                backgroundColor: AppColors.lightblue,
+                title: Center(
+                  child: Text(
+                    'Events',
+                    style: TextStyles.navTitle,
+                  ),
                 ),
-                
-                Expanded(
-                  child: Container(
-                      color: Color.fromRGBO(13, 18, 38, 1),
-                      child: ListView.builder(
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (context, index) {
-                          return Column(
-                            children: <Widget>[
+              ),
+              body: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Row(
+                            children: [
                               Container(
-                                  child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Container(
-                                        width: 2,
-                                        height: 5.0,
-                                        color: index == 0
+                                  height: 30.0,
+                                  width: 30.0,
+                                  padding: EdgeInsets.all(5),
+                                  margin: EdgeInsets.only(left: 5, right: 5),
+                                  child: Image.network(homeTeamLogo)),
+                              Text(
+                                homeTeamName,
+                                style: TextStyles.body,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                  height: 30.0,
+                                  width: 30.0,
+                                  padding: EdgeInsets.all(5),
+                                  margin: EdgeInsets.only(left: 5, right: 5),
+                                  child: Image.network(awayTeamLogo)),
+                              Text(
+                                awayTeamName,
+                                style: TextStyles.body,
+                              ),
+                            ],
+                          ),
+                        ]),
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (context, index) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Flexible(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      snapshot.data[index]['teamName']
+                                                  .toString() ==
+                                              homeTeamName
+                                          ? snapshot.data[index]['player']
+                                              .toString()
+                                          : snapshot.data[index]['elapsed']
+                                                  .toString() +
+                                              '`',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color:
+                                              Color.fromRGBO(222, 177, 92, 1)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Flexible(
+                              flex: 2,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    width: 2,
+                                    height: 25.0,
+                                    color: index == 0
+                                        ? Color.fromRGBO(13, 18, 38, 1)
+                                        : index == snapshot.data.length
                                             ? Color.fromRGBO(13, 18, 38, 1)
                                             : Color.fromRGBO(222, 177, 92, 1),
-                                      ),
-                                      snapshot.data[index]['type'] == 'Goal'
-                                          ? Row(
-                                              children: [
-                                                Text(
-                                                  snapshot.data[index]['player']
-                                                      .toString(),
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Color.fromRGBO(
-                                                          222, 177, 92, 1)),
+                                  ),
+                                  snapshot.data[index]['type'] == 'Goal'
+                                      ? Container(
+                                          height: 30.0,
+                                          width: 30.0,
+                                          padding: EdgeInsets.all(5),
+                                          margin: EdgeInsets.only(
+                                              left: 5, right: 5),
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                            image: AssetImage(
+                                              'assets/PNG app.png',
+                                            ),
+                                          )),
+                                        )
+                                      : snapshot.data[index]['detail'] ==
+                                              'Yellow Card'
+                                          ? Container(
+                                              height: 30.0,
+                                              width: 30.0,
+                                              padding: EdgeInsets.all(5),
+                                              margin: EdgeInsets.only(
+                                                  left: 5, right: 5),
+                                              decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                image: AssetImage(
+                                                  'assets/yellow card.png',
                                                 ),
-                                                Container(
+                                              )),
+                                            )
+                                          : snapshot.data[index]['detail'] ==
+                                                  'Red Card'
+                                              ? Container(
                                                   height: 30.0,
                                                   width: 30.0,
                                                   padding: EdgeInsets.all(5),
@@ -137,36 +228,53 @@ class _EventsState extends State<Events> {
                                                   decoration: BoxDecoration(
                                                       image: DecorationImage(
                                                     image: AssetImage(
-                                                      'assets/PNG app.png',
+                                                      'assets/red card.png',
                                                     ),
                                                   )),
-                                                ),
-                                                Text(
-                                                  snapshot.data[index]
-                                                              ['elapsed']
-                                                          .toString() +
-                                                      '`',
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Color.fromRGBO(
-                                                          222, 177, 92, 1)),
-                                                ),
-                                              ],
-                                            )
-                                          : snapshot.data[index]['detail'] ==
-                                                  'Yellow Card'
-                                              ? Row(
-                                                  children: [
-                                                    Text(
-                                                      snapshot.data[index]
-                                                              ['player']
-                                                          .toString(),
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Color.fromRGBO(
-                                                              222, 177, 92, 1)),
-                                                    ),
-                                                    Container(
+                                                )
+                                              : snapshot.data[index]['type'] ==
+                                                      'subst'
+                                                  ? Container(
+                                                      height: 30.0,
+                                                      width: 30.0,
+                                                      padding:
+                                                          EdgeInsets.all(5),
+                                                      margin: EdgeInsets.only(
+                                                          left: 10, right: 10),
+                                                      decoration: BoxDecoration(
+                                                          image:
+                                                              DecorationImage(
+                                                        image: AssetImage(
+                                                          'assets/Sub.png',
+                                                        ),
+                                                      )),
+                                                    )
+                                                  /*Column(
+                                                          children: [
+                                                            /*Text(
+                                                              snapshot.data[index]
+                                                                      ['player']
+                                                                  .toString(),
+                                                              style: TextStyle(
+                                                                  fontSize: 14,
+                                                                  color: Color.fromRGBO(
+                                                                      222, 177, 92, 1),
+                                                                  fontWeight:
+                                                                      FontWeight.bold),
+                                                            ),*/
+                                                            Text(
+                                                              snapshot.data[index]
+                                                                      ['assist']
+                                                                  .toString(),
+                                                              style: TextStyle(
+                                                                  fontSize: 10,
+                                                                  color: Color.fromRGBO(
+                                                                      222, 177, 92, 1)),
+                                                            ),
+                                                          ],
+                                                        ),*/
+
+                                                  : Container(
                                                       height: 30.0,
                                                       width: 30.0,
                                                       padding:
@@ -177,174 +285,53 @@ class _EventsState extends State<Events> {
                                                           image:
                                                               DecorationImage(
                                                         image: AssetImage(
-                                                          'assets/yellow card.png',
+                                                          'assets/whistle.png',
                                                         ),
                                                       )),
                                                     ),
-                                                    Text(
-                                                      snapshot.data[index]
-                                                                  ['elapsed']
-                                                              .toString() +
-                                                          '`',
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Color.fromRGBO(
-                                                              222, 177, 92, 1)),
-                                                    ),
-                                                  ],
-                                                )
-                                              : snapshot.data[index]
-                                                          ['detail'] ==
-                                                      'Red Card'
-                                                  ? Row(
-                                                      children: [
-                                                        Text(
-                                                          snapshot.data[index][
-                                                                      'elapsed']
-                                                                  .toString() +
-                                                              '`',
-                                                          style: TextStyle(
-                                                              fontSize: 14,
-                                                              color: Color
-                                                                  .fromRGBO(
-                                                                      222,
-                                                                      177,
-                                                                      92,
-                                                                      1)),
-                                                        ),
-                                                        Container(
-                                                          height: 30.0,
-                                                          width: 30.0,
-                                                          padding:
-                                                              EdgeInsets.all(5),
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                  left: 5,
-                                                                  right: 5),
-                                                          decoration:
-                                                              BoxDecoration(
-                                                                  image:
-                                                                      DecorationImage(
-                                                            image: AssetImage(
-                                                              'assets/red card.png',
-                                                            ),
-                                                          )),
-                                                        ),
-                                                        Text(
-                                                          snapshot.data[index]
-                                                                  ['player']
-                                                              .toString(),
-                                                          style: TextStyle(
-                                                              fontSize: 14,
-                                                              color: Color
-                                                                  .fromRGBO(
-                                                                      222,
-                                                                      177,
-                                                                      92,
-                                                                      1)),
-                                                        ),
-                                                      ],
-                                                    )
-                                                  : snapshot.data[index]
-                                                              ['type'] ==
-                                                          'subst'
-                                                      ? Row(
-                                                          children: [
-                                                            Container(
-                                                              height: 30.0,
-                                                              width: 30.0,
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(5),
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                      left: 10,
-                                                                      right:
-                                                                          10),
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                      image:
-                                                                          DecorationImage(
-                                                                image:
-                                                                    AssetImage(
-                                                                  'assets/Sub.png',
-                                                                ),
-                                                              )),
-                                                            ),
-                                                            Column(
-                                                              children: [
-                                                                Text(
-                                                                  snapshot.data[
-                                                                          index]
-                                                                          [
-                                                                          'player']
-                                                                      .toString(),
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          14,
-                                                                      color: Color.fromRGBO(
-                                                                          222,
-                                                                          177,
-                                                                          92,
-                                                                          1),
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold),
-                                                                ),
-                                                                Text(
-                                                                  snapshot.data[
-                                                                          index]
-                                                                          [
-                                                                          'assist']
-                                                                      .toString(),
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          10,
-                                                                      color: Color.fromRGBO(
-                                                                          222,
-                                                                          177,
-                                                                          92,
-                                                                          1)),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        )
-                                                      : Container(
-                                                          height: 30.0,
-                                                          width: 30.0,
-                                                          padding:
-                                                              EdgeInsets.all(5),
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                  left: 5,
-                                                                  right: 5),
-                                                          decoration:
-                                                              BoxDecoration(
-                                                                  image:
-                                                                      DecorationImage(
-                                                            image: AssetImage(
-                                                              'assets/whistle.png',
-                                                            ),
-                                                          )),
-                                                        ),
-                                      Container(
-                                        width: 2,
-                                        height: 50,
-                                        color: index == snapshot.data.length - 1
-                                            ? Color.fromRGBO(13, 18, 38, 1)
-                                            : Color.fromRGBO(222, 177, 92, 1),
-                                      ),
-                                    ],
+                                ],
+                              ),
+                            ),
+                            Flexible(
+                              child: Row(
+                                //crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Flexible(
+                                                                      child: Text(
+                                      snapshot.data[index]['teamName']
+                                                  .toString() ==
+                                              awayTeamName
+                                          ? snapshot.data[index]['player']
+                                              .toString()
+                                          : snapshot.data[index]['elapsed']
+                                                  .toString() +
+                                              '`',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color: Color.fromRGBO(222, 177, 92, 1)),
+                                    ),
                                   ),
                                 ],
-                              )),
-                            ],
-                          );
-                        },
-                      )),
-                ),
-              ],
+                              ),
+                            ),
+
+                            /*Container(
+                                                width: 2,
+                                                height: 50,
+                                                color: index == snapshot.data.length - 1
+                                                    ? Color.fromRGBO(13, 18, 38, 1)
+                                                    : Color.fromRGBO(222, 177, 92, 1),
+                                              ),*/
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  )
+                ],
+              ),
             );
           } else {
             return Container(child: Center(child: Container(child: Loading())));

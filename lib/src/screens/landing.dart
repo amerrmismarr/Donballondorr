@@ -7,10 +7,12 @@ import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/widgets/admin_scaffold.dart';
 import 'package:Donballondor/src/widgets/favorite_fixtures.dart';
 import 'package:Donballondor/src/widgets/leaderboard.dart';
+import 'package:Donballondor/src/widgets/loading.dart';
 import 'package:Donballondor/src/widgets/navbar.dart';
 import 'package:Donballondor/src/widgets/info.dart';
 import 'package:Donballondor/src/widgets/livescores.dart';
 import 'package:Donballondor/src/widgets/profile.dart';
+import 'package:Donballondor/src/widgets/profile_provider.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -90,12 +92,12 @@ class _LandingState extends State<Landing> with SingleTickerProviderStateMixin {
               bottomNavigationBar: AppNavBar.bottomNavBar(tabbar :Landing.tabBar),
               body: new TabBarView(
                   children: <Widget>[
-                    Profile(),
-                    Profile(),
+                    Loading(),
+                    ProfileProvider(),
                     LiveScores(),
                     FavoriteFixtures(),
                     LeaderBoard(),
-                    Profile()
+                    Loading()
                   ],
                 ),
               );

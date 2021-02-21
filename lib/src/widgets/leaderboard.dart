@@ -40,10 +40,15 @@ class _LeaderBoardState extends State<LeaderBoard> {
     if(resultant == null) {
       print('unable to retrieve');
     } else {
-      setState(() {
+      if(this.mounted){
+        setState(() {
       usersProfilesList = resultant;
+      usersProfilesList.sort((b,a) => a['score'].compareTo(b['score']));
 
       });
+
+      }
+      
       print(usersProfilesList);
     }
   }

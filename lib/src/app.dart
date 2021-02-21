@@ -6,6 +6,8 @@ import 'package:Donballondor/src/screens/login.dart';
 import 'package:Donballondor/src/services/api_service.dart';
 import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/widgets/loading.dart';
+import 'package:Donballondor/src/widgets/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -14,6 +16,7 @@ import 'package:provider/provider.dart';
 
 final  authBloc = AuthBloc();
 final apiService = ApiService();
+final profile = Profile();
 final predictionBloc = PredictionBloc();
 
 class MyApp extends StatefulWidget {
@@ -30,6 +33,7 @@ class _MyAppState extends State<MyApp> {
       providers: [
         Provider(create: (context) => authBloc,),
         Provider(create: (context) => apiService,),
+        Provider(create: (context) => profile,),
         Provider(create: (context) => predictionBloc,),
         //StreamProvider(create: (context) => predictionBloc.predictionByUserId(authBloc.userId),),
         StreamProvider(create: (context) => authBloc.appUser),
@@ -83,6 +87,6 @@ class PlatformApp extends StatelessWidget {
   Widget loadingScreen(bool isIOS){
     return (isIOS) ? 
     CupertinoPageScaffold(child: Center(child: CupertinoActivityIndicator(),),)
-    : Scaffold(body: Center(child: CircularProgressIndicator(),),);
+    : Scaffold(body: Center(child: Loading(),),);
   }
 }
