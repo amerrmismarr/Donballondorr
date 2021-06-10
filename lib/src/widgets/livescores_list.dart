@@ -7,18 +7,22 @@ import 'package:Donballondor/src/screens/statistics.dart';
 import 'package:Donballondor/src/services/firestore_service.dart';
 import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/styles/themes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LiveScoreList extends StatefulWidget {
   final List<dynamic> elements;
+
+  
 
   LiveScoreList({@required this.elements});
 
@@ -27,6 +31,8 @@ class LiveScoreList extends StatefulWidget {
 }
 
 class _LiveScoreListState extends State<LiveScoreList> {
+  
+  DateFormat eventDateFormat = DateFormat('dd.MM.yyyy HH:mm');
   List<dynamic> fixture;
   Map<String, dynamic> mapData;
   Set<String> savedIds = Set<String>();
@@ -36,16 +42,29 @@ class _LiveScoreListState extends State<LiveScoreList> {
 
   //PredictedFixture predictedFixture;
 
+  Map<String,dynamic> favoritesMap;
+  DocumentReference favoritesRef;
+
   int goalsHomeTeam;
   int goalsAwayTeam;
 
+  CustomTheme customTheme = CustomTheme();
   @override
   void initState() {
     final appUser = Provider.of<AppUser>(context, listen: false);
+    if(appUser != null){
+      favoritesRef = _db.collection('Favorites').doc(appUser.userId);
+    }
+    
+
     /*final favouritesRef = FirebaseFirestore.instance.collection('users')
     .doc(appUser.userId).collection('FavoriteIdList').doc(appUser.userId);*/
-
+    
     super.initState();
+    if(appUser != null){
+      favoritesRef.get().then((value) => favoritesMap = value.data());
+
+    }
     //favouritesRef.get().then((value) => mapData = value.data());
     // print(mapData);
     //print(appUser.userId);
@@ -56,7 +75,7 @@ class _LiveScoreListState extends State<LiveScoreList> {
     var predictionBloc = Provider.of<PredictionBloc>(context);
 
     var response = await http.get(
-        Uri.encodeFull(
+        Uri.parse(
             'https://api-football-v1.p.rapidapi.com/v2/fixtures/id/' +
                 predictedFixtureId),
         headers: {
@@ -91,8 +110,9 @@ class _LiveScoreListState extends State<LiveScoreList> {
 
   @override
   Widget build(BuildContext context) {
-    var predictions = Provider.of<List<Prediction>>(context);
-    var favorites = Provider.of<List<Favorite>>(context);
+    
+    var isLoggedIn = Provider.of<bool>(context);
+    //print(isLoggedIn);
     //var predictedFixtures = Provider.of<List<PredictedFixture>>(context);
     var predictionBloc = Provider.of<PredictionBloc>(context);
     final appUser = Provider.of<AppUser>(context);
@@ -115,12 +135,14 @@ class _LiveScoreListState extends State<LiveScoreList> {
 
     
     //print(predictions);
-    return   SizedBox(
+    return  SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: GroupedListView<dynamic, String>(
                     elements: widget.elements,
                     useStickyGroupSeparators: true,
-                    stickyHeaderBackgroundColor: Color.fromRGBO(13, 18, 38, 1),
+                    stickyHeaderBackgroundColor: 
+                    customTheme.isDarkMode == true ?
+                    Color.fromRGBO(13, 18, 38, 1) : Colors.white,
                     groupBy: (element) => element['popularity'].toString(),
                     groupHeaderBuilder: (element) => Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -378,7 +400,8 @@ class _LiveScoreListState extends State<LiveScoreList> {
                                       element['league']['name'],
                                       style: TextStyle(
                                           color:
-                                              Color.fromRGBO(222, 177, 92, 1),
+                                          customTheme.isDarkMode == true ?
+                                              AppColors.notshinygold : Colors.black,
                                           fontSize: 12.0,
                                           fontWeight: FontWeight.bold),
                                     )
@@ -387,10 +410,18 @@ class _LiveScoreListState extends State<LiveScoreList> {
                               : Container(),
                         ),
                     indexedItemBuilder: (context, element, index) {
+                      DateTime dateTime = DateTime.parse(element['event_date']);
+
+                      if(appUser != null){
+                      var predictions = Provider.of<List<Prediction>>(context);
+                      var favorites = Provider.of<List<Favorite>>(context);
+                      
+                      
+                      //print(element['elapsed']);
                       if (favorites != null) {
                         favorites.forEach((favorite) {
                           if (favorite.fixtureId.toString() ==
-                              element['fixture_id'].toString()) {
+                            element['fixture_id'].toString()) {
                             element['isFavorite'] = true;
                           }
                         });
@@ -419,158 +450,202 @@ class _LiveScoreListState extends State<LiveScoreList> {
                         });
                       }
 
+                      }
+                      
+
                       return element['popularity'] != '600'
-                          ? GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).pushNamed(
-                                    '/statistics/${element['fixture_id'].toString()}');
-                              },
-                              child: Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(20.0)),
-                                  borderOnForeground: true,
-                                  shadowColor: Color.fromRGBO(224, 176, 92, 1),
-                                  margin:
-                                      EdgeInsets.fromLTRB(16.0, 5.0, 16.0, 0.0),
-                                  color: Color.fromRGBO(41, 48, 67, 1),
-                                  child: Padding(
-                                      padding:
-                                          const EdgeInsets.all(8.0),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Flexible(
-                                                                                      child: Row(
-                                              children: [
-                                                
-                                                Flexible(
-                                                    child: Column(
+                          ? Column(
+                            children: [
+                              GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context).pushNamed(
+                                        '/statistics/${element['fixture_id'].toString()}');
+                                  },
+                                  child: Card(
+                                    elevation: element['statusShort'] == "1H" 
+                                    || element['statusShort'] == "HT" 
+                                    ||element['statusShort'] == "2H"
+                                    ||element['statusShort'] == "ET" 
+                                    ||element['statusShort'] == "P"
+                                    ||element['statusShort'] == "BT"? 20 : 0,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0)),
+                                      borderOnForeground: true,
+                                      shadowColor: customTheme.isDarkMode == true?
+                                      Color.fromRGBO(224, 176, 92, 1) : Colors.teal,
+                                      margin:
+                                          EdgeInsets.fromLTRB(16.0, 5.0, 16.0, 0.0),
+                                      //color: Color.fromRGBO(41, 48, 67, 1),
+                                      child: Padding(
+                                          padding:
+                                              const EdgeInsets.all(8.0),
+                                              
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              
+                                              Flexible(
+                                                                                          child: Row(
+                                                  children: [
+                                                    SizedBox(
+                                                      width: 30,
+                                                          child: Align(
+                                                          alignment: Alignment.center,
+                                                          child: Text(
+                                                          element['statusShort'] == "FT" ? 
+                                                          element['statusShort'] + "  " :
+                                                          element['elapsed'] != 0 ?
+                                                          element['elapsed'].toString() + "`" :
+                                                           DateFormat('HH:mm')
+                                                          .format(dateTime),)),
+                                                    ),
+                                                    SizedBox(width: 10,),
+                                                    Flexible(
+                                                        child: Column(
+                                                        children: [
+                                                          Container(
+                                                            height: 15,
+                                                            width: 15,
+                                                            child:element['homeTeam']['logo'] ==
+                                                            'https://media.api-sports.io/football/teams/15289.png'
+                                                            ? Image.network('https://p7.hiclipart.com/preview/681/999/718/american-football-golden-football.jpg')
+                                                            : Image.network(element['homeTeam']['logo']),
+                                                            ),
+                                                            SizedBox(height: 10,),
+                                                          Container(
+                                                            height: 15,
+                                                            width: 15,
+                                                            child:element['awayTeam']['logo'] ==
+                                                            'https://media.api-sports.io/football/teams/15289.png'
+                                                            ? Image.network('https://p7.hiclipart.com/preview/681/999/718/american-football-golden-football.jpg')
+                                                            : Image.network(element['awayTeam']['logo']),
+                                                            ),
+                                                      
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    SizedBox(width: 5,),
+                                                    Flexible(
+                                                      flex: 5,
+                                                       child: Column(
+                                                      children: [
+                                                        
+                                                        Align(
+                                                        alignment: Alignment.centerLeft,
+                                                        child: Text(element['homeTeam']['team_name'],)),
+                                                        SizedBox(height: 10),
+                                                        Align(
+                                                          alignment: Alignment.centerLeft,
+                                                          child: Text(element['awayTeam']['team_name'],)),
+                                                      ],),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Flexible(
+                                                                                          child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.end,
                                                     children: [
-                                                      Container(
-                                                        height: 15,
-                                                        width: 15,
-                                                        child:element['homeTeam']['logo'] ==
-                                                        'https://media.api-sports.io/football/teams/15289.png'
-                                                        ? Image.network('https://p7.hiclipart.com/preview/681/999/718/american-football-golden-football.jpg')
-                                                        : Image.network(element['homeTeam']['logo']),
-                                                        ),
-                                                        SizedBox(height: 10,),
-                                                      Container(
-                                                        height: 15,
-                                                        width: 15,
-                                                        child:element['awayTeam']['logo'] ==
-                                                        'https://media.api-sports.io/football/teams/15289.png'
-                                                        ? Image.network('https://p7.hiclipart.com/preview/681/999/718/american-football-golden-football.jpg')
-                                                        : Image.network(element['awayTeam']['logo']),
-                                                        ),
-                                                  
+                                                     Column(
+                                                       children: [
+                                                         Text(element['goalsHomeTeam'].toString() == 'null' ? 
+                                                         ' ' : element['goalsHomeTeam'].toString() 
+                                                         ,style: TextStyles.body,),
+                                                         Text(element['goalsAwayTeam'].toString() == 'null' ? 
+                                                         ' ' : element['goalsAwayTeam'].toString() 
+                                                         ,style: TextStyles.body,),
+                                                       ],
+                                                     ),
+                                                     SizedBox(width: 3,),
+                                                     Column(
+                                                       children: [
+                                                         Text(element['homeTeamPrediction'].toString(),
+                                                         style: TextStyle(color: Colors.grey[500]
+                                                         ,fontSize: 10),),
+                                                         Text(element['awayTeamPrediction'].toString(),
+                                                         style: TextStyle(color: Colors.grey[500]
+                                                         ,fontSize: 10.0),),
+                                                       ],
+                                                     ),
+                                                      Consumer<AppUser>(
+                                                          builder: (_, user, __) {
+                                                        bool isSaved = savedIds.contains(
+                                                            element['fixture_id']
+                                                                .toString());
+                                                        //print(savedIds.toString());
+                                                        
+                                                        return Column(
+                                                          children: [
+                                                            StarButton(
+                                                               iconColor: AppColors.notshinygold,
+                                                               iconSize: 40,
+                                                               isStarred: element['isFavorite']==true? true : false,
+                                                               
+                                                                // iconDisabledColor: Colors.white,
+                                                                valueChanged: (_isStarred) {
+                                                                  print('Is Starred : $_isStarred');
+                                                                  
+                                                                    if (element['isFavorite'] == true) {
+                                                                      _db
+                                                                      .collection('users')
+                                                                      .doc(user.userId)
+                                                                      .collection('Favorites')
+                                                                      .doc(element['fixture_id'].toString())
+                                                                      .delete();
+                                                                      
+                                                                      element['isFavorite'] = false;
+                                                                      print(
+                                                                          'favorite removed from favorites');
+                                                                      print(element['isFavorite']);
+                                                                    } else {
+                                                                      /*predictionBloc.saveFavorite2(
+                                                                        element['fixture_id'].toString(),
+                                                                        user.userId);*/
+
+
+                                                                      predictionBloc.saveFavorite(
+                                                                          element['homeTeam']
+                                                                              ['team_name'],
+                                                                          element['awayTeam']
+                                                                              ['team_name'],
+                                                                          element[
+                                                                              'statusShort'],
+                                                                          element['fixture_id']
+                                                                              .toString(),
+                                                                          element[
+                                                                              'homeTeamPrediction'],
+                                                                          element[
+                                                                              'awayTeamPrediction'],
+                                                                          element['goalsHomeTeam']
+                                                                              .toString(),
+                                                                          element['goalsAwayTeam']
+                                                                              .toString(),
+                                                                          true,
+                                                                          user.userId);
+                                                                    }
+                                                                 
+                                                                  
+                                                                },
+                                                              ),
+                                                            
+                                                                  // }
+                                                                
+                                                          ],
+                                                        );
+                                                      }),
                                                     ],
                                                   ),
-                                                ),
-                                                SizedBox(width: 5,),
-                                                Flexible(
-                                                  flex: 5,
-                                                   child: Column(
-                                                  children: [
-                                                    Align(
-                                                    alignment: Alignment.centerLeft,
-                                                    child: Text(element['homeTeam']['team_name'],style: TextStyles.body,)),
-                                                    SizedBox(height: 10),
-                                                    Align(
-                                                      alignment: Alignment.centerLeft,
-                                                      child: Text(element['awayTeam']['team_name'],style: TextStyles.body,)),
-                                                  ],),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Flexible(
-                                                                                      child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.end,
-                                                children: [
-                                                 Column(
-                                                   children: [
-                                                     Text(element['goalsHomeTeam'].toString() == 'null' ? 
-                                                     ' ' : element['goalsHomeTeam'].toString() 
-                                                     ,style: TextStyles.body,),
-                                                     Text(element['goalsAwayTeam'].toString() == 'null' ? 
-                                                     ' ' : element['goalsAwayTeam'].toString() 
-                                                     ,style: TextStyles.body,),
-                                                   ],
-                                                 ),
-                                                 SizedBox(width: 3,),
-                                                 Column(
-                                                   children: [
-                                                     Text(element['homeTeamPrediction'].toString(),
-                                                     style: TextStyle(color: Colors.grey[500]
-                                                     ,fontSize: 10),),
-                                                     Text(element['awayTeamPrediction'].toString(),
-                                                     style: TextStyle(color: Colors.grey[500]
-                                                     ,fontSize: 10.0),),
-                                                   ],
-                                                 ),
-                                                  Consumer<AppUser>(
-                                                      builder: (_, user, __) {
-                                                    bool isSaved = savedIds.contains(
-                                                        element['fixture_id']
-                                                            .toString());
-                                                    print(savedIds.toString());
-
-                                                    return IconButton(
-                                                        icon: Icon(
-                                                          /*mapData != null && mapData.containsKey(element['fixture_id'].toString())*/
-                                                          element['isFavorite'] == true
-                                                              ? Icons.star
-                                                              : Icons.star_border,
-                                                          color: AppColors.notshinygold,
-                                                        ),
-                                                        onPressed: () {
-                                                          //print(appUser.userId);
-
-                                                          // if(mapData != null && mapData.containsKey(element['fixture_id'])){
-                                                          //   _db.collection('users').doc(user.userId)
-                                                          //   .collection('Favorites').doc(element['fixture_id'].toString())
-                                                          //   .update({element['fixture_id'].toString(): FieldValue.delete});
-                                                          // }  else {
-                                                          setState(() {
-                                                            if (element['isFavorite'] ==
-                                                                true) {
-                                                              print(
-                                                                  'favorite removed from favorites');
-                                                            } else {
-                                                              predictionBloc.saveFavorite(
-                                                                  element['homeTeam']
-                                                                      ['team_name'],
-                                                                  element['awayTeam']
-                                                                      ['team_name'],
-                                                                  element[
-                                                                      'statusShort'],
-                                                                  element['fixture_id']
-                                                                      .toString(),
-                                                                  element[
-                                                                      'homeTeamPrediction'],
-                                                                  element[
-                                                                      'awayTeamPrediction'],
-                                                                  element['goalsHomeTeam']
-                                                                      .toString(),
-                                                                  element['goalsAwayTeam']
-                                                                      .toString(),
-                                                                  true,
-                                                                  user.userId);
-                                                            }
-                                                          });
-
-                                                          // }
-                                                        });
-                                                  }),
-                                                ],
                                               ),
-                                          ),
-                                        ],
-                                      ))))
+                                            ],
+                                          )))),
+                                         
+                            ],
+                          )
+                                      
                           : Container();
                     }));
+                    
   }
 }
 

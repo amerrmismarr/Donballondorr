@@ -25,6 +25,15 @@ abstract class TextStyles {
             color: AppColors.notshinygold, fontWeight: FontWeight.bold));
   }
 
+  static TextStyle get info {
+    return GoogleFonts.economica(
+        textStyle: TextStyle(
+            color: AppColors.notshinygold, 
+            fontWeight: FontWeight.bold,
+            fontSize: 25
+            ));
+  }
+
   static TextStyle get materialNavTitle {
     return GoogleFonts.poppins(
         textStyle: TextStyle(color: AppColors.notshinygold, fontWeight: FontWeight.bold));
@@ -33,6 +42,11 @@ abstract class TextStyles {
   static TextStyle get body {
     return GoogleFonts.roboto(
         textStyle: TextStyle(color: AppColors.notshinygold, fontSize: 12.0));
+  }
+
+  static TextStyle get bodyLight {
+    return GoogleFonts.roboto(
+        textStyle: TextStyle(color: Colors.black, fontSize: 12.0));
   }
 
   static TextStyle get suggestion {

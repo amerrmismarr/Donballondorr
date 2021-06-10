@@ -1,10 +1,13 @@
 import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/styles/themes.dart';
 import 'package:Donballondor/src/widgets/button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 abstract class AppNavBar {
+  
   static CupertinoSliverNavigationBar cupertinoNavBar(
       {String title, BuildContext buildContext}) {
     return CupertinoSliverNavigationBar(
@@ -120,6 +123,9 @@ abstract class AppNavBar {
   }
 
   static Material bottomNavBar({@required TabBar tabbar}) {
-    return Material(color: AppColors.notshinygold, child: tabbar);
+    CustomTheme customTheme = CustomTheme();
+    return Material(color: 
+    customTheme.isDarkMode == true ?
+    AppColors.notshinygold : Colors.teal, child: tabbar);
   }
 }

@@ -2,6 +2,7 @@ import 'package:Donballondor/src/styles/base.dart';
 import 'package:Donballondor/src/styles/buttons.dart';
 import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/styles/themes.dart';
 import 'package:flutter/material.dart';
 
 class AppButton extends StatefulWidget {
@@ -23,6 +24,8 @@ class AppButton extends StatefulWidget {
 class _AppButtonState extends State<AppButton> {
 
   bool pressed = false;
+  CustomTheme customTheme = CustomTheme();
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +39,7 @@ class _AppButtonState extends State<AppButton> {
       break;
       case ButtonType.Disabled:
       fontStyle = TextStyles.buttonTextLight;
-      buttonColor = AppColors.lightblue;
+      buttonColor = customTheme.isDarkMode == true ? AppColors.lightblue : Colors.teal[200];
       break;
       case ButtonType.NotShinyGold:
       fontStyle = TextStyles.buttonTextDark;

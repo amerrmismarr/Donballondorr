@@ -5,19 +5,11 @@ import 'package:Donballondor/src/services/api_service.dart';
 import 'package:Donballondor/src/services/firestore_service.dart';
 import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
-import 'package:Donballondor/src/styles/themes.dart';
-import 'package:Donballondor/src/widgets/afterTomorrowFixtures.dart';
-import 'package:Donballondor/src/widgets/beforeYesterdayFixtures.dart';
-import 'package:Donballondor/src/widgets/calendar_view.dart';
-import 'package:Donballondor/src/widgets/liveFixtures.dart';
 import 'package:Donballondor/src/widgets/livescores_list.dart';
 import 'package:Donballondor/src/widgets/loading.dart';
 import 'package:Donballondor/src/widgets/match_info.dart' ;
 import 'package:Donballondor/src/widgets/profile.dart' ;
 import 'package:Donballondor/src/widgets/table_calendar.dart';
-import 'package:Donballondor/src/widgets/today_fixtures.dart';
-import 'package:Donballondor/src/widgets/tomorrowFixtures.dart';
-import 'package:Donballondor/src/widgets/yesterdayFixtures.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -28,35 +20,20 @@ import 'package:table_calendar/table_calendar.dart';
 
 
 
-class LiveScores extends StatefulWidget {
+class CalendarView extends StatefulWidget {
   @override
-  _LiveScoresState createState() => _LiveScoresState();
+  _CalendarViewState createState() => _CalendarViewState();
 }
 
-class _LiveScoresState extends State<LiveScores> with SingleTickerProviderStateMixin {
+class _CalendarViewState extends State<CalendarView>  {
   String formattedDate;
-
-  String nameOfToday;
-  String nameOfYesterday;
-  String nameOfBeforeYesterday;
-  String nameOfTomorrow;
-  String nameOfAfterTomorrow;
-
-  String nameOfTodayMonth;
-  String nameOfYesterdayMonth;
-  String nameOfBeforeYesterdayMonth;
-  String nameOfTomorrowMonth;
-  String nameOfAfterTomorrowMonth;
-  
-
   CalendarController controller;
   TabController tabController;
   
-  CustomTheme customTheme = CustomTheme();
+
   @override
   void initState() {
 
-    tabController = new TabController(vsync: this, length: 7, initialIndex: 3);
 
 
     ApiService apiService = Provider.of<ApiService>(context, listen: false);
@@ -73,23 +50,6 @@ class _LiveScoresState extends State<LiveScores> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     final apiService = Provider.of<ApiService>(context);
     final predictionBloc = PredictionBloc();
-    DateTime now = DateTime.now();
-    
-    //var dayNameFormat = DateFormat.ABBR_WEEKDAY;
-    nameOfToday = DateFormat(DateFormat.ABBR_WEEKDAY).format(DateTime(now.year, now.month, now.day));
-    nameOfYesterday = DateFormat(DateFormat.ABBR_WEEKDAY).format(DateTime(now.year, now.month, now.day - 1));
-    nameOfBeforeYesterday = DateFormat(DateFormat.ABBR_WEEKDAY).format(DateTime(now.year, now.month, now.day - 2));
-    nameOfTomorrow = DateFormat(DateFormat.ABBR_WEEKDAY).format(DateTime(now.year, now.month, now.day + 1));
-    nameOfAfterTomorrow = DateFormat(DateFormat.ABBR_WEEKDAY).format(DateTime(now.year, now.month, now.day + 2));
-    //print(nameOfToday);
-    nameOfTodayMonth = DateFormat(DateFormat.ABBR_MONTH).format(DateTime(now.year, now.month, now.day));
-    nameOfYesterdayMonth = DateFormat(DateFormat.ABBR_MONTH).format(DateTime(now.year, now.month, now.day - 1));
-    nameOfBeforeYesterdayMonth = DateFormat(DateFormat.ABBR_MONTH).format(DateTime(now.year, now.month, now.day - 2));
-    nameOfTomorrowMonth = DateFormat(DateFormat.ABBR_MONTH).format(DateTime(now.year, now.month, now.day + 1));
-    nameOfAfterTomorrowMonth = DateFormat(DateFormat.ABBR_MONTH).format(DateTime(now.year, now.month, now.day + 2));
-    print(nameOfTodayMonth);
-
-    
 
 
     
@@ -103,56 +63,7 @@ class _LiveScoresState extends State<LiveScores> with SingleTickerProviderStateM
       );
     } else {
       return Scaffold(
-        appBar: AppBar(
-          flexibleSpace: SafeArea(
-            child: new TabBar(
-             isScrollable: true,
-            indicatorColor: customTheme.isDarkMode == true ? AppColors.notshinygold : Colors.white,
-            labelColor: customTheme.isDarkMode == true ? AppColors.notshinygold : Colors.white,
-            controller: tabController,
-                          tabs: <Widget>[
-                            new Tab(icon: Icon(Icons.live_tv) ),
-                            
-                            new Tab(child: FittedBox(
-                                fit: BoxFit.fitWidth,
-                                child: Text(nameOfBeforeYesterday + "\n" + 
-                                (DateTime.now().day - 2).toString() + " " + nameOfBeforeYesterdayMonth
-                                , textAlign: TextAlign.center,
-                                ),
-                            ),
-                            ),
-                            new Tab(child: Text(nameOfYesterday + "\n" + 
-                              (DateTime.now().day - 1).toString() + " " + nameOfBeforeYesterdayMonth
-                              , textAlign: TextAlign.center,
-                              ),
-                            ),
-                            new Tab(child: Text("Today" + "\n" + 
-                              (DateTime.now().day ).toString() + " " + nameOfTodayMonth
-                              , textAlign: TextAlign.center,
-                              ),
-                            ),
-                            new Tab(child: Text(nameOfTomorrow + "\n" + 
-                              (DateTime.now().day + 1).toString() + " " + nameOfTomorrowMonth
-                              , textAlign: TextAlign.center,),
-                            ),
-                            new Tab(child: Text(nameOfAfterTomorrow + "\n" + 
-                              (DateTime.now().day + 2).toString() + " " + nameOfAfterTomorrowMonth
-                              , textAlign: TextAlign.center,
-                              ),
-                            ),
-                          
-                            new Tab(icon: Icon(Icons.calendar_today) ),
-          
-                            
-          
-                            
-                            
-                          ]),
-          ),
-          
-          
-          //backgroundColor: AppColors.lightblue,
-        ),
+        
         body: pageBody(),
       );
     }
@@ -168,20 +79,11 @@ class _LiveScoresState extends State<LiveScores> with SingleTickerProviderStateM
     final db = FireStoreService();
     final appUser = Provider.of<AppUser>(context);
 
-    return  TabBarView(controller: tabController, children: <Widget>[
-                      new LiveFixtures(),
-                      new BeforeYesterdayFixtures(),
-                      new YesterdayFixtures(),
-                      new TodayFixtures(),
-                      new TomorrowFixtures(),
-                      new AfterTomorrowFixtures(),
-                      
-                      new CalendarView(),
-                    ]);
+    
                   
 
 
-    /*return StreamProvider(
+    return StreamProvider(
       create: (conxtext) => db.fetchPredictionsByUserId(appUser.userId) ,
           child: StreamProvider(
             create: (context) => db.fetchFavoritesByUserId(appUser.userId),
@@ -211,7 +113,7 @@ class _LiveScoresState extends State<LiveScores> with SingleTickerProviderStateM
           ),
           
       
-    );*/
+    );
   }
 
   Widget tableCalendar(){

@@ -65,7 +65,7 @@ class _LineupsState extends State<Lineups> {
     changingURL =
         'https://api-football-v1.p.rapidapi.com/v2/lineups/' + fixtureId;
     //_streamController.add(changingURL);
-    var response = await http.get(Uri.encodeFull(changingURL), headers: {
+    var response = await http.get(Uri.parse(changingURL), headers: {
       'Accept': 'application/json',
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       "x-rapidapi-key": "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:Donballondor/src/models/favorites.dart';
+import 'package:Donballondor/src/models/favorites2.dart';
 import 'package:Donballondor/src/models/prediction.dart';
 import 'package:Donballondor/src/services/firestore_service.dart';
 import 'package:rxdart/rxdart.dart';
@@ -145,6 +146,22 @@ class PredictionBloc {
    /*.then((value) => _predictionSaved.sink.add(true))
    .catchError((error) => _predictionSaved.sink.add(false));*/
  }
+
+ Future<void> saveFavorite2 (String fixtureId, String userId) async {
+
+   
+
+   var favorite2 = Favorite2(
+     
+     fixtureId: fixtureId,
+     
+   );
+
+   return db.addFavorite2(favorite2, userId);
+   /*.then((value) => _predictionSaved.sink.add(true))
+   .catchError((error) => _predictionSaved.sink.add(false));*/
+ }
+
 
   Future<void> savePredictedFixture () async {
 

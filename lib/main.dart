@@ -35,7 +35,7 @@ Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   HttpOverrides.global = new MyHttpOverrides();
-  await Workmanager.initialize(callbackDispatcher, isInDebugMode: true);
+  //await Workmanager.initialize(callbackDispatcher, isInDebugMode: true);
   //await Workmanager.registerPeriodicTask('S', simplePeriodicTask,
   //existingWorkPolicy: ExistingWorkPolicy.replace,
   //frequency: Duration(minutes: 15),
@@ -43,15 +43,15 @@ Future<void> main() async{
   runApp(MyApp());
 }
 
-void callbackDispatcher(){
+/*void callbackDispatcher(){
   Workmanager.executeTask((taskName, inputData) async {
 
     FlutterLocalNotificationsPlugin flp = FlutterLocalNotificationsPlugin();
     var android = AndroidInitializationSettings('app');
     var iOS = IOSInitializationSettings();
     var initSettings = InitializationSettings(android: android, iOS: iOS);
-    flp.initialize(initSettings);
-    var response = await http.get(Uri.encodeFull('https://api-football-v1.p.rapidapi.com/v2/fixtures/live'), headers: {
+    flp.initialize(initSettings);s
+    var response = await http.get(Uri.parse('https://api-football-v1.p.rapidapi.com/v2/fixtures/live'), headers: {
       'Accept': 'application/json',
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       "x-rapidapi-key": "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",
@@ -89,5 +89,5 @@ void callbackDispatcher(){
 
     return Future.value(true);
   });
-}
+}*/
 

@@ -6,8 +6,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppSocialButton extends StatelessWidget {
   final SocialType socialType;
+  final VoidCallback onPressed; 
 
-  AppSocialButton({@required this.socialType});
+  AppSocialButton({@required this.socialType, this.onPressed});
   @override
   Widget build(BuildContext context) {
     Color buttonColor;
@@ -30,18 +31,21 @@ class AppSocialButton extends StatelessWidget {
         buttonColor = AppColors.facebook;
         icon = FontAwesomeIcons.facebookF;
     }
-    return Container(
-          height: ButtonStyles.buttonHeight,
-          width: ButtonStyles.buttonHeight,
-          decoration: BoxDecoration(
-            color: buttonColor,
-            borderRadius: BorderRadius.circular(BaseStyles.borderRadius),
-            boxShadow: BaseStyles.boxShawdow,
-          ),
-          child: Icon(
-            icon,
-            color: iconColor,
-          ));
+    return GestureDetector(
+          onTap: onPressed,
+          child: Container(
+            height: ButtonStyles.buttonHeight,
+            width: ButtonStyles.buttonHeight,
+            decoration: BoxDecoration(
+              color: buttonColor,
+              borderRadius: BorderRadius.circular(BaseStyles.borderRadius),
+              boxShadow: BaseStyles.boxShawdow,
+            ),
+            child: Icon(
+              icon,
+              color: iconColor,
+            )),
+    );
     
   }
 }

@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:Donballondor/src/blocs/auth_bloc.dart';
 import 'package:Donballondor/src/styles/base.dart';
+import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/styles/themes.dart';
 import 'package:Donballondor/src/widgets/alerts.dart';
 import 'package:Donballondor/src/widgets/button.dart';
 import 'package:Donballondor/src/widgets/social_button.dart';
@@ -21,13 +23,17 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+    CustomTheme customTheme = CustomTheme();
+
 
   @override
   void initState() {
     final authBloc = Provider.of<AuthBloc>(context, listen: false);
     widget._userSubscription = authBloc.appUser.listen((user) {
-      if(user != null) Navigator.pushReplacementNamed(context, '/landing');
+      //if(user != null) Navigator.pushReplacementNamed(context, '/landing');
+      //print(user.email.toString());
     });
+
 
     widget._errorMessageSubscription = authBloc.errorMessage.listen((errorMessage) { 
       if(errorMessage != '') {
@@ -56,6 +62,7 @@ class _LoginState extends State<Login> {
       );
     } else {
       return Scaffold(
+        backgroundColor: customTheme.isDarkMode == true ? AppColors.darkblue : Colors.teal,
         body: pageBody(context, authBloc),
       );
     }
@@ -113,7 +120,11 @@ class _LoginState extends State<Login> {
                 buttonType: (snapshot.data == true)
                     ? ButtonType.NotShinyGold
                     : ButtonType.Disabled,
-                    onPressed: authBloc.loginEmail,
+                    onPressed: (){
+                      authBloc.loginEmail();
+                      Navigator.pushReplacementNamed(context, '/landing');
+                      
+                    } ,
               );
             }),
         SizedBox(
@@ -128,7 +139,14 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: 15.0,
               ),
-              AppSocialButton(socialType: SocialType.Google),
+              AppSocialButton(socialType: SocialType.Google, 
+              onPressed: (){
+                authBloc.signInGoogle();
+                Navigator.pushReplacementNamed(context, '/landing');
+
+                
+              },
+              ),
             ],
           ),
         ),

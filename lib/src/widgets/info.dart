@@ -7,6 +7,7 @@ import 'package:Donballondor/src/models/prediction.dart';
 import 'package:Donballondor/src/models/user.dart';
 import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/styles/themes.dart';
 import 'package:Donballondor/src/widgets/loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +54,8 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
 
   TextEditingController _homeTeamController;
   TextEditingController _awayTeamController;
+
+  CustomTheme customTheme = CustomTheme();
   
 
 
@@ -69,7 +72,7 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
   Future getFixture() async {
 
 
-    var response = await http.get(Uri.encodeFull('https://api-football-v1.p.rapidapi.com/v2/fixtures/id/' + widget.fixtureId), headers: {
+    var response = await http.get(Uri.parse('https://api-football-v1.p.rapidapi.com/v2/fixtures/id/' + widget.fixtureId), headers: {
       'Accept': 'application/json',
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       "x-rapidapi-key": "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",
@@ -186,6 +189,84 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
                         ],
                       ),
                     ],),
+                    backgroundColor: customTheme.isDarkMode == true ? AppColors.darkblue : Colors.teal,
+                    bottom: new TabBar(
+                        indicatorColor: Color.fromRGBO(222, 177, 92, 1),
+                        labelColor: Color.fromRGBO(222, 177, 92, 1),
+                        controller: controller,
+                        tabs: <Widget>[
+                          
+                          new Tab(icon: new Image.asset("assets/whistle.png", width: 30.0, height: 30.0,), ),
+                          new Tab(icon: new Image.asset("assets/lineups.png", width: 30.0, height: 30.0,),),
+                          new Tab(icon: new Image.asset("assets/vsicon.png", width: 30.0, height: 30.0,),),
+                          new Tab(icon: Icon(Icons.info) ),
+                        ]),
+                  ),
+                ) : Scaffold(
+                  
+
+                  body: pageBody(context),
+                  appBar: AppBar(
+                    automaticallyImplyLeading: false,
+                    title: Column(children: [
+                      SizedBox(height: 1,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                           Row(
+                             children: [
+                               Container(
+                                              height: 30.0,
+                                              width: 30.0,
+                                              padding: EdgeInsets.all(5),
+                                              margin: EdgeInsets.only(
+                                                  left: 5, right: 5),
+                                              child: Image.network(homeTeamLogo)
+                                              ),
+                              Text(snapshot.data[0]['homeTeam']['team_name'], style: TextStyles.body,),
+                             ],
+                           ),
+                          
+                          Row(
+                            children: [
+                               
+                              Text(snapshot.data[0]['goalsHomeTeam'].toString() 
+                              == 'null' ? ' ' : snapshot.data[0]['goalsHomeTeam'].toString() , style: TextStyles.body,),
+                              SizedBox(width: 10)
+                            ],
+                          ),
+
+                        ],
+                      ),
+                      SizedBox(height: 5,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                              height: 30.0,
+                                              width: 30.0,
+                                              padding: EdgeInsets.all(5),
+                                              margin: EdgeInsets.only(
+                                                  left: 5, right: 5),
+                                              child: Image.network(awayTeamLogo)
+                                              ),
+                            Text(snapshot.data[0]['awayTeam']['team_name'], style: TextStyles.body,),
+                            ],
+                          ),
+                          
+                          Row(
+                            children: [
+                              Text(snapshot.data[0]['goalsAwayTeam'].toString() == 'null' ? ' ' :
+                                snapshot.data[0]['goalsAwayTeam'].toString(), style: TextStyles.body,),
+                              SizedBox(width: 10)
+                            ],
+                          ),
+
+                        ],
+                      ),
+                    ],),
                     backgroundColor: AppColors.darkblue,
                     bottom: new TabBar(
                         indicatorColor: Color.fromRGBO(222, 177, 92, 1),
@@ -199,13 +280,13 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
                           new Tab(icon: Icon(Icons.info) ),
                         ]),
                   ),
-                ) : Container(child: Center(child: Text('please log in'),));
+                );
             }
           );
           } else {
             print(snapshot.data);
             return Container(
-              color: AppColors.darkblue,
+              color: customTheme.isDarkMode == true ? AppColors.darkblue : Colors.teal,
               child: Center(child: Loading() ));
           }
         }
@@ -225,17 +306,21 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
         return Column(
           children: <Widget>[
             Container(
-                color: Color.fromRGBO(13, 18, 38, 1),
+                color: customTheme.isDarkMode == true ? AppColors.darkblue : Colors.teal,
                 height: 70.0,
                 width: 500.0,
                 padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
                 child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0)),
-                    color: Color.fromRGBO(222, 177, 92, 1),
+                    color: customTheme.isDarkMode == true ? AppColors.notshinygold : Colors.grey[100],
                     child: Text(
                       'Predict',
-                      style: TextStyle(color: Color.fromRGBO(13, 18, 38, 1), fontWeight: FontWeight.bold),
+                      style: TextStyle(color: 
+                      customTheme.isDarkMode == true ? 
+                      AppColors.darkblue 
+                      : Colors.black, 
+                      fontWeight: FontWeight.bold),
                     ),
                     onPressed: () async {
                       createAlertDialog(context, predictionBloc, appUser);
@@ -275,6 +360,7 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
   createAlertDialog(BuildContext context, PredictionBloc predictionBloc,
   AppUser appUser) {
     var buttonLabel = /*(existingPrediction != null) ? 'Change' :*/ 'Submit';
+    var buttonLabel2 = 'Login';
     return showDialog(
         context: context,
         builder: (context) {
@@ -283,7 +369,7 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.0),
             ),
-            child: Container(
+            child:appUser != null ? Container(
               height: 200.0,
               child: Padding(
                 padding: EdgeInsets.all(12.0),
@@ -495,6 +581,52 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
                                   color: Colors.amber,
                                   fontWeight: FontWeight.bold),
                             ))
+                  ],
+                ),
+              ),
+            ) : Container(
+              height: 200.0,
+              child: Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Container(
+          height: 30.0,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/PNG app.png'))),
+        ),
+                    Center(child: Text('Please Log in to predict the score', style: TextStyles.body)),
+                          
+                    
+                    
+                        
+                      /*SizedBox(
+                        width: 520.0,
+                        child: /*StreamBuilder<bool>(
+                          stream: predictionBloc.isValid,
+                          builder: (context, snapshot) {
+                            return*/ AppButton(buttonText: 
+                             buttonLabel2,
+                             buttonType: 
+                             /*(snapshot.data == true) ?*/ ButtonType.NotShinyGold,
+                             /*: ButtonType.Disabled,*/
+                             onPressed: (){
+                             
+
+
+                             
+
+                              Navigator.pushReplacementNamed(context, '/login');
+
+                             
+                             })
+                          /*}*/
+                       /* )*/
+                      )*/
+                    
                   ],
                 ),
               ),

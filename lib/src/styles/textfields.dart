@@ -1,6 +1,7 @@
 import 'package:Donballondor/src/styles/base.dart';
 import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/styles/themes.dart';
 import 'package:flutter/material.dart';
 
 abstract class TextFieldStyles {
@@ -43,8 +44,9 @@ abstract class TextFieldStyles {
 
   static InputDecoration materialDecoration(
       String hintText, IconData icon, String errorText) {
+    CustomTheme customTheme = CustomTheme();
     return InputDecoration(
-      fillColor: AppColors.lightblue,
+      fillColor: customTheme.isDarkMode == true? AppColors.lightblue : Colors.white,
       filled: true,
       contentPadding: EdgeInsets.all(8.0),
       hintText: hintText,

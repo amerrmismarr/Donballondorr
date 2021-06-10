@@ -1,9 +1,11 @@
+import 'package:Donballondor/src/app.dart';
 import 'package:Donballondor/src/blocs/auth_bloc.dart';
 import 'package:Donballondor/src/blocs/prediction_bloc.dart';
 //import 'package:Donballondor/src/models/predictedFixture.dart';
 import 'package:Donballondor/src/models/prediction.dart';
 import 'package:Donballondor/src/models/user.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/styles/themes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +25,11 @@ class Profile extends StatefulWidget {
 
 
 class _ProfileState extends State<Profile> {
+  VoidCallback onClicked;
   FirebaseFirestore _db = FirebaseFirestore.instance;
-    List<dynamic> fixture;
+  List<dynamic> fixture;
+
+  CustomTheme customTheme = CustomTheme();
 
   
 
@@ -33,7 +38,7 @@ class _ProfileState extends State<Profile> {
     var predictionBloc = Provider.of<PredictionBloc>(context,listen: false);
 
     var response = await http.get(
-        Uri.encodeFull(
+        Uri.parse(
             'https://api-football-v1.p.rapidapi.com/v2/fixtures/id/' +
                 predictedFixtureId),
         headers: {
@@ -207,7 +212,6 @@ class _ProfileState extends State<Profile> {
 
   }
 
- 
 
   @override
   Widget build(BuildContext context) {
@@ -221,23 +225,8 @@ class _ProfileState extends State<Profile> {
       );
     } else {
       return  Scaffold(
-            appBar: AppBar(
-              automaticallyImplyLeading: false,
-              backgroundColor: AppColors.lightblue,
-              actions: [
-                FlatButton(
-                  onPressed: ( () {
-                    
-                    calculatePredictions();
-
-                  }
-                  
-                ), child: Text(
-                  'Tap 3 times to refresh Score' ,style: TextStyles.body,))
-              ],
-            )
-            ,
-            body: pageBody(context),
+            
+            body: pageBody(context)
           );
         
       
@@ -245,12 +234,11 @@ class _ProfileState extends State<Profile> {
   }
 
   Widget pageBody(BuildContext context) {
+    var predictions = Provider.of<List<Prediction>>(context);
     var authBloc = Provider.of<AuthBloc>(context);
     var appUser = Provider.of<AppUser>(context);
     //var predictions = Provider.of<List<Prediction>>(context);
     //var predictedFixtures = Provider.of<List<PredictedFixture>>(context);
-    var predictionBloc = Provider.of<PredictionBloc>(context);
-    FireStoreService db = FireStoreService();
     FirebaseFirestore _db = FirebaseFirestore.instance;
     
     return StreamBuilder(
@@ -258,27 +246,130 @@ class _ProfileState extends State<Profile> {
       
 
       builder: (context, snapshot){
+        
         if(snapshot.hasData){
+        authBloc.changeImageUrl(snapshot.data['imagePath']);
         //AppUser userr = snapshot.data;
         print(snapshot.data);
         return Container(
           
-      child: RefreshIndicator(
-              color: AppColors.notshinygold,
-              backgroundColor: AppColors.darkblue,
-              onRefresh: calculatePredictions,
-              child: Column(
-          children: [
-            SizedBox(height: 200,),
+      child: ListView(
+              physics: BouncingScrollPhysics(),
+              children: [
+                SizedBox(height: 30),
+                Center(child:
+                 Stack(
+                   children: [
+                     StreamBuilder<String>(
+                       stream: authBloc.imageURL,
+                       builder: (context, snapshot) {
+                         if(snapshot.data != null){
+                           
+                           //print(snapshot.data);
+                           return ClipOval(
+                          child: Material(
+                            color: Colors.transparent,
+                            child: Ink.image(
+                            image: NetworkImage(snapshot.data),
+                            fit: BoxFit.cover,
+                            width: 128,
+                            height: 128,
+                            child: InkWell(onTap: onClicked ,),
+                            ),
+                          ),
+                                     );
+
+                         }
+                         return ClipOval(
+                          child: Material(
+                            color: Colors.transparent,
+                            child: Ink.image(
+                            image: NetworkImage(appUser.imagePath),
+                            fit: BoxFit.cover,
+                            width: 128,
+                            height: 128,
+                            child: InkWell(onTap: onClicked ,),
+                            ),
+                          ),
+                                     );
+                       }
+                     ),
+                Positioned(
+                  bottom: 0,
+                  right: 4,
+                    child: ClipOval(
+                                          child: Container(
+                        color: AppColors.darkblue,
+                        padding: EdgeInsets.all(4),
+                        child: GestureDetector(
+                          onTap: (){
+                            authBloc.pickImage(appUser.userId);
+                          },
+                          child: ClipOval(
+                              child: Container(
+                              padding: EdgeInsets.all(8),
+                              color: AppColors.notshinygold,
+                              child: Icon(
+                              Icons.edit,
+                              size: 20,
+                              color: AppColors.darkblue,
+                                          ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                )
+                   ], 
+                 ),
+                  ),
+                  SizedBox(height: 20,),
             Center(
-              child:Text(snapshot.data['score'].toString(), style: TextStyle(color: Colors.white))
+              child:Text(snapshot.data['email'].toString(), style: TextStyles.subTitle)
             ),
-            FlatButton(onPressed: authBloc.logout, child: Text('logout', style: TextStyles.body,))
-          ],
-        ),
+            SizedBox(height: 20),
+            Center(
+              child:Text(predictions == null? "Predictions: 0" : "Predictions: " + predictions.length.toString(), style: TextStyles.navTitle)
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+              onPrimary: AppColors.darkblue,
+              primary: AppColors.notshinygold,
+              shape: CircleBorder(),
+              fixedSize: Size.fromRadius(60),
+              elevation: 20.0,
+              shadowColor: AppColors.notshinygold
+              
+              ),
+              child: Text('Refresh Score'),
+              onPressed: () {
+                calculatePredictions();
+              },
+
+            ),
+            SizedBox(height:20),
+            Center(
+              child:Text(snapshot.data['score'].toString(), style: TextStyles.subTitle)
+            ),
+
+
+            IconButton(
+              icon: Icon(Icons.logout),
+              color: AppColors.notshinygold,
+              onPressed:(){
+              authBloc.logout();
+              Navigator.pushReplacementNamed(context, '/landing');
+            } , )
+
+              ],
+
+
       ));
+      
         } else {
-          return (Container(color: AppColors.darkblue,
+          return (Container(color: customTheme.isDarkMode == true ? 
+                                              AppColors.darkblue : Colors.teal,
           child: Center(child: Loading())));
         }
     

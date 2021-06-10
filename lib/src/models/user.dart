@@ -5,9 +5,13 @@ class AppUser {
   final String userId;
   final String email;
   int score = 0;
+  final String imagePath;
+  final bool isDarkMode;
+  final String name;
+  final String country;
 
   AppUser({
-    this.email, this.userId, this.score
+    this.email, this.userId, this.score, this.imagePath, this.isDarkMode,this.name,this.country
   });
   
 
@@ -16,6 +20,10 @@ class AppUser {
       'userId' : userId,
       'email' : email,
       'score' : 0,
+      'imagePath': 'https://thumbs.dreamstime.com/z/golden-profile-icon-d-illustration-73959732.jpg',
+      'isDarkMode': true,
+      'country': country,
+      'name': name,
     };
   }
 
@@ -23,7 +31,13 @@ class AppUser {
 
   : userId = firestore['userId'],
   email = firestore['email'],
-  score = firestore['score'];
+  score = firestore['score'],
+  imagePath = firestore['imagePath'],
+  isDarkMode = firestore['isDarkMode'],
+  country = firestore['country'],
+  name = firestore['name'];
+
+  
 
 
 

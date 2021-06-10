@@ -4,6 +4,7 @@ import 'package:Donballondor/src/blocs/prediction_bloc.dart';
 import 'package:Donballondor/src/models/prediction.dart';
 import 'package:Donballondor/src/models/user.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/styles/themes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,8 @@ class LeaderBoard extends StatefulWidget {
 
 
 class _LeaderBoardState extends State<LeaderBoard> {
+
+  CustomTheme customTheme = CustomTheme();
 
   FireStoreService db = FireStoreService();
 
@@ -58,8 +61,8 @@ class _LeaderBoardState extends State<LeaderBoard> {
       return Scaffold(
         body: pageBody(context),
         appBar: AppBar(
-          title: Center(child: Text('Top scorers', style: TextStyles.navTitle,)),
-          backgroundColor: AppColors.lightblue,
+          title: Center(child: Text('Top scorers', )),
+          //backgroundColor: AppColors.lightblue,
         ),
       );
     
@@ -84,11 +87,16 @@ class _LeaderBoardState extends State<LeaderBoard> {
              itemCount: usersProfilesList.length,
              itemBuilder: (context, index){
                return Card(
-                 color: AppColors.lightblue,
+                 color: customTheme.isDarkMode == true ? 
+                                              AppColors.lightblue : Colors.teal,
                  child: ListTile(
-                   title: Text(usersProfilesList[index]['email'],style: TextStyles.body,),
+                   leading: CircleAvatar(
+                     radius: 20,
+                     backgroundImage: NetworkImage(usersProfilesList[index]['imagePath']),
+                   ),
+                   title: Text(usersProfilesList[index]['email'],),
                    trailing: Text(usersProfilesList[index]['score'].toString(),
-                   style: TextStyles.body,),
+                   ),
                  ),
                );
              } 

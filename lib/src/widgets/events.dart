@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/styles/themes.dart';
 import 'package:Donballondor/src/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -34,6 +35,8 @@ class _EventsState extends State<Events> {
   String homeTeamLogo;
   String awayTeamLogo;
 
+  CustomTheme customTheme = CustomTheme();
+
   _EventsState(this.fixtureId, this.homeTeamName, this.awayTeamName,
       this.homeTeamLogo, this.awayTeamLogo);
 
@@ -57,7 +60,7 @@ class _EventsState extends State<Events> {
     changingURL =
         'https://api-football-v1.p.rapidapi.com/v2/events/' + fixtureId;
     //_streamController.add(changingURL);
-    var response = await http.get(Uri.encodeFull(changingURL), headers: {
+    var response = await http.get(Uri.parse(changingURL), headers: {
       'Accept': 'application/json',
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       "x-rapidapi-key": "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",
@@ -97,7 +100,7 @@ class _EventsState extends State<Events> {
             print(snapshot.data);
 
             return Scaffold(
-              appBar: AppBar(
+              /*appBar: AppBar(
                 automaticallyImplyLeading: false,
                 backgroundColor: AppColors.lightblue,
                 title: Center(
@@ -106,7 +109,7 @@ class _EventsState extends State<Events> {
                     style: TextStyles.navTitle,
                   ),
                 ),
-              ),
+              ),*/
               body: Column(
                 children: [
                   Padding(
@@ -169,7 +172,8 @@ class _EventsState extends State<Events> {
                                       style: TextStyle(
                                           fontSize: 14,
                                           color:
-                                              Color.fromRGBO(222, 177, 92, 1)),
+                                              customTheme.isDarkMode == true ? 
+                                              AppColors.notshinygold : Colors.black,),
                                     ),
                                   ),
                                 ],
@@ -183,10 +187,13 @@ class _EventsState extends State<Events> {
                                     width: 2,
                                     height: 25.0,
                                     color: index == 0
-                                        ? Color.fromRGBO(13, 18, 38, 1)
+                                        ? customTheme.isDarkMode == true ? 
+                                              AppColors.darkblue : Colors.teal[50]
                                         : index == snapshot.data.length
-                                            ? Color.fromRGBO(13, 18, 38, 1)
-                                            : Color.fromRGBO(222, 177, 92, 1),
+                                            ? customTheme.isDarkMode == true ? 
+                                              AppColors.notshinygold : Colors.teal
+                                            :customTheme.isDarkMode == true ? 
+                                              AppColors.notshinygold : Colors.teal
                                   ),
                                   snapshot.data[index]['type'] == 'Goal'
                                       ? Container(
@@ -308,7 +315,8 @@ class _EventsState extends State<Events> {
                                               '`',
                                       style: TextStyle(
                                           fontSize: 14,
-                                          color: Color.fromRGBO(222, 177, 92, 1)),
+                                          color: customTheme.isDarkMode == true ? 
+                                              AppColors.notshinygold : Colors.black,),
                                     ),
                                   ),
                                 ],

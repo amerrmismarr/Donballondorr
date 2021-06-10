@@ -1,9 +1,13 @@
 import 'package:Donballondor/src/screens/landing.dart';
+import 'package:Donballondor/src/screens/landingInProfile.dart';
 import 'package:Donballondor/src/screens/login.dart';
 import 'package:Donballondor/src/screens/signup.dart';
 import 'package:Donballondor/src/screens/admin.dart';
 import 'package:Donballondor/src/screens/statistics.dart';
+import 'package:Donballondor/src/screens/verify.dart';
+import 'package:Donballondor/src/widgets/favorite_fixtures.dart';
 import 'package:Donballondor/src/widgets/info.dart';
+import 'package:Donballondor/src/widgets/profile_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,13 +18,22 @@ abstract class Routes {
     switch (settings.name) {
       case '/landing':
         return MaterialPageRoute(builder: (context) => Landing());
+      case '/profile':
+        return MaterialPageRoute(builder: (context) => ProfileProvider());
+       case '/LandingInProfile':
+        return MaterialPageRoute(builder: (context) => LandingInProfile());
+      case '/favorites':
+        return MaterialPageRoute(builder: (context) => FavoriteFixtures());
       case '/signup':
         return MaterialPageRoute(builder: (context) => Signup());
       case '/login':
         return MaterialPageRoute(builder: (context) => Login());
       case '/admin':
         return MaterialPageRoute(builder: (context) => Admin());
+      case '/verify':
+        return MaterialPageRoute(builder: (context) => VerifyScreen());
       case '/statistics':
+      
         return MaterialPageRoute(
             builder: (context) => Statistics(
              
@@ -40,7 +53,7 @@ abstract class Routes {
         if (settings.name.contains('/statistics/')){
           return MaterialPageRoute(builder: (context) => Orders(fixtureId : routeArray[2],));
         }
-        return MaterialPageRoute(builder: (context) => Login());
+        return MaterialPageRoute(builder: (context) => Landing());
     }
   }
 

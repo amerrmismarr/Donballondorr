@@ -10,7 +10,7 @@ import 'package:Donballondor/src/models/prediction.dart';
 
 
 
-class ApiService {
+class ApiLiveService {
 
 final _fixtures = BehaviorSubject<List<dynamic>>();
 final _date = BehaviorSubject<String>();
@@ -31,7 +31,7 @@ dispose() {
   }
 
 List<dynamic> data;
-Future getFixtures(String date, BuildContext context) async {
+Future getFixtures(BuildContext context) async {
 
 
    
@@ -47,7 +47,7 @@ Future getFixtures(String date, BuildContext context) async {
    ) => true);*/
     
 
-    var response = await http.get(Uri.parse('https://api-football-v1.p.rapidapi.com/v2/fixtures/date/' + date), headers: {
+    var response = await http.get(Uri.parse('https://api-football-v1.p.rapidapi.com/v2/fixtures/live'), headers: {
       'Accept': 'application/json',
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       "x-rapidapi-key": "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",
@@ -1068,7 +1068,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '600';
         }
 
-      _date.sink.add(date);
+      //_date.sink.add(date);
       _fixtures.sink.add(data);
 
       

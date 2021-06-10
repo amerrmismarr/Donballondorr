@@ -1,16 +1,15 @@
 import 'package:Donballondor/src/app.dart';
 import 'package:Donballondor/src/blocs/prediction_bloc.dart';
 import 'package:Donballondor/src/models/user.dart';
-import 'package:Donballondor/src/screens/login.dart';
 import 'package:Donballondor/src/screens/loginToProfile.dart';
 import 'package:Donballondor/src/services/api_service.dart';
 import 'package:Donballondor/src/services/firestore_service.dart';
 import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/widgets/favorite_fixtures.dart';
 import 'package:Donballondor/src/widgets/livescores_list.dart';
 import 'package:Donballondor/src/widgets/loading.dart';
 import 'package:Donballondor/src/widgets/loginToFavorites.dart';
-import 'package:Donballondor/src/widgets/please_login.dart';
 import 'package:Donballondor/src/widgets/profile.dart';
 import 'package:Donballondor/src/widgets/table_calendar.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,16 +20,15 @@ import 'dart:io';
 
 import 'package:table_calendar/table_calendar.dart';
 
-class ProfileProvider extends StatefulWidget {
+class FavoritesProvider extends StatefulWidget {
   @override
-  _ProfileProviderState createState() => _ProfileProviderState();
+  _FavoritesProviderState createState() => _FavoritesProviderState();
 }
 
-class _ProfileProviderState extends State<ProfileProvider> {
+class _FavoritesProviderState extends State<FavoritesProvider> {
   @override
   void initState() {
     Profile profile = Provider.of<Profile>(context, listen: false);
-    
     super.initState();
   }
 
@@ -51,20 +49,13 @@ class _ProfileProviderState extends State<ProfileProvider> {
   Widget pageBody() {
     final db = FireStoreService();
     final appUser = Provider.of<AppUser>(context);
-    var isLoggedIn = Provider.of<bool>(context);
-    //print(appUser.email);
 
-
-    return appUser != null ? StreamProvider(
-      create: (conxtext) => db.fetchPredictionsByUserId(appUser.userId),
+    return  appUser != null ? StreamProvider(
+      create: (context) => db.fetchPredictionsByUserId(appUser.userId),
       child: StreamProvider(
           create: (context) => db.fetchFavoritesByUserId(appUser.userId),
           child: Container(
-              child: RefreshIndicator(
-                  color: AppColors.notshinygold,
-                  backgroundColor: AppColors.darkblue,
-                  onRefresh: _getData,
-                  child: Profile()))),
-    ) : PleaseLogin();
+              child:  FavoriteFixtures())),
+    ) : Center(child: Text('Log in to view your favorite matches',style: TextStyles.body),);
   }
 }

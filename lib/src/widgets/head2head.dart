@@ -53,7 +53,7 @@ class _Head2HeadState extends State<Head2Head> {
     changingURL =
         'https://api-football-v1.p.rapidapi.com/v2/fixtures/h2h/' + homeTeamId + '/' + awayTeamId;
     //_streamController.add(changingURL);
-    var response = await http.get(Uri.encodeFull(changingURL), headers: {
+    var response = await http.get(Uri.parse(changingURL), headers: {
       'Accept': 'application/json',
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
       "x-rapidapi-key": "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",
@@ -96,7 +96,7 @@ class _Head2HeadState extends State<Head2Head> {
           if (snapshot.hasData) {
             //print(snapshot.data);
             return Container(
-              color: Color.fromRGBO(13, 18, 38, 1),
+              //color: Color.fromRGBO(13, 18, 38, 1),
               child: CustomScrollView(
                 slivers: <Widget>[
                   CustomSliver(

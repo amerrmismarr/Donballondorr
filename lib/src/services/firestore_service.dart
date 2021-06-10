@@ -1,4 +1,5 @@
 import 'package:Donballondor/src/models/favorites.dart';
+import 'package:Donballondor/src/models/favorites2.dart';
 import 'package:Donballondor/src/models/prediction.dart';
 import 'package:Donballondor/src/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -40,6 +41,14 @@ class FireStoreService {
         .set(favorite.toMap(), options);
   }
 
+  Future<void> addFavorite2(Favorite2 favorite2, String userId) {
+    var options = SetOptions(merge: true);
+    return _db
+        .collection('Favorites')
+        .doc(userId)
+        .set(favorite2.toMap(), options);
+  }
+
   Future<void> addFavoriteId(String userId, String fixtureId) {
     var options = SetOptions(merge: true);
     return _db
@@ -69,10 +78,12 @@ class FireStoreService {
   }
 
   Stream<List<Prediction>> fetchPredictionsByUserId(String userId){
+    if(userId != null){
     return _db.collection('users').doc(userId).collection('Predictions')
     .snapshots().map((fixtures) => fixtures.docs)
     .map((snapshot) => snapshot.map((prediction) => Prediction.fromFirestore(prediction.data()))
     .toList());
+    }
   }
 
   Stream<List<AppUser>> fetchUsers(){
