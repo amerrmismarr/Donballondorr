@@ -56,7 +56,7 @@ class _Head2HeadState extends State<Head2Head> {
     var response = await http.get(Uri.parse(changingURL), headers: {
       'Accept': 'application/json',
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-      "x-rapidapi-key": "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",
+      "x-rapidapi-key": "KEY",
     });
 
     if (response.statusCode == 200) {
