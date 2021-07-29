@@ -50,7 +50,7 @@ class _PleaseLoginState extends State<PleaseLogin> {
           buttonText: 'Login',
           buttonType:  ButtonType.NotShinyGold,      
           onPressed: (){
-          Navigator.pushNamed(context, '/login');    
+          Navigator.pushReplacementNamed(context, '/login');    
         } ,
        ),
         

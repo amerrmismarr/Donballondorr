@@ -500,7 +500,7 @@ class _FavoriteFixturesState extends State<FavoriteFixtures> {
                                   margin:
                                       EdgeInsets.fromLTRB(16.0, 5.0, 16.0, 0.0),
                                   color: customTheme.isDarkMode == true ? 
-                                              AppColors.notshinygold : Colors.white,
+                                              AppColors.lightblue : Colors.white,
                                   child: Padding(
                                       padding:
                                           const EdgeInsets.all(8.0),

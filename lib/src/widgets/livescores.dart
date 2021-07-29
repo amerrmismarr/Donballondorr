@@ -175,7 +175,6 @@ class _LiveScoresState extends State<LiveScores> with SingleTickerProviderStateM
                       new TodayFixtures(),
                       new TomorrowFixtures(),
                       new AfterTomorrowFixtures(),
-                      
                       new CalendarView(),
                     ]);
                   

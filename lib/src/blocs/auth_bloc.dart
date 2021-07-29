@@ -17,7 +17,8 @@ final RegExp regExpEmail = RegExp(
     r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
 
 class AuthBloc {
-  
+  final _name = BehaviorSubject<String>();
+  final _country = BehaviorSubject<String>();
   final _imageURL = BehaviorSubject<String>();
   final _score = BehaviorSubject<int>();
   final _email = BehaviorSubject<String>();
@@ -29,6 +30,8 @@ class AuthBloc {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   //Get Data
+  Stream<String> get name => _name.stream.transform(validateName);
+  Stream<String> get country => _country.stream.transform(validateCountry);
   Stream<String> get imageURL => _imageURL.stream;
   Stream<int> get score => _score.stream;
   Stream<String> get email => _email.stream.transform(validateEmail);
@@ -50,6 +53,8 @@ class AuthBloc {
   Function(String) get changePassword => _password.sink.add;
   Function(int) get changeScore => _score.sink.add;
   Function(String) get changeImageUrl => _imageURL.sink.add;
+  Function(String) get changeName => _name.sink.add;
+  Function(String) get changeCountry => _country.sink.add;
 
   dispose() {
     _email.close();
@@ -58,6 +63,8 @@ class AuthBloc {
     _errorMessage.close();
     _score.close();
     _imageURL.close();
+    _name.close();
+    _country.close();
   }
 
   //Transformers
@@ -79,6 +86,24 @@ class AuthBloc {
     }
   });
 
+  final validateName = StreamTransformer<String, String>.fromHandlers(
+      handleData: (name, sink) {
+    if (name.length > 0) {
+      sink.add(name.trim());
+    } else {
+      sink.addError('This field cannot be empty');
+    }
+  });
+
+  final validateCountry = StreamTransformer<String, String>.fromHandlers(
+      handleData: (country, sink) {
+    if (country != null) {
+      sink.add(country.trim());
+    } else {
+      sink.addError('Please select your country');
+    }
+  });
+
   //functions
 
   signupEmail() async {
@@ -91,13 +116,14 @@ class AuthBloc {
       
       var user =
           AppUser(
+
             userId: authResult.user.uid, 
             email: _email.value.trim(),
             score: 0,
             imagePath: 'https://thumbs.dreamstime.com/z/golden-profile-icon-d-illustration-73959732.jpg',
             isDarkMode: true,
-            country: "country",
-            name: 'name'
+            country: _country.value.trim(),
+            name: _name.value.trim()
             );
 
       await _fireStoreService.addUser(user);

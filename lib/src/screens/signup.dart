@@ -8,6 +8,7 @@ import 'package:Donballondor/src/widgets/alerts.dart';
 import 'package:Donballondor/src/widgets/button.dart';
 import 'package:Donballondor/src/widgets/social_button.dart';
 import 'package:Donballondor/src/widgets/textfield.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -111,19 +112,59 @@ class _SignupState extends State<Signup> {
                 onChanged: authBloc.changePassword,
               );
             }),
-            AppTextField(
-                isIOS: Platform.isIOS,
-                hintText: 'Name',
-                cupertinoIcon: IconData(0xf4c9,
-                fontFamily: CupertinoIcons.iconFont,
-                fontPackage: CupertinoIcons.iconFontPackage), 
-              ),
-              AppTextField(
-                isIOS: Platform.isIOS,
-                hintText: 'Country',
-                cupertinoIcon: IconData(0xf4c9,
-                fontFamily: CupertinoIcons.iconFont,
-                fontPackage: CupertinoIcons.iconFontPackage), 
+            StreamBuilder<String>(
+              stream: authBloc.name,
+              builder: (context, snapshot) {
+                return AppTextField(
+                    isIOS: Platform.isIOS,
+                    hintText: 'Name',
+                    cupertinoIcon: IconData(0xf4c9,
+                    fontFamily: CupertinoIcons.iconFont,
+                    fontPackage: CupertinoIcons.iconFontPackage),
+                    onChanged: authBloc.changeName, 
+                    errorText: snapshot.error,
+                  );
+              }
+            ),
+              StreamBuilder<String>(
+                stream: authBloc.country,
+                builder: (context, snapshot) {
+                  print(snapshot.data);
+                  return AppButton(buttonText: snapshot.data != null ? snapshot.data : 'Select Country',
+                  buttonType: ButtonType.NotShinyGold,
+                          onPressed: () {
+                          showCountryPicker(
+                  
+                  context: context,
+                  //Optional.  Can be used to exclude(remove) one ore more country from the countries list (optional).
+                  exclude: <String>['KN', 'MF'],
+                  //Optional. Shows phone code before the country name.
+                  showPhoneCode: false,
+                  onSelect: (Country country) {
+                    print('Select Country: ${country.displayName}');
+                    authBloc.changeCountry(country.name);
+                    
+                  },
+                  // Optional. Sets the theme for the country list picker.
+                  countryListTheme: CountryListThemeData(
+                    
+                    // Optional. Sets the border radius for the bottomsheet.
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40.0),
+                      topRight: Radius.circular(40.0),
+                    ),
+                    // Optional. Styles the search field.
+                    inputDecoration: InputDecoration(
+                      labelText: 'Search',
+                      hintText: 'Start typing to search',
+                      prefixIcon: const Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: const Color(0xFF8C98A8).withOpacity(0.2),
+                        ),
+                      ),
+                    ),));});
+                }
               ),
         StreamBuilder<bool>(
             stream: authBloc.isValid,

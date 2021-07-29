@@ -94,8 +94,18 @@ class _LeaderBoardState extends State<LeaderBoard> {
                      radius: 20,
                      backgroundImage: NetworkImage(usersProfilesList[index]['imagePath']),
                    ),
-                   title: Text(usersProfilesList[index]['email'],),
-                   trailing: Text(usersProfilesList[index]['score'].toString(),
+                   title: Text(usersProfilesList[index]['name'] + ' ' + 'from' + ' ' + usersProfilesList[index]['country'], style: TextStyle(
+                     fontSize: 12,
+                     color: AppColors.notshinygold),),
+                   subtitle:Text(usersProfilesList[index]['email'], style: TextStyle(
+                     fontSize: 10,
+                     color: Colors.grey[300]),) ,
+                   trailing: Row(
+                     children: [
+                       //Icon(Icons.),
+                       Text(usersProfilesList[index]['score'].toString() 
+                       ),
+                     ],
                    ),
                  ),
                );

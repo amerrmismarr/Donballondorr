@@ -56,6 +56,6 @@ class _FavoritesProviderState extends State<FavoritesProvider> {
           create: (context) => db.fetchFavoritesByUserId(appUser.userId),
           child: Container(
               child:  FavoriteFixtures())),
-    ) : Center(child: Text('Log in to view your favorite matches',style: TextStyles.body),);
+    ) : Container(child: Center(child: Text('Log in to view your favorite matches',style: TextStyles.body),));
   }
 }

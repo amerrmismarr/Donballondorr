@@ -49,6 +49,8 @@ dependencies:
   workmanager: ^0.4.0
   google_sign_in: ^5.0.4
   favorite_button: ^0.0.4
+  country_picker: ^2.0.7
+  
   
   shared_preferences: ^2.0.6
 

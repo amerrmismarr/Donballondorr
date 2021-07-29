@@ -86,12 +86,11 @@ class _AfterTomorrowFixturesState extends State<AfterTomorrowFixtures>  {
       create: (conxtext) => db.fetchPredictionsByUserId(appUser.userId) ,
           child: StreamProvider(
             create: (context) => db.fetchFavoritesByUserId(appUser.userId),
-                      child: ListView(
-              children: [
-                StreamBuilder<List<dynamic>>(
+                      child: StreamBuilder<List<dynamic>>(
                     stream: apiService.fixtures,
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
+                        snapshot.data.removeWhere((fixture) => fixture['popularity'] == '600');
                         return RefreshIndicator(
                                 color: AppColors.notshinygold,
                                 backgroundColor: AppColors.darkblue,
@@ -103,11 +102,7 @@ class _AfterTomorrowFixturesState extends State<AfterTomorrowFixtures>  {
                             child: Center(child: Loading()));
                       }
                     }),
-                SizedBox(
-                  height: 10,
-                )
-              ],
-        ),
+                
           ),
           
       

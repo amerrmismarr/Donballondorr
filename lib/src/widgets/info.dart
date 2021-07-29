@@ -62,6 +62,7 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
     @override
   void initState() {
     getFixture();
+    
     // ignore: todo
     // TODO: implement initState
     super.initState();
@@ -89,6 +90,7 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
          homeTeamLogo = fixture[0]['homeTeam']['logo'];
          awayTeamLogo = fixture[0]['awayTeam']['logo'];
          statusShort = fixture[0]['statusShort'];
+         print(statusShort);
 
 
         
@@ -118,7 +120,7 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
         stream: _stream,
         builder: (context, snapshot) {
           if(snapshot.hasData){
-          print(snapshot.data);
+          //print(snapshot.data);
           return Consumer<AppUser>(
             
             builder: (_, user, __) {
@@ -284,7 +286,7 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
             }
           );
           } else {
-            print(snapshot.data);
+            //print(snapshot.data);
             return Container(
               color: customTheme.isDarkMode == true ? AppColors.darkblue : Colors.teal,
               child: Center(child: Loading() ));
@@ -346,7 +348,9 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
                         homeTeamId: homeTeamId,
                         awayTeamId: awayTeamId,
                       ),
-                      new fourth.MatchInfo(),
+                      new fourth.MatchInfo(
+                        fixtureId: widget.fixtureId,
+                      ),
                     ]),
                   ),
           ],
@@ -380,29 +384,48 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                height: 20.0,
-                                width: 20.0,
-                                child: Image.network(homeTeamLogo),
-                              ),
-                              SizedBox(
-                                width: 10.0,
-                              ),
-                              Text(
-                                homeTeamName,
-                                style: TextStyle(
-                                  color: Color.fromRGBO(222, 177, 92, 1),
+                          Flexible(
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                  height: 20.0,
+                                  width: 20.0,
+                                  child: Image.network(homeTeamLogo),
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                  width: 10.0,
+                                ),
+                                Text(
+                                  homeTeamName,
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(222, 177, 92, 1),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           Row(
                             children: <Widget>[
-                              statusShort == 'NS' ||
-                                      statusShort == 'TBD'
-                                      || statusShort == 'FT'
+                              statusShort != '1H' &&
+                              statusShort != 'HT' &&
+                              statusShort != '2H' &&
+                              statusShort != 'ET' &&
+                              statusShort != 'P' &&
+                              statusShort != 'FT' &&
+                              statusShort != 'AET' &&
+                              statusShort != 'PEN' &&
+                              statusShort != 'BT' &&
+                              statusShort != 'INT' &&
+                              statusShort != 'P' &&
+                              statusShort != 'SUSP' &&
+                              statusShort != 'ABD' &&
+                              statusShort != 'AWD' &&
+                              statusShort != 'WO' 
+                              
+
+                              
+
+
                                   ? 
                                            Container(
                                             height: 40,
@@ -445,29 +468,43 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                height: 20.0,
-                                width: 20.0,
-                                child: Image.network(awayTeamLogo),
-                              ),
-                              SizedBox(
-                                width: 10.0,
-                              ),
-                              Text(
-                                awayTeamName,
-                                style: TextStyle(
-                                  color: Color.fromRGBO(222, 177, 92, 1),
+                          Flexible(
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                  height: 20.0,
+                                  width: 20.0,
+                                  child: Image.network(awayTeamLogo),
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                  width: 10.0,
+                                ),
+                                Text(
+                                  awayTeamName,
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(222, 177, 92, 1),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           Row(
                             children: <Widget>[
-                              statusShort == 'NS' ||
-                                      statusShort == 'TBD'
-                                      || statusShort == 'FT'
+                              statusShort != '1H' &&
+                              statusShort != 'HT' &&
+                              statusShort != '2H' &&
+                              statusShort != 'ET' &&
+                              statusShort != 'P' &&
+                              statusShort != 'FT' &&
+                              statusShort != 'AET' &&
+                              statusShort != 'PEN' &&
+                              statusShort != 'BT' &&
+                              statusShort != 'INT' &&
+                              statusShort != 'P' &&
+                              statusShort != 'SUSP' &&
+                              statusShort != 'ABD' &&
+                              statusShort != 'AWD' &&
+                              statusShort != 'WO' 
                                   ?  
                                            Container(
                                             height: 40,
@@ -507,10 +544,22 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
                             ],
                           ),
                         ]),
-                    if (statusShort == 'NS' ||
-                        statusShort == 'TBD'
-                        || statusShort == 'FT')
-                        
+                    statusShort != '1H' &&
+                              statusShort != 'HT' &&
+                              statusShort != '2H' &&
+                              statusShort != 'ET' &&
+                              statusShort != 'P' &&
+                              statusShort != 'FT' &&
+                              statusShort != 'AET' &&
+                              statusShort != 'PEN' &&
+                              statusShort != 'BT' &&
+                              statusShort != 'INT' &&
+                              statusShort != 'P' &&
+                              statusShort != 'SUSP' &&
+                              statusShort != 'ABD' &&
+                              statusShort != 'AWD' &&
+                              statusShort != 'WO' 
+                        ?
                       SizedBox(
                         width: 520.0,
                         child: /*StreamBuilder<bool>(
@@ -532,10 +581,24 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
                               this.awayTeamPrediction = existingPrediction.awayTeamPrediction.toString();
                              }*/
 
+                             if(homeTeamPrediction == null || awayTeamPrediction == null){
+                               Fluttertoast.showToast(
+                              msg: "Please fill all of the fields!",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 2,
+                              backgroundColor: AppColors.notshinygold,
+                              textColor: AppColors.darkblue,
+                              fontSize: 16.0
+                          );
+                             }
+
 
                              predictionBloc.savePrediction(homeTeamPrediction, awayTeamPrediction,
                              statusShort, widget.fixtureId);
-                                                  Fluttertoast.showToast(
+
+                             if(homeTeamPrediction != null && awayTeamPrediction != null){
+                               Fluttertoast.showToast(
                               msg: "Done! Good luck",
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.CENTER,
@@ -544,6 +607,9 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
                               textColor: AppColors.darkblue,
                               fontSize: 16.0
                           );
+                             }
+
+                              
 
                               Navigator.of(context).pop();
 
@@ -565,22 +631,37 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin{
                           /*}*/
                        /* )*/
                       )
-                    else
+                    :
                       statusShort == 'PST'
                           ? Container(
-                              child: Text(
-                              'Match Postponed',
-                              style: TextStyle(
-                                  color: Colors.amber,
-                                  fontWeight: FontWeight.bold),
-                            ))
-                          : Container(
-                              child: Text(
-                              'Prediction time is over',
-                              style: TextStyle(
-                                  color: Colors.amber,
-                                  fontWeight: FontWeight.bold),
-                            ))
+                              child: Center(
+                                child: Text(
+                                'Match Postponed',
+                                style: TextStyle(
+                                    color: Colors.amber,
+                                    fontWeight: FontWeight.bold),
+                            ),
+                              ))
+                          : statusShort == 'CANC'
+                          ? Container(
+                              child: Center(
+                                child: Text(
+                                'Match Cancelled',
+                                style: TextStyle(
+                                    color: Colors.amber,
+                                    fontWeight: FontWeight.bold),
+                            ),
+                              ))
+                          : 
+                          Container(
+                              child: Center(
+                                child: Text(
+                                'Prediction time is over!',
+                                style: TextStyle(
+                                    color: Colors.amber,
+                                    fontWeight: FontWeight.bold),
+                            ),
+                              ))
                   ],
                 ),
               ),

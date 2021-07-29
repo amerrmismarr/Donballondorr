@@ -1,12 +1,15 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:Donballondor/src/blocs/auth_bloc.dart';
+import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
 import 'package:Donballondor/src/styles/themes.dart';
 import 'package:Donballondor/src/widgets/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   
@@ -32,6 +35,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    var authBloc = Provider.of<AuthBloc>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Switch between dark and light mode'),
@@ -76,6 +80,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 fontFamily: CupertinoIcons.iconFont,
                 fontPackage: CupertinoIcons.iconFontPackage), 
               ),
+
+        IconButton(
+              icon: Icon(Icons.logout),
+              color: AppColors.notshinygold,
+              onPressed:(){
+              authBloc.logout();
+              Navigator.pushReplacementNamed(context, '/landing');
+            } , )
       
         ],
               

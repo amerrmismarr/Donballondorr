@@ -167,29 +167,29 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '047';
         } else if(fixture['league']['country'] == 'Albania' && fixture['league']['name'] == '1st Division'){
           fixture['popularity'] = '048';
-        } else if(fixture['league']['country'] == 'Albania' && fixture['league']['name'] == '2nd Division - Group A'){
+        } /*else if(fixture['league']['country'] == 'Albania' && fixture['league']['name'] == '2nd Division - Group A'){
           fixture['popularity'] = '049';
         } else if(fixture['league']['country'] == 'Albania' && fixture['league']['name'] == '2nd Division - Group B'){
           fixture['popularity'] = '050';
-        } else if(fixture['league']['country'] == 'Algeria' && fixture['league']['name'] == 'Super Cup'){
+        }*/ else if(fixture['league']['country'] == 'Algeria' && fixture['league']['name'] == 'Super Cup'){
           fixture['popularity'] = '051';
         } else if(fixture['league']['country'] == 'Algeria' && fixture['league']['name'] == 'Coupe Nationale'){
           fixture['popularity'] = '052';
         } else if(fixture['league']['country'] == 'Algeria' && fixture['league']['name'] == 'Ligue 1'){
           fixture['popularity'] = '053';
-        } else if(fixture['league']['country'] == 'Algeria' && fixture['league']['name'] == 'Ligue 2'){
+        } /*else if(fixture['league']['country'] == 'Algeria' && fixture['league']['name'] == 'Ligue 2'){
           fixture['popularity'] = '054';
         } else if(fixture['league']['country'] == 'Algeria' && fixture['league']['name'] == 'U21 League 1'){
           fixture['popularity'] = '055';
-        } else if(fixture['league']['country'] == 'Andorra' && fixture['league']['name'] == '1a Divisió'){
+        }*/ else if(fixture['league']['country'] == 'Andorra' && fixture['league']['name'] == '1a Divisió'){
           fixture['popularity'] = '056';
         } else if(fixture['league']['country'] == 'Andorra' && fixture['league']['name'] == 'Copa Constitució'){
           fixture['popularity'] = '057';
-        } else if(fixture['league']['country'] == 'Andorra' && fixture['league']['name'] == '2a Divisió'){
+        } /*else if(fixture['league']['country'] == 'Andorra' && fixture['league']['name'] == '2a Divisió'){
           fixture['popularity'] = '058';
         } else if(fixture['league']['country'] == 'Andorra' && fixture['league']['name'] == '2a Divisió'){
           fixture['popularity'] = '059';
-        } else if(fixture['league']['country'] == 'Angola' && fixture['league']['name'] == 'Girabola'){
+        } */ else if(fixture['league']['country'] == 'Angola' && fixture['league']['name'] == 'Girabola'){
           fixture['popularity'] = '060';
         } else if(fixture['league']['country'] == 'Argentina' && fixture['league']['name'] == 'Copa Argentina'){
           fixture['popularity'] = '061';
@@ -199,13 +199,13 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '063';
         } else if(fixture['league']['country'] == 'Argentina' && fixture['league']['name'] == 'Primera B Nacional'){
           fixture['popularity'] = '064';
-        } else if(fixture['league']['country'] == 'Argentina' && fixture['league']['name'] == 'Primera C'){
+        } /*else if(fixture['league']['country'] == 'Argentina' && fixture['league']['name'] == 'Primera C'){
           fixture['popularity'] = '065';
         } else if(fixture['league']['country'] == 'Argentina' && fixture['league']['name'] == 'Primera D'){
           fixture['popularity'] = '066';
         } else if(fixture['league']['country'] == 'Argentina' && fixture['league']['name'] == 'Tomeo Federal A'){
           fixture['popularity'] = '067';
-        } else if(fixture['league']['country'] == 'Armenia' && fixture['league']['name'] == 'Premier League'){
+        } */ else if(fixture['league']['country'] == 'Armenia' && fixture['league']['name'] == 'Premier League'){
           fixture['popularity'] = '068';
         } else if(fixture['league']['country'] == 'Armenia' && fixture['league']['name'] == 'First League'){
           fixture['popularity'] = '069';
@@ -213,15 +213,15 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '070';
         } else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'National Premier Leagues'){
           fixture['popularity'] = '071';
-        } else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'Northern Territory Premier League'){
+        } /*else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'Northern Territory Premier League'){
           fixture['popularity'] = '072';
         } else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'South Australia NPL'){
           fixture['popularity'] = '073';
-        } else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'Victoria NPL'){
+        }*/ else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'Victoria NPL'){
           fixture['popularity'] = '074';
-        } else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'Western Australia NPL'){
+        } /*else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'Western Australia NPL'){
           fixture['popularity'] = '075';
-        } else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'W-League'){
+        } */else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'W-League'){
           fixture['popularity'] = '076';
         } else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'A-League'){
           fixture['popularity'] = '077';
@@ -229,15 +229,15 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '078';
         } else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'Queensland NPL'){
           fixture['popularity'] = '079';
-        } else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'Northern NSW NPL'){
+        } /*else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'Northern NSW NPL'){
           fixture['popularity'] = '080';
-        } else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'New South Wales NPL'){
+        }*/ else if(fixture['league']['country'] == 'Australia' && fixture['league']['name'] == 'New South Wales NPL'){
           fixture['popularity'] = '081';
         } else if(fixture['league']['country'] == 'Austria' && fixture['league']['name'] == 'Cup'){
           fixture['popularity'] = '082';
         } else if(fixture['league']['country'] == 'Austria' && fixture['league']['name'] == 'Erste Liga'){
           fixture['popularity'] = '083';
-        } else if(fixture['league']['country'] == 'Austria' && fixture['league']['name'] == 'Landesliga - Salzburg'){
+        } /*else if(fixture['league']['country'] == 'Austria' && fixture['league']['name'] == 'Landesliga - Salzburg'){
           fixture['popularity'] = '084';
         } else if(fixture['league']['country'] == 'Austria' && fixture['league']['name'] == 'Landesliga - Steiermark'){
           fixture['popularity'] = '085';
@@ -263,13 +263,13 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '095';
         } else if(fixture['league']['country'] == 'Austria' && fixture['league']['name'] == 'Landesliga - Oberosterreich'){
           fixture['popularity'] = '096';
-        } else if(fixture['league']['country'] == 'Azerbaidjan' && fixture['league']['name'] == 'Cup'){
+        } */ else if(fixture['league']['country'] == 'Azerbaidjan' && fixture['league']['name'] == 'Cup'){
           fixture['popularity'] = '097';
         } else if(fixture['league']['country'] == 'Azerbaidjan' && fixture['league']['name'] == 'Premyer Liqa'){
           fixture['popularity'] = '098';
-        } else if(fixture['league']['country'] == 'Azerbaidjan' && fixture['league']['name'] == 'Birinci Dasta'){
+        } /* else if(fixture['league']['country'] == 'Azerbaidjan' && fixture['league']['name'] == 'Birinci Dasta'){
           fixture['popularity'] = '099';
-        } else if(fixture['league']['country'] == 'Bahrain' && fixture['league']['name'] == 'Premier League'){
+        } */else if(fixture['league']['country'] == 'Bahrain' && fixture['league']['name'] == 'Premier League'){
           fixture['popularity'] = '100';
         } else if(fixture['league']['country'] == 'Bahrain' && fixture['league']['name'] == 'King\'s Cup'){
           fixture['popularity'] = '101';
@@ -281,11 +281,11 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '104';
         } else if(fixture['league']['country'] == 'Belarus' && fixture['league']['name'] == '1. Division'){
           fixture['popularity'] = '105';
-        } else if(fixture['league']['country'] == 'Belarus' && fixture['league']['name'] == '2. Division'){
+        } /*else if(fixture['league']['country'] == 'Belarus' && fixture['league']['name'] == '2. Division'){
           fixture['popularity'] = '106';
         } else if(fixture['league']['country'] == 'Belarus' && fixture['league']['name'] == 'Vysshaya Liga'){
           fixture['popularity'] = '107';
-        } else if(fixture['league']['country'] == 'Belgium' && fixture['league']['name'] == 'Super Cup'){
+        } */else if(fixture['league']['country'] == 'Belgium' && fixture['league']['name'] == 'Super Cup'){
           fixture['popularity'] = '108';
         } else if(fixture['league']['country'] == 'Belgium' && fixture['league']['name'] == 'Cup'){
           fixture['popularity'] = '109';
@@ -293,7 +293,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '110';
         } else if(fixture['league']['country'] == 'Belgium' && fixture['league']['name'] == 'Jupiler Pro League'){
           fixture['popularity'] = '111';
-        } else if(fixture['league']['country'] == 'Belgium' && fixture['league']['name'] == 'Provincial - Liege'){
+        } /*else if(fixture['league']['country'] == 'Belgium' && fixture['league']['name'] == 'Provincial - Liege'){
           fixture['popularity'] = '112';
         } else if(fixture['league']['country'] == 'Belgium' && fixture['league']['name'] == 'Provincial - Antwerpen'){
           fixture['popularity'] = '113';
@@ -327,7 +327,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '127';
         } else if(fixture['league']['country'] == 'Belgium' && fixture['league']['name'] == 'Super League Women'){
           fixture['popularity'] = '128';
-        } else if(fixture['league']['country'] == 'Belize' && fixture['league']['name'] == 'Premier League'){
+        } */else if(fixture['league']['country'] == 'Belize' && fixture['league']['name'] == 'Premier League'){
           fixture['popularity'] = '129';
         } else if(fixture['league']['country'] == 'Benin' && fixture['league']['name'] == 'Championnat National'){
           fixture['popularity'] = '130';
@@ -355,7 +355,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '141';
         } else if(fixture['league']['country'] == 'Brazil' && fixture['league']['name'] == 'Serie D'){
           fixture['popularity'] = '142';
-        } else if(fixture['league']['country'] == 'Brazil' && fixture['league']['name'] == 'Amazonense'){
+        } /*else if(fixture['league']['country'] == 'Brazil' && fixture['league']['name'] == 'Amazonense'){
           fixture['popularity'] = '143';
         } else if(fixture['league']['country'] == 'Brazil' && fixture['league']['name'] == 'Amapaense'){
           fixture['popularity'] = '144';
@@ -371,9 +371,9 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '149';
         } else if(fixture['league']['country'] == 'Brazil' && fixture['league']['name'] == 'Brasileiro Women'){
           fixture['popularity'] = '150';
-        } else if(fixture['league']['country'] == 'Bulgaria' && fixture['league']['name'] == 'Cup'){
+        } */ else if(fixture['league']['country'] == 'Bulgaria' && fixture['league']['name'] == 'Cup'){
           fixture['popularity'] = '151';
-        } else if(fixture['league']['country'] == 'Bulgaria' && fixture['league']['name'] == 'A PFG'){
+        } /*else if(fixture['league']['country'] == 'Bulgaria' && fixture['league']['name'] == 'A PFG'){
           fixture['popularity'] = '152';
         } else if(fixture['league']['country'] == 'Bulgaria' && fixture['league']['name'] == 'B PFG'){
           fixture['popularity'] = '153';
@@ -385,7 +385,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '156';
         } else if(fixture['league']['country'] == 'Bulgaria' && fixture['league']['name'] == 'Third League - Southwest'){
           fixture['popularity'] = '157';
-        } else if(fixture['league']['country'] == 'Burkina-Faso' && fixture['league']['name'] == '1ere Division'){
+        } */ else if(fixture['league']['country'] == 'Burkina-Faso' && fixture['league']['name'] == '1ere Division'){
           fixture['popularity'] = '158';
         } else if(fixture['league']['country'] == 'Burundi' && fixture['league']['name'] == 'Ligue A'){
           fixture['popularity'] = '159';
@@ -405,9 +405,9 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '166';
         } else if(fixture['league']['country'] == 'Chile' && fixture['league']['name'] == 'Copa Chile'){
           fixture['popularity'] = '167';
-        } else if(fixture['league']['country'] == 'Chile' && fixture['league']['name'] == 'Primera B'){
+        } /*else if(fixture['league']['country'] == 'Chile' && fixture['league']['name'] == 'Primera B'){
           fixture['popularity'] = '168';
-        } else if(fixture['league']['country'] == 'China' && fixture['league']['name'] == 'League One'){
+        } */else if(fixture['league']['country'] == 'China' && fixture['league']['name'] == 'League One'){
           fixture['popularity'] = '169';
         } else if(fixture['league']['country'] == 'China' && fixture['league']['name'] == 'Super League'){
           fixture['popularity'] = '170';
@@ -419,19 +419,19 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '173';
         } else if(fixture['league']['country'] == 'Colombia' && fixture['league']['name'] == 'Primera A'){
           fixture['popularity'] = '174';
-        } else if(fixture['league']['country'] == 'Colombia' && fixture['league']['name'] == 'Primera B'){
+        } /*else if(fixture['league']['country'] == 'Colombia' && fixture['league']['name'] == 'Primera B'){
           fixture['popularity'] = '175';
-        } else if(fixture['league']['country'] == 'Congo-DR' && fixture['league']['name'] == 'Ligue 1'){
+        } */else if(fixture['league']['country'] == 'Congo-DR' && fixture['league']['name'] == 'Ligue 1'){
           fixture['popularity'] = '176';
         } else if(fixture['league']['country'] == 'Costa-Rica' && fixture['league']['name'] == 'Primera Division'){
           fixture['popularity'] = '177';
-        } else if(fixture['league']['country'] == 'Costa-Rica' && fixture['league']['name'] == 'Liga De Ascenso'){
+        } /*else if(fixture['league']['country'] == 'Costa-Rica' && fixture['league']['name'] == 'Liga De Ascenso'){
           fixture['popularity'] = '178';
-        } else if(fixture['league']['country'] == 'Croatia' && fixture['league']['name'] == 'Cup'){
+        } */else if(fixture['league']['country'] == 'Croatia' && fixture['league']['name'] == 'Cup'){
           fixture['popularity'] = '179';
         } else if(fixture['league']['country'] == 'Croatia' && fixture['league']['name'] == 'Prva HNL'){
           fixture['popularity'] = '180';
-        } else if(fixture['league']['country'] == 'Croatia' && fixture['league']['name'] == '3. HNL - Zapad'){
+        } /*else if(fixture['league']['country'] == 'Croatia' && fixture['league']['name'] == '3. HNL - Zapad'){
           fixture['popularity'] = '181';
         } else if(fixture['league']['country'] == 'Croatia' && fixture['league']['name'] == '3. HNL - Sjever'){
           fixture['popularity'] = '182';
@@ -441,7 +441,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '184';
         } else if(fixture['league']['country'] == 'Croatia' && fixture['league']['name'] == '3. HNL - Sredite'){
           fixture['popularity'] = '185';
-        } else if(fixture['league']['country'] == 'Croatia' && fixture['league']['name'] == 'Druga HNL'){
+        } */else if(fixture['league']['country'] == 'Croatia' && fixture['league']['name'] == 'Druga HNL'){
           fixture['popularity'] = '186';
         } else if(fixture['league']['country'] == 'Curacao' && fixture['league']['name'] == 'Curaçao Sekshon Pagá'){
           fixture['popularity'] = '187';
@@ -449,17 +449,17 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '188';
         } else if(fixture['league']['country'] == 'Cyprus' && fixture['league']['name'] == '1. Division'){
           fixture['popularity'] = '189';
-        } else if(fixture['league']['country'] == 'Cyprus' && fixture['league']['name'] == '2. Division'){
+        } /*else if(fixture['league']['country'] == 'Cyprus' && fixture['league']['name'] == '2. Division'){
           fixture['popularity'] = '190';
         } else if(fixture['league']['country'] == 'Cyprus' && fixture['league']['name'] == '3. Division'){
           fixture['popularity'] = '191';
-        } else if(fixture['league']['country'] == 'Czech-Republic' && fixture['league']['name'] == 'Cup'){
+        }*/ else if(fixture['league']['country'] == 'Czech-Republic' && fixture['league']['name'] == 'Cup'){
           fixture['popularity'] = '192';
         } else if(fixture['league']['country'] == 'Czech-Republic' && fixture['league']['name'] == 'Czech Liga'){
           fixture['popularity'] = '193';
         } else if(fixture['league']['country'] == 'Czech-Republic' && fixture['league']['name'] == 'FNL'){
           fixture['popularity'] = '194';
-        } else if(fixture['league']['country'] == 'Czech-Republic' && fixture['league']['name'] == '3. liga - MSFL'){
+        } /*else if(fixture['league']['country'] == 'Czech-Republic' && fixture['league']['name'] == '3. liga - MSFL'){
           fixture['popularity'] = '195';
         } else if(fixture['league']['country'] == 'Czech-Republic' && fixture['league']['name'] == '3. liga - CFL A'){
           fixture['popularity'] = '196';
@@ -473,13 +473,13 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '200';
         } else if(fixture['league']['country'] == 'Czech-Republic' && fixture['league']['name'] == '4. liga - Divizie E'){
           fixture['popularity'] = '201';
-        } else if(fixture['league']['country'] == 'Denmark' && fixture['league']['name'] == 'Superligaen'){
+        }*/ else if(fixture['league']['country'] == 'Denmark' && fixture['league']['name'] == 'Superligaen'){
           fixture['popularity'] = '202';
         } else if(fixture['league']['country'] == 'Denmark' && fixture['league']['name'] == 'Elitedivisionen'){
           fixture['popularity'] = '203';
         } else if(fixture['league']['country'] == 'Denmark' && fixture['league']['name'] == 'DBU Pokalen'){
           fixture['popularity'] = '204';
-        } else if(fixture['league']['country'] == 'Denmark' && fixture['league']['name'] == 'Viasat Divisionen'){
+        } /*else if(fixture['league']['country'] == 'Denmark' && fixture['league']['name'] == 'Viasat Divisionen'){
           fixture['popularity'] = '205';
         } else if(fixture['league']['country'] == 'Denmark' && fixture['league']['name'] == 'Denmark Series - Group 1'){
           fixture['popularity'] = '206';
@@ -493,11 +493,11 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '210';
         } else if(fixture['league']['country'] == 'Denmark' && fixture['league']['name'] == '2nd Division - Group 2'){
           fixture['popularity'] = '211';
-        } else if(fixture['league']['country'] == 'Ecuador' && fixture['league']['name'] == 'Serie A'){
+        }*/ else if(fixture['league']['country'] == 'Ecuador' && fixture['league']['name'] == 'Serie A'){
           fixture['popularity'] = '212';
-        } else if(fixture['league']['country'] == 'Ecuador' && fixture['league']['name'] == 'Serie B'){
+        } /*else if(fixture['league']['country'] == 'Ecuador' && fixture['league']['name'] == 'Serie B'){
           fixture['popularity'] = '213';
-        } else if(fixture['league']['country'] == 'Egypt' && fixture['league']['name'] == 'Premier League'){
+        }*/ else if(fixture['league']['country'] == 'Egypt' && fixture['league']['name'] == 'Premier League'){
           fixture['popularity'] = '214';
         } else if(fixture['league']['country'] == 'Egypt' && fixture['league']['name'] == 'Super Cup'){
           fixture['popularity'] = '215';
@@ -507,7 +507,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '217';
         } else if(fixture['league']['country'] == 'England' && fixture['league']['name'] == 'National League'){
           fixture['popularity'] = '218';
-        } else if(fixture['league']['country'] == 'England' && fixture['league']['name'] == 'Non League Div One - Isthmian North'){
+        } /*else if(fixture['league']['country'] == 'England' && fixture['league']['name'] == 'Non League Div One - Isthmian North'){
           fixture['popularity'] = '219';
         } else if(fixture['league']['country'] == 'England' && fixture['league']['name'] == 'National League - North'){
           fixture['popularity'] = '220';
@@ -529,7 +529,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '228';
         } else if(fixture['league']['country'] == 'England' && fixture['league']['name'] == 'Non League Premier - Southern'){
           fixture['popularity'] = '229';
-        } else if(fixture['league']['country'] == 'England' && fixture['league']['name'] == 'FA Trophy'){
+        } */ else if(fixture['league']['country'] == 'England' && fixture['league']['name'] == 'FA Trophy'){
           fixture['popularity'] = '230';
         } else if(fixture['league']['country'] == 'England' && fixture['league']['name'] == 'EFL Trophy'){
           fixture['popularity'] = '231';
@@ -545,11 +545,11 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '236';
         } else if(fixture['league']['country'] == 'Faroe-Islands' && fixture['league']['name'] == '1. Deild'){
           fixture['popularity'] = '237';
-        } else if(fixture['league']['country'] == 'Faroe-Islands' && fixture['league']['name'] == 'Løgmanssteypid'){
+        } /*else if(fixture['league']['country'] == 'Faroe-Islands' && fixture['league']['name'] == 'Løgmanssteypid'){
           fixture['popularity'] = '238';
         } else if(fixture['league']['country'] == 'Faroe-Islands' && fixture['league']['name'] == 'Meistaradeildin'){
           fixture['popularity'] = '239';
-        } else if(fixture['league']['country'] == 'Fiji' && fixture['league']['name'] == 'National Football League'){
+        }*/ else if(fixture['league']['country'] == 'Fiji' && fixture['league']['name'] == 'National Football League'){
           fixture['popularity'] = '240';
         } else if(fixture['league']['country'] == 'Finland' && fixture['league']['name'] == 'Ykkonen'){
           fixture['popularity'] = '241';
@@ -559,15 +559,15 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '243';
         } else if(fixture['league']['country'] == 'Finland' && fixture['league']['name'] == 'Kakkonen - Lohko A'){
           fixture['popularity'] = '244';
-        } else if(fixture['league']['country'] == 'Finland' && fixture['league']['name'] == 'Kakkonen - Lohko B'){
+        } /*else if(fixture['league']['country'] == 'Finland' && fixture['league']['name'] == 'Kakkonen - Lohko B'){
           fixture['popularity'] = '245';
         } else if(fixture['league']['country'] == 'Finland' && fixture['league']['name'] == 'Kakkonen - Lohko C'){
           fixture['popularity'] = '246';
-        } else if(fixture['league']['country'] == 'France' && fixture['league']['name'] == 'Ligue 2'){
+        } */else if(fixture['league']['country'] == 'France' && fixture['league']['name'] == 'Ligue 2'){
           fixture['popularity'] = '247';
         } else if(fixture['league']['country'] == 'France' && fixture['league']['name'] == 'National'){
           fixture['popularity'] = '248';
-        } else if(fixture['league']['country'] == 'France' && fixture['league']['name'] == 'National 2 - Group A'){
+        } /*else if(fixture['league']['country'] == 'France' && fixture['league']['name'] == 'National 2 - Group A'){
           fixture['popularity'] = '249';
         } else if(fixture['league']['country'] == 'France' && fixture['league']['name'] == 'National 2 - Group B'){
           fixture['popularity'] = '250';
@@ -601,19 +601,19 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '264';
         } else if(fixture['league']['country'] == 'France' && fixture['league']['name'] == 'Feminine Division 1'){
           fixture['popularity'] = '265';
-        } else if(fixture['league']['country'] == 'Georgia' && fixture['league']['name'] == 'Super Cup'){
+        } */else if(fixture['league']['country'] == 'Georgia' && fixture['league']['name'] == 'Super Cup'){
           fixture['popularity'] = '266';
         } else if(fixture['league']['country'] == 'Georgia' && fixture['league']['name'] == 'Erovnuli Liga'){
           fixture['popularity'] = '267';
-        } else if(fixture['league']['country'] == 'Georgia' && fixture['league']['name'] == 'Erovnuli Liga 2'){
+        } /*else if(fixture['league']['country'] == 'Georgia' && fixture['league']['name'] == 'Erovnuli Liga 2'){
           fixture['popularity'] = '268';
-        } else if(fixture['league']['country'] == 'Germany' && fixture['league']['name'] == 'Super Cup'){
+        } */else if(fixture['league']['country'] == 'Germany' && fixture['league']['name'] == 'Super Cup'){
           fixture['popularity'] = '269';
         } else if(fixture['league']['country'] == 'Germany' && fixture['league']['name'] == 'Bundesliga 2'){
           fixture['popularity'] = '270';
         } else if(fixture['league']['country'] == 'Germany' && fixture['league']['name'] == 'Liga 3'){
           fixture['popularity'] = '271';
-        } else if(fixture['league']['country'] == 'Germany' && fixture['league']['name'] == 'Regionalliga - Nordost'){
+        } /*else if(fixture['league']['country'] == 'Germany' && fixture['league']['name'] == 'Regionalliga - Nordost'){
           fixture['popularity'] = '272';
         } else if(fixture['league']['country'] == 'Germany' && fixture['league']['name'] == 'Regionalliga - Bayern'){
           fixture['popularity'] = '273';
@@ -627,13 +627,13 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '277';
         } else if(fixture['league']['country'] == 'Germany' && fixture['league']['name'] == 'Women Bundesliga'){
           fixture['popularity'] = '278';
-        } else if(fixture['league']['country'] == 'Ghana' && fixture['league']['name'] == 'Premier League'){
+        } */else if(fixture['league']['country'] == 'Ghana' && fixture['league']['name'] == 'Premier League'){
           fixture['popularity'] = '279';
         } else if(fixture['league']['country'] == 'Greece' && fixture['league']['name'] == 'Cup'){
           fixture['popularity'] = '280';
         } else if(fixture['league']['country'] == 'Greece' && fixture['league']['name'] == 'Super League'){
           fixture['popularity'] = '281';
-        } else if(fixture['league']['country'] == 'Greece' && fixture['league']['name'] == 'Super League 2'){
+        } /*else if(fixture['league']['country'] == 'Greece' && fixture['league']['name'] == 'Super League 2'){
           fixture['popularity'] = '282';
         } else if(fixture['league']['country'] == 'Greece' && fixture['league']['name'] == 'Football League'){
           fixture['popularity'] = '283';
@@ -653,7 +653,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '290';
         } else if(fixture['league']['country'] == 'Greece' && fixture['league']['name'] == 'Gamma Ethniki - Group 8'){
           fixture['popularity'] = '291';
-        } else if(fixture['league']['country'] == 'Guadeloupe' && fixture['league']['name'] == 'Division d\'Honneur'){
+        } */else if(fixture['league']['country'] == 'Guadeloupe' && fixture['league']['name'] == 'Division d\'Honneur'){
           fixture['popularity'] = '292';
         } else if(fixture['league']['country'] == 'Guatemala' && fixture['league']['name'] == 'Primera Division'){
           fixture['popularity'] = '293';
@@ -673,7 +673,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '300';
         } else if(fixture['league']['country'] == 'Hungary' && fixture['league']['name'] == 'NB I'){
           fixture['popularity'] = '301';
-        } else if(fixture['league']['country'] == 'Hungary' && fixture['league']['name'] == 'NB II'){
+        } /*else if(fixture['league']['country'] == 'Hungary' && fixture['league']['name'] == 'NB II'){
           fixture['popularity'] = '302';
         } else if(fixture['league']['country'] == 'Hungary' && fixture['league']['name'] == 'NB III - Közép'){
           fixture['popularity'] = '303';
@@ -681,7 +681,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '304';
         } else if(fixture['league']['country'] == 'Hungary' && fixture['league']['name'] == 'NB III - Nyugati'){
           fixture['popularity'] = '305';
-        } else if(fixture['league']['country'] == 'Iceland' && fixture['league']['name'] == 'Cup'){
+        } */else if(fixture['league']['country'] == 'Iceland' && fixture['league']['name'] == 'Cup'){
           fixture['popularity'] = '306';
         } else if(fixture['league']['country'] == 'Iceland' && fixture['league']['name'] == 'League Cup'){
           fixture['popularity'] = '307';
@@ -689,9 +689,9 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '308';
         } else if(fixture['league']['country'] == 'Iceland' && fixture['league']['name'] == 'Division 1'){
           fixture['popularity'] = '309';
-        } else if(fixture['league']['country'] == 'Iceland' && fixture['league']['name'] == 'Division 2'){
+        } /*else if(fixture['league']['country'] == 'Iceland' && fixture['league']['name'] == 'Division 2'){
           fixture['popularity'] = '310';
-        } else if(fixture['league']['country'] == 'India' && fixture['league']['name'] == 'Indian Super League'){
+        } */else if(fixture['league']['country'] == 'India' && fixture['league']['name'] == 'Indian Super League'){
           fixture['popularity'] = '311';
         } else if(fixture['league']['country'] == 'India' && fixture['league']['name'] == 'I-League'){
           fixture['popularity'] = '312';
@@ -701,9 +701,9 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '314';
         } else if(fixture['league']['country'] == 'Indonesia' && fixture['league']['name'] == 'Super League'){
           fixture['popularity'] = '315';
-        } else if(fixture['league']['country'] == 'Indonesia' && fixture['league']['name'] == 'Liga 2'){
+        } /*else if(fixture['league']['country'] == 'Indonesia' && fixture['league']['name'] == 'Liga 2'){
           fixture['popularity'] = '316';
-        } else if(fixture['league']['country'] == 'Iran' && fixture['league']['name'] == 'Persian Gulf Cup'){
+        } */else if(fixture['league']['country'] == 'Iran' && fixture['league']['name'] == 'Persian Gulf Cup'){
           fixture['popularity'] = '317';
         } else if(fixture['league']['country'] == 'Iran' && fixture['league']['name'] == 'Hazfi Cup'){
           fixture['popularity'] = '318';
@@ -719,7 +719,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '323';
         } else if(fixture['league']['country'] == 'Ireland' && fixture['league']['name'] == 'First Division'){
           fixture['popularity'] = '324';
-        } else if(fixture['league']['country'] == 'Israel' && fixture['league']['name'] == 'State Cup'){
+        } /*else if(fixture['league']['country'] == 'Israel' && fixture['league']['name'] == 'State Cup'){
           fixture['popularity'] = '325';
         } else if(fixture['league']['country'] == 'Israel' && fixture['league']['name'] == 'Toto Cup Ligat Al'){
           fixture['popularity'] = '326';
@@ -729,11 +729,11 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '328';
         } else if(fixture['league']['country'] == 'Israel' && fixture['league']['name'] == 'Liga Alef'){
           fixture['popularity'] = '329';
-        } else if(fixture['league']['country'] == 'Italy' && fixture['league']['name'] == 'Serie B'){
+        } */else if(fixture['league']['country'] == 'Italy' && fixture['league']['name'] == 'Serie B'){
           fixture['popularity'] = '330';
         } else if(fixture['league']['country'] == 'Italy' && fixture['league']['name'] == 'Serie C'){
           fixture['popularity'] = '331';
-        } else if(fixture['league']['country'] == 'Italy' && fixture['league']['name'] == 'Serie D - Girone A'){
+        } /*else if(fixture['league']['country'] == 'Italy' && fixture['league']['name'] == 'Serie D - Girone A'){
           fixture['popularity'] = '332';
         } else if(fixture['league']['country'] == 'Italy' && fixture['league']['name'] == 'Serie D - Girone B'){
           fixture['popularity'] = '333';
@@ -753,7 +753,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '340';
         } else if(fixture['league']['country'] == 'Italy' && fixture['league']['name'] == 'Serie A Women'){
           fixture['popularity'] = '341';
-        } else if(fixture['league']['country'] == 'Ivory-Coast' && fixture['league']['name'] == 'Ligue 1'){
+        } */else if(fixture['league']['country'] == 'Ivory-Coast' && fixture['league']['name'] == 'Ligue 1'){
           fixture['popularity'] = '342';
         } else if(fixture['league']['country'] == 'Jamaica' && fixture['league']['name'] == 'Premier League'){
           fixture['popularity'] = '343';
@@ -765,11 +765,11 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '346';
         } else if(fixture['league']['country'] == 'Japan' && fixture['league']['name'] == 'J. League Div.1'){
           fixture['popularity'] = '347';
-        } else if(fixture['league']['country'] == 'Japan' && fixture['league']['name'] == 'J. League Div.2'){
+        } /*else if(fixture['league']['country'] == 'Japan' && fixture['league']['name'] == 'J. League Div.2'){
           fixture['popularity'] = '348';
         } else if(fixture['league']['country'] == 'Japan' && fixture['league']['name'] == 'J. League Div.3'){
           fixture['popularity'] = '349';
-        } else if(fixture['league']['country'] == 'Jordan' && fixture['league']['name'] == 'Division 1'){
+        } */else if(fixture['league']['country'] == 'Jordan' && fixture['league']['name'] == 'Division 1'){
           fixture['popularity'] = '350';
         } else if(fixture['league']['country'] == 'Kazakhstan' && fixture['league']['name'] == 'Cup'){
           fixture['popularity'] = '351';
@@ -803,9 +803,9 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '365';
         } else if(fixture['league']['country'] == 'Macedonia' && fixture['league']['name'] == 'First League'){
           fixture['popularity'] = '366';
-        } else if(fixture['league']['country'] == 'Macedonia' && fixture['league']['name'] == 'Second League'){
+        } /*else if(fixture['league']['country'] == 'Macedonia' && fixture['league']['name'] == 'Second League'){
           fixture['popularity'] = '367';
-        } else if(fixture['league']['country'] == 'Malawi' && fixture['league']['name'] == 'Super League'){
+        } */else if(fixture['league']['country'] == 'Malawi' && fixture['league']['name'] == 'Super League'){
           fixture['popularity'] = '368';
         } else if(fixture['league']['country'] == 'Malaysia' && fixture['league']['name'] == 'Malaysia Cup'){
           fixture['popularity'] = '369';
@@ -835,9 +835,9 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '381';
         } else if(fixture['league']['country'] == 'Morocco' && fixture['league']['name'] == 'Botola Pro'){
           fixture['popularity'] = '382';
-        } else if(fixture['league']['country'] == 'Morocco' && fixture['league']['name'] == 'Botola 2'){
+        } /*else if(fixture['league']['country'] == 'Morocco' && fixture['league']['name'] == 'Botola 2'){
           fixture['popularity'] = '383';
-        } else if(fixture['league']['country'] == 'Myanmar' && fixture['league']['name'] == 'National League'){
+        } */else if(fixture['league']['country'] == 'Myanmar' && fixture['league']['name'] == 'National League'){
           fixture['popularity'] = '384';
         } else if(fixture['league']['country'] == 'Nepal' && fixture['league']['name'] == 'A Division'){
           fixture['popularity'] = '385';
@@ -845,7 +845,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '386';
         } else if(fixture['league']['country'] == 'Netherlands' && fixture['league']['name'] == 'Eerste Divisie'){
           fixture['popularity'] = '387';
-        } else if(fixture['league']['country'] == 'Netherlands' && fixture['league']['name'] == 'Tweede Divisie'){
+        } /*else if(fixture['league']['country'] == 'Netherlands' && fixture['league']['name'] == 'Tweede Divisie'){
           fixture['popularity'] = '388';
         } else if(fixture['league']['country'] == 'Netherlands' && fixture['league']['name'] == 'Derde Divisie - Saturday'){
           fixture['popularity'] = '389';
@@ -855,7 +855,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '391';
         } else if(fixture['league']['country'] == 'Netherlands' && fixture['league']['name'] == 'Eredivisie Women'){
           fixture['popularity'] = '392';
-        } else if(fixture['league']['country'] == 'New-Zealand' && fixture['league']['name'] == 'Football Championship'){
+        } */else if(fixture['league']['country'] == 'New-Zealand' && fixture['league']['name'] == 'Football Championship'){
           fixture['popularity'] = '393';
         } else if(fixture['league']['country'] == 'Nicaragua' && fixture['league']['name'] == 'Primera Division'){
           fixture['popularity'] = '394';
@@ -867,13 +867,13 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '397';
         } else if(fixture['league']['country'] == 'Northern-Ireland' && fixture['league']['name'] == 'Premiership'){
           fixture['popularity'] = '398';
-        } else if(fixture['league']['country'] == 'Northern-Ireland' && fixture['league']['name'] == 'Premier Intermediate League'){
+        } /*else if(fixture['league']['country'] == 'Northern-Ireland' && fixture['league']['name'] == 'Premier Intermediate League'){
           fixture['popularity'] = '399';
-        } else if(fixture['league']['country'] == 'Norway' && fixture['league']['name'] == 'Eliteserien'){
+        } */ else if(fixture['league']['country'] == 'Norway' && fixture['league']['name'] == 'Eliteserien'){
           fixture['popularity'] = '400';
         } else if(fixture['league']['country'] == 'Norway' && fixture['league']['name'] == 'Super Cup'){
           fixture['popularity'] = '401';
-        } else if(fixture['league']['country'] == 'Norway' && fixture['league']['name'] == 'NM Cupen'){
+        } /*else if(fixture['league']['country'] == 'Norway' && fixture['league']['name'] == 'NM Cupen'){
           fixture['popularity'] = '402';
         } else if(fixture['league']['country'] == 'Norway' && fixture['league']['name'] == 'OBOS-ligaen'){
           fixture['popularity'] = '403';
@@ -881,7 +881,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '404';
         } else if(fixture['league']['country'] == 'Norway' && fixture['league']['name'] == '2. Division - Group 2'){
           fixture['popularity'] = '405';
-        } else if(fixture['league']['country'] == 'Oman' && fixture['league']['name'] == 'Professional League'){
+        } */else if(fixture['league']['country'] == 'Oman' && fixture['league']['name'] == 'Professional League'){
           fixture['popularity'] = '406';
         } else if(fixture['league']['country'] == 'Palestine' && fixture['league']['name'] == 'West Bank Premier League'){
           fixture['popularity'] = '407';
@@ -893,25 +893,25 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '410';
         } else if(fixture['league']['country'] == 'Paraguay' && fixture['league']['name'] == 'Primera Division - Clausura'){
           fixture['popularity'] = '411';
-        } else if(fixture['league']['country'] == 'Paraguay' && fixture['league']['name'] == 'Segunda Division'){
+        } /*else if(fixture['league']['country'] == 'Paraguay' && fixture['league']['name'] == 'Segunda Division'){
           fixture['popularity'] = '412';
-        } else if(fixture['league']['country'] == 'Peru' && fixture['league']['name'] == 'Copa Perú'){
+        } */else if(fixture['league']['country'] == 'Peru' && fixture['league']['name'] == 'Copa Perú'){
           fixture['popularity'] = '413';
         } else if(fixture['league']['country'] == 'Peru' && fixture['league']['name'] == 'Primera Division'){
           fixture['popularity'] = '414';
         } else if(fixture['league']['country'] == 'Peru' && fixture['league']['name'] == 'Copa Bicentenario'){
           fixture['popularity'] = '415';
-        } else if(fixture['league']['country'] == 'Peru' && fixture['league']['name'] == 'Segunda Division'){
+        } /*else if(fixture['league']['country'] == 'Peru' && fixture['league']['name'] == 'Segunda Division'){
           fixture['popularity'] = '416';
-        } else if(fixture['league']['country'] == 'Poland' && fixture['league']['name'] == 'Cup'){
+        } */else if(fixture['league']['country'] == 'Poland' && fixture['league']['name'] == 'Cup'){
           fixture['popularity'] = '417';
         } else if(fixture['league']['country'] == 'Poland' && fixture['league']['name'] == 'I Liga'){
           fixture['popularity'] = '418';
-        } else if(fixture['league']['country'] == 'Poland' && fixture['league']['name'] == 'II Liga'){
+        } /*else if(fixture['league']['country'] == 'Poland' && fixture['league']['name'] == 'II Liga'){
           fixture['popularity'] = '419';
         } else if(fixture['league']['country'] == 'Poland' && fixture['league']['name'] == 'Ekstraklasa'){
           fixture['popularity'] = '420';
-        } else if(fixture['league']['country'] == 'Portugal' && fixture['league']['name'] == 'Super Cup'){
+        } */else if(fixture['league']['country'] == 'Portugal' && fixture['league']['name'] == 'Super Cup'){
           fixture['popularity'] = '421';
         } else if(fixture['league']['country'] == 'Portugal' && fixture['league']['name'] == 'Liga de Honra'){
           fixture['popularity'] = '422';
@@ -919,7 +919,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '423';
         } else if(fixture['league']['country'] == 'Portugal' && fixture['league']['name'] == 'Taça de Liga'){
           fixture['popularity'] = '424';
-        } else if(fixture['league']['country'] == 'Portugal' && fixture['league']['name'] == 'Campeonato de Portugal Prio - Group A'){
+        } /*else if(fixture['league']['country'] == 'Portugal' && fixture['league']['name'] == 'Campeonato de Portugal Prio - Group A'){
           fixture['popularity'] = '425';
         } else if(fixture['league']['country'] == 'Portugal' && fixture['league']['name'] == 'Campeonato de Portugal Prio - Group B'){
           fixture['popularity'] = '426';
@@ -927,29 +927,29 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '427';
         } else if(fixture['league']['country'] == 'Portugal' && fixture['league']['name'] == 'Campeonato de Portugal Prio - Group D'){
           fixture['popularity'] = '428';
-        } else if(fixture['league']['country'] == 'Qatar' && fixture['league']['name'] == 'QSL Cup'){
+        } */ else if(fixture['league']['country'] == 'Qatar' && fixture['league']['name'] == 'QSL Cup'){
           fixture['popularity'] = '429';
         } else if(fixture['league']['country'] == 'Qatar' && fixture['league']['name'] == 'Stars League'){
           fixture['popularity'] = '430';
-        } else if(fixture['league']['country'] == 'Qatar' && fixture['league']['name'] == '2nd Division League'){
+        } /*else if(fixture['league']['country'] == 'Qatar' && fixture['league']['name'] == '2nd Division League'){
           fixture['popularity'] = '431';
-        } else if(fixture['league']['country'] == 'Romania' && fixture['league']['name'] == 'Supercupa'){
+        } */else if(fixture['league']['country'] == 'Romania' && fixture['league']['name'] == 'Supercupa'){
           fixture['popularity'] = '432';
         } else if(fixture['league']['country'] == 'Romania' && fixture['league']['name'] == 'Cupa României'){
           fixture['popularity'] = '433';
         } else if(fixture['league']['country'] == 'Romania' && fixture['league']['name'] == 'Liga I'){
           fixture['popularity'] = '434';
-        } else if(fixture['league']['country'] == 'Romania' && fixture['league']['name'] == 'Liga II'){
+        } /*else if(fixture['league']['country'] == 'Romania' && fixture['league']['name'] == 'Liga II'){
           fixture['popularity'] = '435';
-        } else if(fixture['league']['country'] == 'Russia' && fixture['league']['name'] == 'Cup'){
+        }*/ else if(fixture['league']['country'] == 'Russia' && fixture['league']['name'] == 'Cup'){
           fixture['popularity'] = '436';
         } else if(fixture['league']['country'] == 'Russia' && fixture['league']['name'] == 'Premier League'){
           fixture['popularity'] = '437';
         } else if(fixture['league']['country'] == 'Russia' && fixture['league']['name'] == 'Football National League'){
           fixture['popularity'] = '438';
-        } else if(fixture['league']['country'] == 'Russia' && fixture['league']['name'] == 'Youth Championship'){
+        } /*else if(fixture['league']['country'] == 'Russia' && fixture['league']['name'] == 'Youth Championship'){
           fixture['popularity'] = '439';
-        } else if(fixture['league']['country'] == 'Rwanda' && fixture['league']['name'] == 'National Soccer League'){
+        } */else if(fixture['league']['country'] == 'Rwanda' && fixture['league']['name'] == 'National Soccer League'){
           fixture['popularity'] = '440';
         } else if(fixture['league']['country'] == 'San-Marino' && fixture['league']['name'] == 'Campionato'){
           fixture['popularity'] = '441';
@@ -971,15 +971,15 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '449';
         } else if(fixture['league']['country'] == 'Scotland' && fixture['league']['name'] == 'League One'){
           fixture['popularity'] = '450';
-        } else if(fixture['league']['country'] == 'Scotland' && fixture['league']['name'] == 'League Two'){
+        } /*else if(fixture['league']['country'] == 'Scotland' && fixture['league']['name'] == 'League Two'){
           fixture['popularity'] = '451';
-        } else if(fixture['league']['country'] == 'Senegal' && fixture['league']['name'] == 'Ligue 1'){
+        } */else if(fixture['league']['country'] == 'Senegal' && fixture['league']['name'] == 'Ligue 1'){
           fixture['popularity'] = '452';
         } else if(fixture['league']['country'] == 'Serbia' && fixture['league']['name'] == 'Super Liga'){
           fixture['popularity'] = '453';
         } else if(fixture['league']['country'] == 'Serbia' && fixture['league']['name'] == 'Prva Liga'){
           fixture['popularity'] = '454';
-        } else if(fixture['league']['country'] == 'Serbia' && fixture['league']['name'] == 'Srpska Liga - Vojvodina'){
+        } /*else if(fixture['league']['country'] == 'Serbia' && fixture['league']['name'] == 'Srpska Liga - Vojvodina'){
           fixture['popularity'] = '455';
         } else if(fixture['league']['country'] == 'Serbia' && fixture['league']['name'] == 'Srpska Liga - East'){
           fixture['popularity'] = '456';
@@ -987,19 +987,19 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '457';
         } else if(fixture['league']['country'] == 'Serbia' && fixture['league']['name'] == 'Srpska Liga - Belgrade'){
           fixture['popularity'] = '458';
-        } else if(fixture['league']['country'] == 'Singapore' && fixture['league']['name'] == 'Premier League'){
+        } */else if(fixture['league']['country'] == 'Singapore' && fixture['league']['name'] == 'Premier League'){
           fixture['popularity'] = '459';
         } else if(fixture['league']['country'] == 'Slovakia' && fixture['league']['name'] == 'Super Liga'){
           fixture['popularity'] = '460';
-        } else if(fixture['league']['country'] == 'Slovakia' && fixture['league']['name'] == '2. liga'){
+        } /*else if(fixture['league']['country'] == 'Slovakia' && fixture['league']['name'] == '2. liga'){
           fixture['popularity'] = '461';
-        } else if(fixture['league']['country'] == 'Slovenia' && fixture['league']['name'] == 'Cup'){
+        } */ else if(fixture['league']['country'] == 'Slovenia' && fixture['league']['name'] == 'Cup'){
           fixture['popularity'] = '462';
         } else if(fixture['league']['country'] == 'Slovenia' && fixture['league']['name'] == '1. SNL'){
           fixture['popularity'] = '463';
-        } else if(fixture['league']['country'] == 'Slovenia' && fixture['league']['name'] == '2. SNL'){
+        } /* else if(fixture['league']['country'] == 'Slovenia' && fixture['league']['name'] == '2. SNL'){
           fixture['popularity'] = '464';
-        } else if(fixture['league']['country'] == 'South-Africa' && fixture['league']['name'] == 'Cup'){
+        } */else if(fixture['league']['country'] == 'South-Africa' && fixture['league']['name'] == 'Cup'){
           fixture['popularity'] = '465';
         } else if(fixture['league']['country'] == 'South-Africa' && fixture['league']['name'] == 'Premier Soccer League'){
           fixture['popularity'] = '466';
@@ -1007,17 +1007,17 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '467';
         } else if(fixture['league']['country'] == 'South-Africa' && fixture['league']['name'] == 'League Cup'){
           fixture['popularity'] = '468';
-        } else if(fixture['league']['country'] == 'South-Africa' && fixture['league']['name'] == '8 Cup'){
+        } /*else if(fixture['league']['country'] == 'South-Africa' && fixture['league']['name'] == '8 Cup'){
           fixture['popularity'] = '469';
-        } else if(fixture['league']['country'] == 'South-Korea' && fixture['league']['name'] == 'FA Cup'){
+        } */else if(fixture['league']['country'] == 'South-Korea' && fixture['league']['name'] == 'FA Cup'){
           fixture['popularity'] = '470';
         } else if(fixture['league']['country'] == 'South-Korea' && fixture['league']['name'] == 'National League'){
           fixture['popularity'] = '471';
-        } else if(fixture['league']['country'] == 'South-Korea' && fixture['league']['name'] == 'K-League Challenge'){
+        } /*else if(fixture['league']['country'] == 'South-Korea' && fixture['league']['name'] == 'K-League Challenge'){
           fixture['popularity'] = '472';
         } else if(fixture['league']['country'] == 'South-Korea' && fixture['league']['name'] == 'K-League Classic'){
           fixture['popularity'] = '473';
-        } else if(fixture['league']['country'] == 'Spain' && fixture['league']['name'] == 'Segunda Division'){
+        } */else if(fixture['league']['country'] == 'Spain' && fixture['league']['name'] == 'Segunda Division'){
           fixture['popularity'] = '474';
         } else if(fixture['league']['country'] == 'Spain' && fixture['league']['name'] == 'Segunda B - Group 1'){
           fixture['popularity'] = '475';
@@ -1027,7 +1027,7 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '477';
         } else if(fixture['league']['country'] == 'Spain' && fixture['league']['name'] == 'Segunda B - Group 4'){
           fixture['popularity'] = '478';
-        } else if(fixture['league']['country'] == 'Spain' && fixture['league']['name'] == 'Tercera Division - Group 1'){
+        } /*else if(fixture['league']['country'] == 'Spain' && fixture['league']['name'] == 'Tercera Division - Group 1'){
           fixture['popularity'] = '479';
         } else if(fixture['league']['country'] == 'Spain' && fixture['league']['name'] == 'Tercera Division - Group 2'){
           fixture['popularity'] = '480';
@@ -1063,10 +1063,99 @@ Future getFixtures(String date, BuildContext context) async {
           fixture['popularity'] = '495';
         } else if(fixture['league']['country'] == 'Spain' && fixture['league']['name'] == 'Tercera Division - Group 18'){
           fixture['popularity'] = '496';
-        }
+        }*/
+        else if(fixture['league']['country'] == 'Sudan' && fixture['league']['name'] == 'Sudani Premier League'){
+          fixture['popularity'] = '479';
+        } else if(fixture['league']['country'] == 'Sweden' && fixture['league']['name'] == 'Allsvenskan'){
+          fixture['popularity'] = '480';
+        } else if(fixture['league']['country'] == 'Sweden' && fixture['league']['name'] == 'Superettan'){
+          fixture['popularity'] = '481';
+        } else if(fixture['league']['country'] == 'Sweden' && fixture['league']['name'] == 'Svenska Cupen'){
+          fixture['popularity'] = '482';
+        } else if(fixture['league']['country'] == 'Switzerland' && fixture['league']['name'] == 'Super League'){
+          fixture['popularity'] = '483';
+        } else if(fixture['league']['country'] == 'Switzerland' && fixture['league']['name'] == 'Challenge League'){
+          fixture['popularity'] = '484';
+        } else if(fixture['league']['country'] == 'Switzerland' && fixture['league']['name'] == 'Schweizer Pokal'){
+          fixture['popularity'] = '485';
+        } else if(fixture['league']['country'] == 'Syria' && fixture['league']['name'] == 'Premier League'){
+          fixture['popularity'] = '486';
+        } else if(fixture['league']['country'] == 'Tajikistan' && fixture['league']['name'] == 'Vysshaya Liga'){
+          fixture['popularity'] = '487';
+        } else if(fixture['league']['country'] == 'Tanzania' && fixture['league']['name'] == 'Ligi kuu Bara'){
+          fixture['popularity'] = '488';
+        } else if(fixture['league']['country'] == 'Thailand' && fixture['league']['name'] == 'FA Cup'){
+          fixture['popularity'] = '489';
+        } else if(fixture['league']['country'] == 'Thailand' && fixture['league']['name'] == 'Thai Premier League'){
+          fixture['popularity'] = '490';
+        } else if(fixture['league']['country'] == 'Tunisia' && fixture['league']['name'] == 'Cup'){
+          fixture['popularity'] = '491';
+        } else if(fixture['league']['country'] == 'Tunisia' && fixture['league']['name'] == 'Ligue Professionnelle 1'){
+          fixture['popularity'] = '492';
+        } else if(fixture['league']['country'] == 'Turkey' && fixture['league']['name'] == 'Super Lig'){
+          fixture['popularity'] = '493';
+        } else if(fixture['league']['country'] == 'Turkey' && fixture['league']['name'] == 'Super Cup'){
+          fixture['popularity'] = '494';
+        } else if(fixture['league']['country'] == 'Turkey' && fixture['league']['name'] == 'Cup'){
+          fixture['popularity'] = '495';
+        } else if(fixture['league']['country'] == 'Turkmenistan' && fixture['league']['name'] == 'Yokary Liga'){
+          fixture['popularity'] = '496';
+        } else if(fixture['league']['country'] == 'USA' && fixture['league']['name'] == 'US Open Cup'){
+          fixture['popularity'] = '497';
+        } else if(fixture['league']['country'] == 'USA' && fixture['league']['name'] == 'USL League One'){
+          fixture['popularity'] = '498';
+        } else if(fixture['league']['country'] == 'USA' && fixture['league']['name'] == 'Major League Soccer'){
+          fixture['popularity'] = '499';
+        } else if(fixture['league']['country'] == 'USA' && fixture['league']['name'] == 'USL Championship'){
+          fixture['popularity'] = '500';
+        } else if(fixture['league']['country'] == 'USA' && fixture['league']['name'] == 'NISA USA'){
+          fixture['popularity'] = '501';
+        } else if(fixture['league']['country'] == 'Uganda' && fixture['league']['name'] == 'Premier League'){
+          fixture['popularity'] = '502';
+        } else if(fixture['league']['country'] == 'Ukraine' && fixture['league']['name'] == 'Super Cup'){
+          fixture['popularity'] = '503';
+        } else if(fixture['league']['country'] == 'Ukraine' && fixture['league']['name'] == 'Cup'){
+          fixture['popularity'] = '504';
+        } else if(fixture['league']['country'] == 'Ukraine' && fixture['league']['name'] == 'Persha Liga'){
+          fixture['popularity'] = '505';
+        } else if(fixture['league']['country'] == 'Ukraine' && fixture['league']['name'] == 'Premier League'){
+          fixture['popularity'] = '506';
+        } else if(fixture['league']['country'] == 'United-Arab-Emirates' && fixture['league']['name'] == 'Presidents Cup'){
+          fixture['popularity'] = '507';
+        } else if(fixture['league']['country'] == 'United-Arab-Emirates' && fixture['league']['name'] == 'Division 1'){
+          fixture['popularity'] = '508';
+        } else if(fixture['league']['country'] == 'United-Arab-Emirates' && fixture['league']['name'] == 'Arabian Gulf League'){
+          fixture['popularity'] = '509';
+        } else if(fixture['league']['country'] == 'United-Arab-Emirates' && fixture['league']['name'] == 'League Cup'){
+          fixture['popularity'] = '510';
+        } else if(fixture['league']['country'] == 'Uruguay' && fixture['league']['name'] == 'Primera Division - Apertura'){
+          fixture['popularity'] = '511';
+        } else if(fixture['league']['country'] == 'Uruguay' && fixture['league']['name'] == 'Primera Division - Clausura'){
+          fixture['popularity'] = '512';
+        } else if(fixture['league']['country'] == 'Uzbekistan' && fixture['league']['name'] == 'Super League'){
+          fixture['popularity'] = '513';
+        } else if(fixture['league']['country'] == 'Uzbekistan' && fixture['league']['name'] == 'Super Cup'){
+          fixture['popularity'] = '514';
+        } else if(fixture['league']['country'] == 'Uzbekistan' && fixture['league']['name'] == 'Cup'){
+          fixture['popularity'] = '515';
+        } else if(fixture['league']['country'] == 'Venezuela' && fixture['league']['name'] == 'Primera Division'){
+          fixture['popularity'] = '516';
+        } else if(fixture['league']['country'] == 'Vietnam' && fixture['league']['name'] == 'Cup'){
+          fixture['popularity'] = '517';
+        } else if(fixture['league']['country'] == 'Vietnam' && fixture['league']['name'] == 'V.League 1'){
+          fixture['popularity'] = '518';
+        } else if(fixture['league']['country'] == 'Wales' && fixture['league']['name'] == 'League Cup'){
+          fixture['popularity'] = '519';
+        } else if(fixture['league']['country'] == 'Wales' && fixture['league']['name'] == 'Premier'){
+          fixture['popularity'] = '520';
+        } else if(fixture['league']['country'] == 'Zambia' && fixture['league']['name'] == 'Super League'){
+          fixture['popularity'] = '521';
+        } 
         else {
           fixture['popularity'] = '600';
-        }
+
+        } 
+
 
       _date.sink.add(date);
       _fixtures.sink.add(data);

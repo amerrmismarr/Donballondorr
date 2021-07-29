@@ -325,7 +325,15 @@ class _ProfileState extends State<Profile> {
                   ),
                   SizedBox(height: 20,),
             Center(
-              child:Text(snapshot.data['email'].toString(), style: TextStyles.subTitle)
+              child:Text(snapshot.data['name'].toString(), style: TextStyles.subTitle)
+            ),
+            
+            Center(
+              child:Text(snapshot.data['email'].toString(), style: TextStyles.body)
+            ),
+            SizedBox(height: 20),
+            Center(
+              child:Text('Country:' + ' ' + snapshot.data['country'], style: TextStyles.subTitle)
             ),
             SizedBox(height: 20),
             Center(
@@ -350,17 +358,11 @@ class _ProfileState extends State<Profile> {
             ),
             SizedBox(height:20),
             Center(
-              child:Text(snapshot.data['score'].toString(), style: TextStyles.subTitle)
+              child:Text('Score:' + '  ' + snapshot.data['score'].toString(), style: TextStyles.subTitle)
             ),
 
 
-            IconButton(
-              icon: Icon(Icons.logout),
-              color: AppColors.notshinygold,
-              onPressed:(){
-              authBloc.logout();
-              Navigator.pushReplacementNamed(context, '/landing');
-            } , )
+            
 
               ],
 
