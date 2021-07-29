@@ -100,12 +100,10 @@ class _LeaderBoardState extends State<LeaderBoard> {
                    subtitle:Text(usersProfilesList[index]['email'], style: TextStyle(
                      fontSize: 10,
                      color: Colors.grey[300]),) ,
-                   trailing: Row(
-                     children: [
-                       //Icon(Icons.),
+                   trailing:
                        Text(usersProfilesList[index]['score'].toString() 
-                       ),
-                     ],
+                       
+                     ,
                    ),
                  ),
                );
