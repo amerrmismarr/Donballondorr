@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/styles/themes.dart';
 import 'package:Donballondor/src/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -55,6 +57,8 @@ class _LineupsState extends State<Lineups> {
 
   int premierLeagueId = 565;
 
+  CustomTheme customTheme = CustomTheme();
+
   Future getJsonData(String fixtureId) async {
     if (mounted) {
       setState(() {
@@ -68,7 +72,7 @@ class _LineupsState extends State<Lineups> {
     var response = await http.get(Uri.parse(changingURL), headers: {
       'Accept': 'application/json',
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-      "x-rapidapi-key": "KEY",
+      "x-rapidapi-key": "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",
     });
 
     if (response.statusCode == 200) {
@@ -111,12 +115,12 @@ class _LineupsState extends State<Lineups> {
               snapshot.data.length != 0) {
             //print(snapshot.data);
             return Container(
-              color: Color.fromRGBO(13, 18, 38, 1),
+              color: customTheme.isDarkMode == true ? AppColors.darkblue : Colors.teal[100],
               child: CustomScrollView(
                 slivers: <Widget>[
                   CustomSliver(
                       child: Container(
-                    color: Color.fromRGBO(41, 48, 67, 1),
+                    color: customTheme.isDarkMode == true ? AppColors.darkblue : Colors.teal,
                     padding: EdgeInsets.all(10.0),
                     height: 50.0,
                     child: Center(
@@ -152,13 +156,19 @@ class _LineupsState extends State<Lineups> {
                             SizedBox(
                               width: 10.0,
                             ),
-                            Text(
+                            homeTeamName != null ? Text(
                               homeTeamName,
-                              style: TextStyle(
-                                color: Color.fromRGBO(222, 177, 92, 1),
-                                fontSize: 20.0,
-                              ),
-                            ),
+                              style:customTheme.isDarkMode == true ? TextStyles.navTitle : TextStyles.navTitleLight
+                            ) : Container(),
+
+                            snapshot.data['api']['lineUps'][homeTeamName]['coach'] != null ? 
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                'Coach:' + ' ' +
+                                snapshot.data['api']['lineUps'][homeTeamName]['coach'],
+                                style: customTheme.isDarkMode == true ? TextStyles.body : TextStyles.bodyLight),
+                            ) : Container()
                           ],
                         ),
                       ),
@@ -173,25 +183,37 @@ class _LineupsState extends State<Lineups> {
                           borderOnForeground: true,
                           shadowColor: Color.fromRGBO(224, 176, 92, 1),
                           margin: EdgeInsets.fromLTRB(16.0, 5.0, 16.0, 0.0),
-                          color: Color.fromRGBO(41, 48, 67, 1),
+                          color: customTheme.isDarkMode == true ? AppColors.lightblue : Colors.teal,
                           child: Padding(
                               padding: const EdgeInsets.fromLTRB(
                                   5.0, 10.0, 5.0, 10.0),
-                              child: Column(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                  Text(
-                                    snapshot.data['api']['lineUps']
-                                        [homeTeamName]['startXI'][i]['player'],
-                                    style: TextStyle(
-                                      color: Color.fromRGBO(222, 177, 92, 1),
-                                    ),
-                                  ),
-                                  Text(
+                                  snapshot.data['api']['lineUps'][homeTeamName]['startXI'][i]['player'] != null 
+                                  ? Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
                                       snapshot.data['api']['lineUps']
-                                          [homeTeamName]['startXI'][i]['pos'],
+                                          [homeTeamName]['startXI'][i]['player'],
+                                      style: TextStyle(
+                                        color: Color.fromRGBO(222, 177, 92, 1),
+                                      ),
+                                    ),
+                                  ) : Container(),
+                                  snapshot.data['api']['lineUps']
+                                          [homeTeamName]['startXI'][i]['pos'] != null ?Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                      snapshot.data['api']['lineUps']
+                                            [homeTeamName]['startXI'][i]['pos'] == 'G' ?
+                                      'GK' :
+                                      snapshot.data['api']['lineUps']
+                                            [homeTeamName]['startXI'][i]['pos'],
                                       style: TextStyle(
                                         color: Color.fromRGBO(222, 177, 92, 1),
                                       )),
+                                          ) : Container(),
                                 ],
                               )));
                     },
@@ -219,11 +241,17 @@ class _LineupsState extends State<Lineups> {
                             ),
                             Text(
                               awayTeamName,
-                              style: TextStyle(
-                                color: Color.fromRGBO(222, 177, 92, 1),
-                                fontSize: 20.0,
-                              ),
+                              style: customTheme.isDarkMode == true ? TextStyles.navTitle : TextStyles.navTitleLight
                             ),
+
+                            snapshot.data['api']['lineUps'][awayTeamName]['coach'] != null ?
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                'Coach:' + ' ' +
+                                snapshot.data['api']['lineUps'][awayTeamName]['coach'],
+                                style: customTheme.isDarkMode == true ? TextStyles.body : TextStyles.bodyLight),
+                            ) : Container()
                           ],
                         ),
                       ),
@@ -238,25 +266,41 @@ class _LineupsState extends State<Lineups> {
                           borderOnForeground: true,
                           shadowColor: Color.fromRGBO(224, 176, 92, 1),
                           margin: EdgeInsets.fromLTRB(16.0, 5.0, 16.0, 0.0),
-                          color: Color.fromRGBO(41, 48, 67, 1),
+                          color: customTheme.isDarkMode == true ? AppColors.lightblue : Colors.teal,
                           child: Padding(
                               padding: const EdgeInsets.fromLTRB(
                                   5.0, 10.0, 5.0, 10.0),
-                              child: Column(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                  Text(
+                                   snapshot.data['api']['lineUps']
+                                        [awayTeamName]['startXI'][i]['player'] != null ? Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            children: [
+                                              Text(
                                     snapshot.data['api']['lineUps']
-                                        [awayTeamName]['startXI'][i]['player'],
+                                              [awayTeamName]['startXI'][i]['player'],
                                     style: TextStyle(
                                       color: Color.fromRGBO(222, 177, 92, 1),
                                     ),
                                   ),
-                                  Text(
+                                            ],
+                                          ),
+                                        ) : Container(),
+                                  snapshot.data['api']['lineUps']
+                                          [awayTeamName]['startXI'][i]['pos'] != null ? Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
                                       snapshot.data['api']['lineUps']
-                                          [awayTeamName]['startXI'][i]['pos'],
+                                            [awayTeamName]['startXI'][i]['pos'] == 'G' ?
+                                      'GK' :
+                                      snapshot.data['api']['lineUps']
+                                            [awayTeamName]['startXI'][i]['pos'],
                                       style: TextStyle(
                                         color: Color.fromRGBO(222, 177, 92, 1),
                                       )),
+                                          ) : Container(),
                                 ],
                               )));
                     },

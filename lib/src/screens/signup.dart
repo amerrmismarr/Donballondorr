@@ -4,6 +4,7 @@ import 'package:Donballondor/src/blocs/auth_bloc.dart';
 import 'package:Donballondor/src/screens/verify.dart';
 import 'package:Donballondor/src/styles/base.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/styles/themes.dart';
 import 'package:Donballondor/src/widgets/alerts.dart';
 import 'package:Donballondor/src/widgets/button.dart';
 import 'package:Donballondor/src/widgets/social_button.dart';
@@ -24,6 +25,8 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+
+  CustomTheme customTheme = CustomTheme();
   
 
    @override
@@ -76,7 +79,7 @@ class _SignupState extends State<Signup> {
           height: 100.0,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/PNG app.png'))),
+                  image: AssetImage('assets/PNG app.png'))),
         ),
         Center(
             child: Text(
@@ -183,7 +186,7 @@ class _SignupState extends State<Signup> {
               );
             }),
         SizedBox(height: 10.0,),
-        Padding(
+        /*Padding(
           padding: BaseStyles.listPadding,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -192,20 +195,20 @@ class _SignupState extends State<Signup> {
             SizedBox(width: 15.0,),
             AppSocialButton(socialType: SocialType.Google),
           ],),
-        ),
+        ),*/
         Padding(
           padding: BaseStyles.listPadding,
           child: RichText(
             textAlign: TextAlign.center,
             text: TextSpan( 
               text: 'Already Have an Account? ',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: customTheme.isDarkMode == true ? Colors.white : Colors.black),
               children: [
                 TextSpan(
                   text: 'Login',
                   style: TextStyles.link,
                   recognizer: TapGestureRecognizer()
-                  ..onTap = () => Navigator.pushNamed(context, '/login')
+                  ..onTap = () => Navigator.pushReplacementNamed(context, '/login')
                 )
               ]
             ),

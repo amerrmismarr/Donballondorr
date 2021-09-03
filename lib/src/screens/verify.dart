@@ -46,7 +46,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
           height: 100.0,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/PNG app.png'))),
+                  image: AssetImage('assets/PNG app.png'))),
         ),
         Center(
             child: Text(

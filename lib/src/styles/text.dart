@@ -18,11 +18,24 @@ abstract class TextStyles {
             fontWeight: FontWeight.bold,
             fontSize: 30.0));
   }
+  static TextStyle get subTitleLight {
+    return GoogleFonts.economica(
+        textStyle: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 30.0));
+  }
 
   static TextStyle get navTitle {
     return GoogleFonts.poppins(
         textStyle: TextStyle(
             color: AppColors.notshinygold, fontWeight: FontWeight.bold));
+  }
+
+  static TextStyle get navTitleLight {
+    return GoogleFonts.poppins(
+        textStyle: TextStyle(
+            color: Colors.black, fontWeight: FontWeight.bold));
   }
 
   static TextStyle get info {
@@ -34,6 +47,17 @@ abstract class TextStyles {
             ));
   }
 
+  static TextStyle get infoLight {
+    return GoogleFonts.economica(
+        textStyle: TextStyle(
+            color: Colors.black, 
+            fontWeight: FontWeight.bold,
+            fontSize: 25
+            ));
+  }
+
+
+
   static TextStyle get materialNavTitle {
     return GoogleFonts.poppins(
         textStyle: TextStyle(color: AppColors.notshinygold, fontWeight: FontWeight.bold));
@@ -43,6 +67,7 @@ abstract class TextStyles {
     return GoogleFonts.roboto(
         textStyle: TextStyle(color: AppColors.notshinygold, fontSize: 12.0));
   }
+  
 
   static TextStyle get bodyLight {
     return GoogleFonts.roboto(

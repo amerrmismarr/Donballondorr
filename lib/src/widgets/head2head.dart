@@ -1,7 +1,11 @@
 import 'dart:async';
+import 'package:Donballondor/src/styles/colors.dart';
+import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/styles/themes.dart';
 import 'package:Donballondor/src/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -43,6 +47,8 @@ class _Head2HeadState extends State<Head2Head> {
 
   int premierLeagueId = 565;
 
+  CustomTheme customTheme = CustomTheme();
+
   Future getJsonData(String homeTeamId, String awayTeamId) async {
     if (mounted) {
       setState(() {
@@ -56,7 +62,7 @@ class _Head2HeadState extends State<Head2Head> {
     var response = await http.get(Uri.parse(changingURL), headers: {
       'Accept': 'application/json',
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-      "x-rapidapi-key": "KEY",
+      "x-rapidapi-key": "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",
     });
 
     if (response.statusCode == 200) {
@@ -97,11 +103,9 @@ class _Head2HeadState extends State<Head2Head> {
             //print(snapshot.data);
             return Container(
               //color: Color.fromRGBO(13, 18, 38, 1),
-              child: CustomScrollView(
-                slivers: <Widget>[
-                  CustomSliver(
-                    child: Container(
-                      color: Color.fromRGBO(41, 48, 67, 1),
+              child: 
+                  /*Container(
+                      color:customTheme.isDarkMode == true ? AppColors.darkblue : Colors.teal,
                       padding: EdgeInsets.all(10.0),
                       height: 50.0,
                       child: Center(
@@ -109,13 +113,124 @@ class _Head2HeadState extends State<Head2Head> {
                         fontSize: 20.0, fontWeight: FontWeight.bold),
                         )
                       ),
-                  )),
+                  ),*/
                   
-                  CustomSliver(
-                    child: SizedBox(height: 20.0,),
-                  ),
+                  
 
-                  SliverList(
+                  
+                     GroupedListView(
+                                elements: snapshot.data,
+                                groupBy: (element) => element['league_id'],
+                                groupHeaderBuilder: (element) => Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: [
+                                      /*Container(
+                                       height: 20.0,
+                                       width: 20.0,
+                                       child: Image.network(element['league']['logo']),
+                                      ),
+                                      SizedBox(width: 10,),*/
+                                      Text(element['league']['name'] ,),
+                                    ],
+                                  ),
+                                ),
+                                indexedItemBuilder: (context, element, index) {
+                                  DateTime dateTime = DateTime.parse(element['event_date']);
+                                  return Card(
+                    shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0)),
+                                      borderOnForeground: true,
+                                      shadowColor: customTheme.isDarkMode == true?
+                                      Color.fromRGBO(224, 176, 92, 1) : Colors.teal,
+                                      margin:
+                                          EdgeInsets.fromLTRB(16.0, 5.0, 16.0, 0.0),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(DateFormat('yyyy-MM-dd').format(dateTime))),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Flexible(
+                              child: Column(
+                              
+                              children: [
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                      child: Container(
+                                       height: 15.0,
+                                       width: 15.0,
+                                       child: Image.network(element['homeTeam']['logo']),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(element['homeTeam']['team_name'])),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                      child: Container(
+                                       height: 15.0,
+                                       width: 15.0,
+                                       child: Image.network(element['awayTeam']['logo']),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(element['awayTeam']['team_name'])),
+                                    ),
+                                  ],
+                                ),
+                                
+                                
+                              ],
+                                                  ),
+                            ),
+                          Column(
+                            children: [
+                             Padding(
+                               padding: const EdgeInsets.fromLTRB(0, 8, 15, 8),
+                               child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: element['goalsHomeTeam'] != null ? Text(element['goalsHomeTeam'].toString())
+                                  :Container()) ,
+                             ),
+                             Padding(
+                               padding: const EdgeInsets.fromLTRB(0, 8, 15, 8),
+                               child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: element['goalsAwayTeam'] != null ? Text(element['goalsAwayTeam'].toString())
+                                  :Container()),
+                             ),
+                            ],
+                          ),
+                          
+                          ],
+                        ),
+                      ],
+                    ));
+                                   
+                                  
+                                }),
+                  );
+
+                  /*SliverList(
                     delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int i) {
                         DateTime dateTime = DateTime.parse(snapshot.data[i]['event_date']);
@@ -126,7 +241,7 @@ class _Head2HeadState extends State<Head2Head> {
                                 borderOnForeground: true,
                                 shadowColor: Color.fromRGBO(224, 176, 92, 1),
                                 margin: EdgeInsets.fromLTRB(16.0, 5.0, 16.0, 0.0),
-                                color: Color.fromRGBO(41, 48, 67, 1),
+                                color: customTheme.isDarkMode == true ? AppColors.darkblue : Colors.teal[100],
                                 child: Padding(
                                     padding: const EdgeInsets.fromLTRB(
                                         5.0, 10.0, 5.0, 10.0),
@@ -232,11 +347,10 @@ class _Head2HeadState extends State<Head2Head> {
                           
                           
                     }, childCount: snapshot.data.length),
-                  ),
+                  ),*/
                   
-                ],
-              ),
-            );
+                
+            
           } else {
             return Container(child: Center(child: Loading()));
           }

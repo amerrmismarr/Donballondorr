@@ -49,7 +49,7 @@ class _FavoriteFixturesState extends State<FavoriteFixtures> {
     var response = await http.get(Uri.parse('https://api-football-v1.p.rapidapi.com/v2/fixtures/id/' + favoriteFixtureId), headers: {
       'Accept': 'application/json',
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-      "x-rapidapi-key": "KEY",
+      "x-rapidapi-key": "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",
     });
 
     if (response.statusCode == 200) {
@@ -125,7 +125,7 @@ class _FavoriteFixturesState extends State<FavoriteFixtures> {
       return  Scaffold(
             body: pageBody(context),
             appBar: AppBar(
-              title: Center(child: Text('Favorite Matches',)),
+              title: Center(child: Text('Favorite Matches', style: TextStyle(color: customTheme.isDarkMode == true ? AppColors.notshinygold : Colors.white),)),
               //backgroundColor: AppColors.lightblue,
             ),
           );
@@ -413,6 +413,74 @@ class _FavoriteFixturesState extends State<FavoriteFixtures> {
                                             Image(image: AssetImage('assets/south-africa.jpg'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'South-Korea' ? 
                                             Image(image: AssetImage('assets/south-korea.jpg'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Sudan' ? 
+                                            Image(image: AssetImage('assets/sudan.jpg'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Sweden' ? 
+                                            Image(image: AssetImage('assets/sweden.png'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Switzerland' ? 
+                                            Image(image: AssetImage('assets/switzerland.jpg'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Syria' ? 
+                                            Image(image: AssetImage('assets/syria.png'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Tajikistan' ? 
+                                            Image(image: AssetImage('assets/tajikistan.jpg'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Tanzania' ? 
+                                            Image(image: AssetImage('assets/tanzania.png'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Thailand' ? 
+                                            Image(image: AssetImage('assets/thailand.png'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Tunisia' ? 
+                                            Image(image: AssetImage('assets/tunisia.png'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Turkey' ? 
+                                            Image(image: AssetImage('assets/turkey.jpg'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Turkmenistan' ? 
+                                            Image(image: AssetImage('assets/turkmenistan.png'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'USA' ? 
+                                            Image(image: AssetImage('assets/usa.png'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Uganda' ? 
+                                            Image(image: AssetImage('assets/uganda.jpg'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Ukraine' ? 
+                                            Image(image: AssetImage('assets/ukraine.jpg'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'United-Arab-Emirates' ? 
+                                            Image(image: AssetImage('assets/unitedarabemirates.png'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Uruguay' ? 
+                                            Image(image: AssetImage('assets/uruguay.png'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Uzbekistan' ? 
+                                            Image(image: AssetImage('assets/uzbekistan.png'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Venezuela' ? 
+                                            Image(image: AssetImage('assets/venezuela.jpg'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Vietnam' ? 
+                                            Image(image: AssetImage('assets/vietnam.jpg'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Wales' ? 
+                                            Image(image: AssetImage('assets/wales.png'), width: 20.0, height: 20.0,) :
+                                            element['league']['country'] == 'Zambia' ? 
+                                            Image(image: AssetImage('assets/zambia.jpg'), width: 20.0, height: 20.0,) :
+                                            element['league']['name'] == 'CONCACAF Gold Cup' ? 
+                                            Image(image: AssetImage('assets/concacaf.jpg'), width: 20.0, height: 20.0,) :
+                                            element['league']['name'] == 'World Cup' || 
+                                            element['league']['name'] == 'World Cup - Qualification Europe' ||
+                                            element['league']['name'] == 'World Cup - Qualification South America' ||
+                                            element['league']['name'] == 'World Cup - Qualification Asia' ||
+                                            element['league']['name'] == 'World Cup - Qualification Africa' ||
+                                            element['league']['name'] == 'World Cup - Qualification CONCACAF'  ||
+                                            element['league']['name'] == 'Euro Championship'  ||
+                                            element['league']['name'] == 'UEFA Nations League'  ||
+                                            element['league']['name'] == 'Copa America'  ||
+                                            element['league']['name'] == 'Asian Cup'  ||
+                                            element['league']['name'] == 'Asian Cup - Qualification'  ||
+                                            element['league']['name'] == 'Africa Cup of Nations'  ||
+                                            element['league']['name'] == 'Africa Cup of Nations - Qualification'  ||
+                                            element['league']['name'] == 'African Nations Championship'  ||
+                                            element['league']['name'] == 'Confederations Cup'  ||
+                                            element['league']['name'] == 'FIFA Club World Cup'  ||
+                                            element['league']['name'] == 'Olympics Men'  ||
+                                            element['league']['name'] == 'UEFA Europa League'  ||
+                                            element['league']['name'] == 'UEFA Super Cup'  ||
+                                            element['league']['name'] == 'Trophée des Champions'  ||
+                                            element['league']['name'] == 'CONMEBOL Libertadores'  ||
+                                            element['league']['name'] == 'CONMEBOL Sudamericana'  ||
+                                            element['league']['name'] == 'CONMEBOL Recopa'  ||
+                                            element['league']['name'] == 'Friendlies'  
+                                            ?
+                                            Image(image: AssetImage('assets/worldcup.jpg'), width: 20.0, height: 20.0,) :
                                             SizedBox(width: 10.0,),
                                     SizedBox(
                                       width: 10.0,

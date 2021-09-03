@@ -181,7 +181,7 @@ class AuthBloc {
               email: result.user.email, 
               userId: result.user.uid,
               score: 0,
-              imagePath: 'https://thumbs.dreamstime.com/z/golden-profile-icon-d-illustration-73959732.jpg',
+              imagePath: 'https://ak.picdn.net/shutterstock/videos/34282561/thumb/1.jpg',
               isDarkMode: true,
               country: "country",
               name: 'name'

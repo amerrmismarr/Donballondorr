@@ -14,7 +14,7 @@ class Loading extends StatelessWidget {
       child: Shimmer.fromColors(
         baseColor: customTheme.isDarkMode == true ? AppColors.lightblue : Colors.white,
         highlightColor: AppColors.notshinygold,
-        child: Image.asset("assets/images/PNG app.png"),
+        child: Image.asset("assets/PNG app.png"),
         period: Duration(seconds: 3),
       ),
     );

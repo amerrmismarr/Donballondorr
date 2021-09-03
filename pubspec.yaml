@@ -50,6 +50,8 @@ dependencies:
   google_sign_in: ^5.0.4
   favorite_button: ^0.0.4
   country_picker: ^2.0.7
+  material_design_icons_flutter: ^4.0.5955
+  url_launcher: ^6.0.9
   
   
   shared_preferences: ^2.0.6
@@ -71,7 +73,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/images/
+     
      - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see

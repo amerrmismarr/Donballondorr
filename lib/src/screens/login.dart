@@ -62,7 +62,7 @@ class _LoginState extends State<Login> {
       );
     } else {
       return Scaffold(
-        backgroundColor: customTheme.isDarkMode == true ? AppColors.darkblue : Colors.teal,
+        backgroundColor: customTheme.isDarkMode == true ? AppColors.darkblue : Colors.teal[100],
         body: pageBody(context, authBloc),
       );
     }
@@ -78,7 +78,7 @@ class _LoginState extends State<Login> {
           height: 100.0,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/PNG app.png'))),
+                  image: AssetImage('assets/PNG app.png'))),
         ),
         Center(child: Text('Donballondor', style: TextStyles.body)),
         SizedBox(
@@ -130,7 +130,7 @@ class _LoginState extends State<Login> {
         SizedBox(
           height: 10.0,
         ),
-        Padding(
+        /*Padding(
           padding: BaseStyles.listPadding,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -149,20 +149,20 @@ class _LoginState extends State<Login> {
               ),
             ],
           ),
-        ),
+        ),*/
         Padding(
           padding: BaseStyles.listPadding,
           child: RichText(
             textAlign: TextAlign.center,
             text: TextSpan(
                 text: 'New Here? ',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: customTheme.isDarkMode == true ? Colors.white : Colors.black),
                 children: [
                   TextSpan(
                       text: 'Signup',
                       style: TextStyles.link,
                       recognizer: TapGestureRecognizer()
-                        ..onTap = () => Navigator.pushNamed(context, '/signup'))
+                        ..onTap = () => Navigator.pushReplacementNamed(context, '/signup'))
                 ]),
           ),
         )

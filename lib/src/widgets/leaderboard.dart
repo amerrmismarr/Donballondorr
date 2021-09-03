@@ -12,8 +12,13 @@ import 'dart:io';
 import 'package:Donballondor/src/services/firestore_service.dart';
 import 'package:Donballondor/src/styles/colors.dart';
 import 'package:Donballondor/src/widgets/loading.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
+
+
 
 class LeaderBoard extends StatefulWidget {
   @override
@@ -61,7 +66,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
       return Scaffold(
         body: pageBody(context),
         appBar: AppBar(
-          title: Center(child: Text('Top scorers', )),
+          title: Center(child: Text('Top scorers', style: TextStyle(color: customTheme.isDarkMode == true ? AppColors.notshinygold : Colors.white),)),
           //backgroundColor: AppColors.lightblue,
         ),
       );
@@ -101,10 +106,20 @@ class _LeaderBoardState extends State<LeaderBoard> {
                      fontSize: 10,
                      color: Colors.grey[300]),) ,
                    trailing:
-                       Text(usersProfilesList[index]['score'].toString() 
-                       
+                       Row(
+                         mainAxisSize: MainAxisSize.min,
+                         children: [
+                             index == 0 ?Icon(
+                             FontAwesomeIcons.trophy,
+                             color: AppColors.notshinygold,
+                           ) : Container(),
+                           SizedBox(width: 10,),
+                           Text(usersProfilesList[index]['score'].toString() ,
+                           style: TextStyle(color: customTheme.isDarkMode == true ? AppColors.notshinygold : Colors.white)
                      ,
                    ),
+                         ],
+                       ),
                  ),
                );
              } 

@@ -368,31 +368,31 @@ class _LiveScoreListState extends State<LiveScoreList> {
                                             element['league']['country'] == 'Romania' ? 
                                             Image(image: AssetImage('assets/romania.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Russia' ? 
-                                            Image(image: AssetImage('assets/russia.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/russia.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Rwanda' ? 
                                             Image(image: AssetImage('assets/rwanda.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'San-Marino' ? 
                                             Image(image: AssetImage('assets/san-marino.jpg'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Saudi-Arabia' ? 
-                                            Image(image: AssetImage('assets/saudi-arabia.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/saudi-arabia.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Scotland' ? 
                                             Image(image: AssetImage('assets/scotland.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Senegal' ? 
-                                            Image(image: AssetImage('assets/senegal.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/senegal.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Serbia' ? 
-                                            Image(image: AssetImage('assets/serbia.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/serbia.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Singapore' ? 
                                             Image(image: AssetImage('assets/singapore.jpg'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Slovakia' ? 
-                                            Image(image: AssetImage('assets/slovakia.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/slovakia.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Slovenia' ? 
-                                            Image(image: AssetImage('assets/slovenia.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/slovenia.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'South-Africa' ? 
-                                            Image(image: AssetImage('assets/south-africa.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/south-africa.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'South-Korea' ? 
                                             Image(image: AssetImage('assets/south-korea.jpg'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Sudan' ? 
-                                            Image(image: AssetImage('assets/sudan.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/sudan.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Sweden' ? 
                                             Image(image: AssetImage('assets/sweden.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Switzerland' ? 
@@ -400,23 +400,23 @@ class _LiveScoreListState extends State<LiveScoreList> {
                                             element['league']['country'] == 'Syria' ? 
                                             Image(image: AssetImage('assets/syria.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Tajikistan' ? 
-                                            Image(image: AssetImage('assets/tajikistan.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/tajikistan.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Tanzania' ? 
-                                            Image(image: AssetImage('assets/tanzania.png'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/tanzania.jpg'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Thailand' ? 
                                             Image(image: AssetImage('assets/thailand.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Tunisia' ? 
-                                            Image(image: AssetImage('assets/tunisia.png'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/tunisia.jpg'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Turkey' ? 
-                                            Image(image: AssetImage('assets/turkey.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/turkey.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Turkmenistan' ? 
                                             Image(image: AssetImage('assets/turkmenistan.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'USA' ? 
-                                            Image(image: AssetImage('assets/usa.png'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/usa.jpg'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Uganda' ? 
-                                            Image(image: AssetImage('assets/uganda.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/uganda.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Ukraine' ? 
-                                            Image(image: AssetImage('assets/ukraine.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/ukraine.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'United-Arab-Emirates' ? 
                                             Image(image: AssetImage('assets/unitedarabemirates.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Uruguay' ? 
@@ -424,13 +424,13 @@ class _LiveScoreListState extends State<LiveScoreList> {
                                             element['league']['country'] == 'Uzbekistan' ? 
                                             Image(image: AssetImage('assets/uzbekistan.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Venezuela' ? 
-                                            Image(image: AssetImage('assets/venezuela.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/venezuela.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Vietnam' ? 
                                             Image(image: AssetImage('assets/vietnam.jpg'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Wales' ? 
                                             Image(image: AssetImage('assets/wales.png'), width: 20.0, height: 20.0,) :
                                             element['league']['country'] == 'Zambia' ? 
-                                            Image(image: AssetImage('assets/zambia.jpg'), width: 20.0, height: 20.0,) :
+                                            Image(image: AssetImage('assets/zambia.png'), width: 20.0, height: 20.0,) :
                                             element['league']['name'] == 'CONCACAF Gold Cup' ? 
                                             Image(image: AssetImage('assets/concacaf.jpg'), width: 20.0, height: 20.0,) :
                                             element['league']['name'] == 'World Cup' || 
@@ -599,7 +599,7 @@ class _LiveScoreListState extends State<LiveScoreList> {
                                                               width: 15,
                                                               decoration: BoxDecoration(
                                                                 image: DecorationImage(
-                                                                  image: AssetImage('assets/images/PNG app.png') )
+                                                                  image: AssetImage('assets/PNG app.png') )
                                                               ),
                                                             ) :
                                                              Image.network(element['homeTeam']['logo']),
@@ -619,7 +619,7 @@ class _LiveScoreListState extends State<LiveScoreList> {
                                                               width: 15,
                                                               decoration: BoxDecoration(
                                                                 image: DecorationImage(
-                                                                  image: AssetImage('assets/images/PNG app.png') )
+                                                                  image: AssetImage('assets/PNG app.png') )
                                                               ),
                                                             ) :
                                                             Image.network(element['awayTeam']['logo']),
@@ -654,10 +654,10 @@ class _LiveScoreListState extends State<LiveScoreList> {
                                                        children: [
                                                          Text(element['goalsHomeTeam'].toString() == 'null' ? 
                                                          ' ' : element['goalsHomeTeam'].toString() 
-                                                         ,style: TextStyles.body,),
+                                                         ,style: customTheme.isDarkMode == true ? TextStyles.body : TextStyles.bodyLight,),
                                                          Text(element['goalsAwayTeam'].toString() == 'null' ? 
                                                          ' ' : element['goalsAwayTeam'].toString() 
-                                                         ,style: TextStyles.body,),
+                                                         ,style: customTheme.isDarkMode == true ? TextStyles.body : TextStyles.bodyLight,),
                                                        ],
                                                      ),
                                                      SizedBox(width: 3,),
@@ -678,7 +678,7 @@ class _LiveScoreListState extends State<LiveScoreList> {
                                                                 .toString());
                                                         //print(savedIds.toString());
                                                         
-                                                        return Column(
+                                                        return user != null ? Column(
                                                           children: [
                                                             StarButton(
                                                                iconColor: AppColors.notshinygold,
@@ -735,7 +735,7 @@ class _LiveScoreListState extends State<LiveScoreList> {
                                                                   // }
                                                                 
                                                           ],
-                                                        );
+                                                        ) : Container();
                                                       }),
                                                     ],
                                                   ),

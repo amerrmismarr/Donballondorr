@@ -41,7 +41,7 @@ class _YesterdayFixturesState extends State<YesterdayFixtures>  {
     controller = CalendarController();
     final now = DateTime.now();
     var outputFormat = DateFormat("yyyy-MM-dd");
-    formattedDate = outputFormat.format(DateTime(now.year,now.month,now.day - 1));
+    formattedDate = outputFormat.format(DateTime(now.year,now.month,now.day -1));
     apiService.getFixtures(formattedDate, context);
     print(formattedDate);
     super.initState();

@@ -116,13 +116,13 @@ class _LiveScoresState extends State<LiveScores> with SingleTickerProviderStateM
                             new Tab(child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(nameOfBeforeYesterday + "\n" + 
-                                (DateTime.now().day - 2).toString() + " " + nameOfBeforeYesterdayMonth
+                                (DateTime.now().subtract(Duration(days: 2)).day).toString() + " " + nameOfBeforeYesterdayMonth
                                 , textAlign: TextAlign.center,
                                 ),
                             ),
                             ),
                             new Tab(child: Text(nameOfYesterday + "\n" + 
-                              (DateTime.now().day - 1).toString() + " " + nameOfBeforeYesterdayMonth
+                              (DateTime.now().subtract(Duration(days: 1)).day).toString() + " " + nameOfBeforeYesterdayMonth
                               , textAlign: TextAlign.center,
                               ),
                             ),
@@ -132,11 +132,11 @@ class _LiveScoresState extends State<LiveScores> with SingleTickerProviderStateM
                               ),
                             ),
                             new Tab(child: Text(nameOfTomorrow + "\n" + 
-                              (DateTime.now().day + 1).toString() + " " + nameOfTomorrowMonth
+                              (DateTime.now().add(Duration(days: 1)).day).toString() + " " + nameOfTomorrowMonth
                               , textAlign: TextAlign.center,),
                             ),
                             new Tab(child: Text(nameOfAfterTomorrow + "\n" + 
-                              (DateTime.now().day + 2).toString() + " " + nameOfAfterTomorrowMonth
+                              (DateTime.now().add(Duration(days: 2)).day).toString() + " " + nameOfAfterTomorrowMonth
                               , textAlign: TextAlign.center,
                               ),
                             ),

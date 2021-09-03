@@ -63,7 +63,7 @@ class _EventsState extends State<Events> {
     var response = await http.get(Uri.parse(changingURL), headers: {
       'Accept': 'application/json',
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-      "x-rapidapi-key": "KEY",
+      "x-rapidapi-key": "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",
     });
 
     if (response.statusCode == 200) {
@@ -127,7 +127,7 @@ class _EventsState extends State<Events> {
                                   child: Image.network(homeTeamLogo)),
                               Text(
                                 homeTeamName,
-                                style: TextStyles.body,
+                                style: customTheme.isDarkMode == true ? TextStyles.body : TextStyles.bodyLight,
                               ),
                             ],
                           ),
@@ -141,7 +141,7 @@ class _EventsState extends State<Events> {
                                   child: Image.network(awayTeamLogo)),
                               Text(
                                 awayTeamName,
-                                style: TextStyles.body,
+                                style: customTheme.isDarkMode == true ? TextStyles.body : TextStyles.bodyLight,
                               ),
                             ],
                           ),

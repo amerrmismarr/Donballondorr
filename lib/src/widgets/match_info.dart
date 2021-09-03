@@ -4,6 +4,7 @@ import 'package:Donballondor/src/blocs/prediction_bloc.dart';
 import 'package:Donballondor/src/models/prediction.dart';
 import 'package:Donballondor/src/models/user.dart';
 import 'package:Donballondor/src/styles/text.dart';
+import 'package:Donballondor/src/styles/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Donballondor/src/styles/colors.dart';
@@ -34,6 +35,7 @@ class _MatchInfoState extends State<MatchInfo> {
   String changingURL;
   List<dynamic> data;
 
+  CustomTheme customTheme = CustomTheme();
 
   _MatchInfoState(this.fixtureId);
 
@@ -91,7 +93,7 @@ class _MatchInfoState extends State<MatchInfo> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: AppColors.lightblue,
+        backgroundColor: customTheme.isDarkMode == true ? AppColors.darkblue : Colors.teal,
         title: Center(child: Text('Match Info',style: TextStyles.navTitle,)),
         
       ),
@@ -105,45 +107,60 @@ class _MatchInfoState extends State<MatchInfo> {
               
                 children: [
                   SizedBox(height: 20),
-                  Padding(
+                  snapshot.data[0]['referee'] != null ? Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Referee:' + ' ' +snapshot.data[0]['referee'], style: TextStyle(color: AppColors.notshinygold, fontSize: 15),),
-                  ),
-                  Divider(color: AppColors.notshinygold,),
-                  Padding(
+                    child:  Text('Referee:' + ' ' +snapshot.data[0]['referee'], style: TextStyle(color: 
+                    customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black, fontSize: 15),),
+                  ) : Container(),
+                  snapshot.data[0]['referee'] != null ? Divider(color: 
+                  customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black,) : Container(),
+                  snapshot.data[0]['venue'] != null ? Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Venue:' + ' ' + snapshot.data[0]['venue'], style: TextStyle(color: AppColors.notshinygold, fontSize: 15),),
-                  ),
-                  Divider(color: AppColors.notshinygold,),
-                  Padding(
+                    child: Text('Venue:' + ' ' + snapshot.data[0]['venue'], style: TextStyle(color:
+                    customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black, fontSize: 15),),
+                  ) : Container(),
+                  snapshot.data[0]['venue'] != null ? Divider(color: 
+                  customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black,) : Container(),
+                  snapshot.data[0]['league']['name'] != null ? Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('League:' + ' ' + snapshot.data[0]['league']['name'], style: TextStyle(color: AppColors.notshinygold, fontSize:15),),
-                  ),
-                  Divider(color: AppColors.notshinygold,),
-                  Padding(
+                    child: Text('League:' + ' ' + snapshot.data[0]['league']['name'], style: TextStyle(color: 
+                    customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black, fontSize:15),),
+                  ) : Container(),
+                  snapshot.data[0]['league']['name'] != null ? Divider(color: 
+                  customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black,) : Container(),
+                  snapshot.data[0]['event_date'] != null ? Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Date:' + ' ' + DateFormat('dd/MM/yyy').format(dateTime), style: TextStyle(color: AppColors.notshinygold, fontSize: 15),),
-                  ),
-                  Divider(color: AppColors.notshinygold,),
-                  Padding(
+                    child: Text('Date:' + ' ' + DateFormat('dd/MM/yyy').format(dateTime), style: TextStyle(color: 
+                    customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black, fontSize: 15),),
+                  ) : Container(),
+                  snapshot.data[0]['event_date'] != null ? Divider(color: 
+                  customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black,) : Container(),
+                  snapshot.data[0]['round'] != null ? Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Round:' + ' ' + snapshot.data[0]['round'], style: TextStyle(color: AppColors.notshinygold, fontSize: 15),),
-                  ),
-                  Divider(color: AppColors.notshinygold,),
-                  Padding(
+                    child: Text('Round:' + ' ' + snapshot.data[0]['round'], style: TextStyle(color:
+                    customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black, fontSize: 15),),
+                  ) : Container(),
+                  snapshot.data[0]['round'] != null ? Divider(color: 
+                  customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black,) : Container(),
+                  snapshot.data[0]['status'] != null ? Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Status:' + ' ' + snapshot.data[0]['status'], style: TextStyle(color: AppColors.notshinygold, fontSize: 15),),
-                  ),
-                  Divider(color: AppColors.notshinygold,),
-                  Padding(
+                    child: Text('Status:' + ' ' + snapshot.data[0]['status'], style: TextStyle(color: 
+                    customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black, fontSize: 15),),
+                  ) : Container(),
+                  snapshot.data[0]['status'] != null ? Divider(color: 
+                  customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black,) : Container(),
+                  snapshot.data[0]['score']['halftime'] != null ? Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Halftime score:' + ' ' + snapshot.data[0]['score']['halftime'], style: TextStyle(color: AppColors.notshinygold, fontSize: 15),),
-                  ),
-                  Divider(color: AppColors.notshinygold,),
-                  Padding(
+                    child: Text('Halftime score:' + ' ' + snapshot.data[0]['score']['halftime'], style: TextStyle(color: 
+                    customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black, fontSize: 15),),
+                  ) : Container(),
+                  snapshot.data[0]['score']['halftime'] != null ? Divider(color: 
+                  customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black,) : Container(),
+                  snapshot.data[0]['score']['fulltime'] != null ? Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Fulltime score:' + ' ' + snapshot.data[0]['score']['fulltime'], style: TextStyle(color: AppColors.notshinygold, fontSize: 15),),
-                  ),
+                    child: Text('Fulltime score:' + ' ' + snapshot.data[0]['score']['fulltime'], style: TextStyle(color: 
+                    customTheme.isDarkMode == true ?  AppColors.notshinygold : Colors.black, fontSize: 15),),
+                  ) : Container(),
 
                 ],
               );

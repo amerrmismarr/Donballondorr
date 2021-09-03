@@ -45,7 +45,7 @@ class _ProfileState extends State<Profile> {
           'Accept': 'application/json',
           "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
           "x-rapidapi-key":
-              "KEY",
+              "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",
         });
 
     if (response.statusCode == 200) {
@@ -193,7 +193,35 @@ class _ProfileState extends State<Profile> {
                 .collection('Predictions')
                 .doc(prediction.fixtureId)
                 .set({'isCalculated': true}, options);
-          } else {
+          } else if (prediction.isCalculated != true &&
+              int.parse(prediction.homeTeamScore.toString()) !=
+                  int.parse(prediction.awayTeamScore.toString()) &&
+              int.parse(prediction.homeTeamPrediction.toString()) !=
+                  int.parse(prediction.awayTeamPrediction.toString())) {
+            print(prediction.fixtureId +
+                " " +
+                'Predicted tie' +
+                " " +
+                prediction.homeTeamScore.toString() +
+                " " +
+                prediction.awayTeamScore.toString() +
+                " " +
+                'score is up by 25');
+            var options = SetOptions(merge: true);
+
+            _db
+                .collection('users')
+                .doc(appUser.userId)
+                .update({'score': FieldValue.increment(-25)});
+            _db
+                .collection('users')
+                .doc(appUser.userId)
+                .collection('Predictions')
+                .doc(prediction.fixtureId)
+                .set({'isCalculated': true}, options);
+          }
+          
+           else {
             //print(prediction.fixtureId + " " + 'score is not changed');
             var options = SetOptions(merge: true);
             _db
@@ -325,19 +353,23 @@ class _ProfileState extends State<Profile> {
                   ),
                   SizedBox(height: 20,),
             Center(
-              child:Text(snapshot.data['name'].toString(), style: TextStyles.subTitle)
+              child:Text(snapshot.data['name'].toString(), 
+              style: customTheme.isDarkMode == true ? TextStyles.subTitle : TextStyles.subTitleLight)
             ),
             
             Center(
-              child:Text(snapshot.data['email'].toString(), style: TextStyles.body)
+              child:Text(snapshot.data['email'].toString(), style: 
+              customTheme.isDarkMode == true ? TextStyles.body : TextStyles.bodyLight)
             ),
             SizedBox(height: 20),
             Center(
-              child:Text('Country:' + ' ' + snapshot.data['country'], style: TextStyles.subTitle)
+              child:Text('Country:' + ' ' + snapshot.data['country'], 
+              style: customTheme.isDarkMode == true ? TextStyles.subTitle : TextStyles.subTitleLight)
             ),
             SizedBox(height: 20),
             Center(
-              child:Text(predictions == null? "Predictions: 0" : "Predictions: " + predictions.length.toString(), style: TextStyles.navTitle)
+              child:Text(predictions == null? "Predictions: 0" : "Predictions: " + predictions.length.toString(), 
+              style: customTheme.isDarkMode == true ? TextStyles.navTitle : TextStyles.navTitleLight)
             ),
             SizedBox(height: 20),
             ElevatedButton(
@@ -358,7 +390,8 @@ class _ProfileState extends State<Profile> {
             ),
             SizedBox(height:20),
             Center(
-              child:Text('Score:' + '  ' + snapshot.data['score'].toString(), style: TextStyles.subTitle)
+              child:Text('Score:' + '  ' + snapshot.data['score'].toString(), 
+              style: customTheme.isDarkMode == true ? TextStyles.subTitle : TextStyles.subTitleLight)
             ),
 
 
