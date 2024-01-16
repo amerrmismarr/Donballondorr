@@ -49,7 +49,7 @@ class _FavoriteFixturesState extends State<FavoriteFixtures> {
     var response = await http.get(Uri.parse('https://api-football-v1.p.rapidapi.com/v2/fixtures/id/' + favoriteFixtureId), headers: {
       'Accept': 'application/json',
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-      "x-rapidapi-key": "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",
+      "x-rapidapi-key": "API_KEY",
     });
 
     if (response.statusCode == 200) {
