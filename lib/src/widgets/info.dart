@@ -71,7 +71,7 @@ class _OrdersState extends State<Orders> with SingleTickerProviderStateMixin {
           'Accept': 'application/json',
           "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
           "x-rapidapi-key":
-              "9277c6f840mshffcaa155ce6daf9p1f43c7jsnff99eae70a7c",
+              "API_KEY",
         });
 
     if (response.statusCode == 200) {
